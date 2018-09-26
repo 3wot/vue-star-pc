@@ -1,0 +1,53 @@
+.upload-img {
+	background-color: #ffffff;
+	margin-bottom: .2rem;
+}
+.upload-title {
+	height: 1rem;
+	line-height:1rem;
+	text-align: left;
+	padding-left: .24rem;
+	color: #555;
+    font-size: .28rem;
+    white-space: nowrap;
+}
+.upload-content {
+	padding: 0 .24rem;
+	text-align: left;
+}
+.upload-item {
+	height: 1.2rem;
+	width: 1.2rem;
+	margin-right: .2rem;
+	margin-bottom: .2rem;
+	float: left;
+	position: relative;
+	background-color: #ededed;
+}
+.upload-item img {
+	height: 100%;
+	width: 100%;
+} 
+.dele-icon {
+	position: absolute;
+	top: -0.2rem;
+	right: -0.2rem;
+}
+.danger {
+	color: red;
+	display: none;
+}
+
+.slot-bottom {
+	height: 1rem;
+	line-height: 1rem;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	background-color: #ffffff;
+
+}
+
+.bottom-btn {
+	margin: .05rem !important;
+}
