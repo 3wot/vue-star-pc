@@ -1,32 +1,35 @@
 <template>
 	<div class="login">
+
 		<img class="bg" src="../../static/login.jpg">
 
-		<div class="content-in">
+		<div class="login-form">
+			
+			<el-form label-width="90px" label-position="left">
+				<el-form-item label="账号">
+					<el-input v-model="mobile"></el-input>
+				</el-form-item>
+				<el-form-item label="密码">
+					<el-input v-model="pwd"></el-input>
+				</el-form-item>
 
-        	<yd-cell-group class="m-t-h">
-		        <yd-cell-item>
-		            <span slot="left">账号：</span>
-		            <yd-input slot="right" required v-model="mobile" :show-required-icon="true" placeholder="请输入手机号"></yd-input>
-		        </yd-cell-item>
+				<el-form-item label="记住密码">
+				    <el-switch
+					  	v-model="remember"
+					  	active-color="#13ce66"
+					  	inactive-color="#dddddd">
+					</el-switch>
 
-		        <yd-cell-item>
-		            <span slot="left">密码：</span>
-		            <yd-input slot="right" type="password" v-model="pwd" placeholder="请输入密码"></yd-input>
-		        </yd-cell-item>
+			  	</el-form-item>
 
-		        <yd-cell-item>
-		            <span slot="left">记住密码</span>
-		            <yd-switch slot="right" v-model="remember"></yd-switch>
-		        </yd-cell-item>
+			 	<el-form-item>
+				    <el-button type="primary" @click="handleLogin">登录</el-button>
+			  	</el-form-item>
 
-		    </yd-cell-group>
-
-
-	        <yd-button size="large" shape="circle" @click.native="handleLogin" type="primary">登录</yd-button>
-		    
+			</el-form>
 
 		</div>
+		
 
 	</div>
 </template>
@@ -131,6 +134,7 @@ export default {
 	bottom: 0px;
 	overflow: hidden;
 	vertical-align: middle;
+	text-align: left;
 }
 
 .login img.bg {
@@ -139,19 +143,16 @@ export default {
 	top: 0px;
 	height: 100%;
 	width: 100%;
+	z-index: -1;
 }
-
-.login .content-in{
-	padding: 20px;
+.login-form {
+	width: 350px;
+	margin: 0 auto;
+	margin-top: 200px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 30px;
+	z-index: 99;
 }
-
-.b-r-3 {
-	border-radius: 3px;
-}
-
-.m-t-h {
-	margin-top: 50%;
-}
-
 
 </style>

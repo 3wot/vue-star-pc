@@ -7,9 +7,9 @@ import GETJSON from './router/service'
 import JCACHE from './router/cache'
 import '@/index.css'
 // 引入UI
-import YDUI from 'vue-ydui' /* 相当于import YDUI from 'vue-ydui/ydui.rem.js' */
-import 'vue-ydui/dist/ydui.rem.css'
-Vue.use(YDUI)
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI)
 
 // 全局变量
 window.USER_INFO = {
