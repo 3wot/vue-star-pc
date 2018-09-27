@@ -13,7 +13,7 @@ Vue.use(ElementUI)
 
 // 全局变量
 window.USER_INFO = {
-    uid : '',
+    uid : 'AAA',
     token: '',
 }
 

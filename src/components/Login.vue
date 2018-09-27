@@ -5,19 +5,19 @@
 
 		<div class="login-form">
 			
-			<el-form label-width="90px" label-position="left">
-				<el-form-item label="账号">
-					<el-input v-model="mobile"></el-input>
+			<el-form :model="loginForm" :rules="rules" label-width="90px" label-position="left">
+				<el-form-item label="账号" prop="mobile">
+					<el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
 				</el-form-item>
-				<el-form-item label="密码">
-					<el-input v-model="pwd"></el-input>
+				<el-form-item label="密码" prop="pwd">
+					<el-input type="password" placeholder="请输入密码" v-model="loginForm.pwd"></el-input>
 				</el-form-item>
 
 				<el-form-item label="记住密码">
 				    <el-switch
-					  	v-model="remember"
+					  	v-model="loginForm.remember"
 					  	active-color="#13ce66"
-					  	inactive-color="#dddddd">
+					  	inactive-color="#aaaaaa">
 					</el-switch>
 
 			  	</el-form-item>
@@ -46,9 +46,21 @@ export default {
 	name: 'Login',
 	data () {
 		return {
-			mobile: '',
-			pwd: '',
-			remember: false,
+			loginForm : {
+				mobile: '',
+				pwd: '',
+				remember: false,	
+			},
+			
+
+			rules : {
+				mobile : [
+				 	{ required: true, message: '请输入手机号', trigger: 'blur' },
+				],
+				pwd : [
+				 	{ required: true, message: '请输入密码', trigger: 'blur' }
+				],
+			},
 		}
 	},
 	mounted () {
@@ -61,8 +73,8 @@ export default {
 		setName () {
 			console.log('记录名字')
 			const data = {
-				mobile: this.mobile,
-				pwd: this.pwd
+				mobile: this.loginForm.mobile,
+				pwd: this.loginForm.pwd
 			}
 			this.JCACHE.set('name', data)
 		},
@@ -73,14 +85,14 @@ export default {
 			console.log('获取名字和密码',data)
 			if (data) {
 				const { mobile, pwd } = data
-				this.mobile = mobile
-				this.pwd = pwd	
+				this.loginForm.mobile = mobile
+				this.loginForm.pwd = pwd	
 			}
 		},
 
 		// 登录
 		handleLogin () {
-			const { pwd, mobile, remember } = this
+			const { pwd, mobile, remember } = this.loginForm
 			if (mobile && pwd) {
 				
 				const param = {
@@ -94,11 +106,10 @@ export default {
 						// 首页
 						this.$router.push({ name : 'index' })
 					} else {
-						this.$dialog.toast({
-							mes: res.mes,
-							icon: 'none',
-							timeout: 2000,
-						})
+						this.$message({
+				          	message: res.mes,
+				          	type: 'warning'
+				        })
 					}
 				})
 
@@ -109,11 +120,10 @@ export default {
 					this.setName()
 				}
 			} else {
-				this.$dialog.toast({
-					mes: '请输入账号和密码',
-					icon: 'none',
-					timeout: 2000,
-				})
+				this.$message({
+		          	message: '请输入手机号和密码',
+		          	type: 'warning',
+		        })
 			}
 		},
 

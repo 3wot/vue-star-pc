@@ -51,3 +51,32 @@
 .bottom-btn {
 	margin: .05rem !important;
 }
+
+
+
+
+/*pc*/
+.c-outer {
+	height: 100%;
+	width: 100%;
+}
+.c-header {
+	background-color: #409eff;
+	line-height: 60px;
+	color: #ffffff;
+	width: 100%;
+}
+.c-main {
+	position: absolute;
+	top: 60px;
+	height: calc(100% - 60px);
+	width: 100%;
+}
+.pull-right {
+	float: right;
+	cursor: pointer;
+}
+.logout {
+	float: right;
+	cursor: pointer;
+}
