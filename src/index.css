@@ -71,12 +71,28 @@
 	top: 60px;
 	height: calc(100% - 60px);
 	width: 100%;
+	/*text-align: left;*/
 }
 .pull-right {
 	float: right;
-	cursor: pointer;
+}
+.pull-left {
+	float: left;
 }
 .logout {
 	float: right;
 	cursor: pointer;
 }
+.btn-100 {
+	width: 100px;
+}
+.btn-150 {
+	width: 150px;
+}
+.el-table .success-row {
+	background-color: #f0f9eb;
+}
+.el-table .warn-row {
+	background: oldlace;
+}
+
