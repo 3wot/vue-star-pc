@@ -71,6 +71,8 @@
 	top: 60px;
 	height: calc(100% - 60px);
 	width: 100%;
+	min-width: 800px;
+	overflow: auto;
 	/*text-align: left;*/
 }
 .pull-right {
@@ -79,10 +81,6 @@
 .pull-left {
 	float: left;
 }
-.logout {
-	float: right;
-	cursor: pointer;
-}
 .btn-100 {
 	width: 100px;
 }
@@ -90,9 +88,9 @@
 	width: 150px;
 }
 .el-table .success-row {
-	background-color: #f0f9eb;
+	background-color: #b0f190;
 }
 .el-table .warn-row {
-	background: oldlace;
+	background: #fdd78f;
 }
 

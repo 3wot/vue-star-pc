@@ -1,36 +1,31 @@
 <template>
 	<div class="opList">
-		
-		 <yd-layout>
-	       <!-- 头 -->
-			<yd-navbar slot="navbar" title="操作列表" fontsize=".4rem" bgcolor="#5871f5" color="#ffffff">
-				<span slot="left" @click="gotoIndex">
-					<yd-navbar-back-icon color="#ffffff"></yd-navbar-back-icon>
-				</span>
-				<span slot="right" @click="gotoLook">查看资料</span>
-			</yd-navbar>
+		<el-container class="c-outer">
+	
+			<Header back="true" title="操作列表"></Header>
+		  	<el-main class="c-main">
+				
+				<div @click="handleTapOp(index)" v-for="(item, index) in opList" class="op-item" :class="{'warn': item.Status == 0}">
+					<span class="pull-left op-item-icon">
+						<i v-if="item.Status == 1" class="el-icon-circle-check"></i>
+						<i v-if="item.Status == 0" class="el-icon-time"></i>
+					</span>
+					<span>{{item.OperationName}}</span>
+				</div>
 
-			<div @click="handleTapOp(index)" v-for="(item,index) in opList" :key="index" class="op-item" :class="{'warn':item.Status == 0}">
-				<yd-icon v-if="item.Status != 0" class="op-item-icon" color="#ffffff" size=".4rem" name="shield-outline"></yd-icon>
-				<yd-icon v-if="item.Status == 0" class="op-item-icon" color="#ffffff" size=".4rem" name="time"></yd-icon>
-				<!-- 姓名 -->
-				<span class="op-item-name">{{item.OperationName}}</span>
-				<yd-navbar-next-icon class="op-item-next" color="#ffffff"></yd-navbar-next-icon>
-			</div>
-
-
-	    </yd-layout>
-
-
+		  	</el-main>
+		</el-container>
 
 	</div>
 </template>
 
 <script>
+import Header from './Header'
 
 export default {
 	components:{
 	// Button,Field
+		Header
 	},
 	name: 'OpList',
 	data () {
@@ -254,24 +249,30 @@ export default {
 	vertical-align: middle;
 }
 .op-item {
-	height: 1rem;
-	line-height: 1rem;
-	margin: 0.2rem;
-	background-color: #808eda;
-	color: #ffffff;
-	text-align: left;
-	border-radius: .1rem;
-	padding: 0px .2rem;
+	height: 60px;
+	width: 500px;
+	line-height: 60px;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-radius: 5px;
 	position: relative;
+    color: #67c23a;
+    background: #f0f9eb;
+	border: 1px solid #c2e7b0;
+	padding: 0 15px;
+	cursor: pointer;
+
 }
 .op-item.warn {
-	background-color: #ffb400;
+    color: #fff;
+    background-color: #67c23a;
+    border-color: #67c23a;
 }
 .op-item.on {
 
 }
 .op-item-icon {
-	position: absolute;
+	font-size: 18px;
 }
 .op-item-name {
 	margin-left: .6rem;

@@ -6,7 +6,7 @@
 				<span>首页</span>
 				<span class="logout pull-right">退出</span>
 			</el-header> -->
-			<Header></Header>
+			<Header title="首页"></Header>
 		  	<el-main class="c-main">
 				<el-button-group>
 				  	<el-button type="primary" :plain="type != 1" class="btn-150" @click="changeType(1)">进行中报单</el-button>
@@ -23,7 +23,7 @@
 						<el-table-column
 							prop="BorrowerName"
 							label="姓名"
-							width="200">
+							width="150">
 						</el-table-column>
 						<el-table-column
 							prop="CreationDateTime"
@@ -33,6 +33,18 @@
 						<el-table-column
 							:formatter="formatter"
 							label="状态">
+						</el-table-column>
+						<el-table-column
+							:formatter="formatter2"
+							label="操作">
+							<template slot-scope="scope">
+					        	<el-button
+					          		@click.native.prevent="handleClick(scope.$index)"
+						          	type="text"
+						          	size="small">
+					          		详情
+					        	</el-button>
+					      	</template>
 						</el-table-column>
 					</el-table>
 
@@ -73,150 +85,6 @@ export default {
 					"BorrowerIDNO" : "XXXXXXXXXX", 
 					"CreationDateTime" : "2018-08-01 18:00:00", 
 					"Status" : 0, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
 					"CurrentOperation" : "估值"
 				},
 				{
@@ -280,7 +148,7 @@ export default {
 		},
 
 		// 操作列表页面
-		gotoOpList (idx) {
+		handleClick (idx) {
 			if (this.orderList && idx < this.orderList.length) {
 				const order = this.orderList[idx]
 				const id = order.Id
@@ -289,12 +157,8 @@ export default {
 			
 		},
 
-
+		// 格式化函数
 		formatter (row, column, cellValue, index) {
-			console.log(row)
-			console.log(cellValue)
-			console.log(index)
-			console.log('_______________________')
 			const { Status, CurrentOperation } = row || {}
 			if (Status == 0) {
 				return CurrentOperation
@@ -303,13 +167,19 @@ export default {
 			} else if (Status == 2) {
 				return "中途结案"
 			}
+		},
+		// 格式化函数2
+		formatter2 (row, column, cellValue, index) {
+			const { Id } = row || {}
+			return '<a href="http://www.baidu.com">sss</a>'
 
 		},
 
 		RowClass ({row, rowIndex}) {
 			const { Status } = row || {}
 			if (Status == 1) {
-				return 'success-row'
+				// return 'success-row'
+				return ''
 			} else if (Status == 2) {
 				return 'warn-row'
 			}

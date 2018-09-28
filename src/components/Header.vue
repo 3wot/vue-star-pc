@@ -2,7 +2,8 @@
 	
 
 	<el-header class="c-header">
-		<span>首页</span>
+		<span v-if="back" class="header-back" @click="goBack">返回</span>
+		<span>{{title}}</span>
 		<span class="logout pull-right" @click="logOut">退出</span>
 	</el-header>
 		
@@ -19,6 +20,7 @@ export default {
 	// Button,Field
 	},
 	name: 'Header',
+	props: ['title','back'],
 	data () {
 		return {
 			
@@ -28,12 +30,17 @@ export default {
 
 	},
 	methods:{
+
+		// 退出
 		logOut() {
 			this.$router.push({ name : 'login' })
 		},
-		
 
-
+		// 后退
+		goBack () {
+			this.$router.go(-1)	
+		},
+	
 
 	},
 
@@ -43,5 +50,19 @@ export default {
 
 <style scoped>
 
+.header-back {
+	float: left;
+	cursor: pointer;
+}
+.header-back:hover {
+	color: #cccccc;
+}
+.logout {
+	float: right;
+	cursor: pointer;
+}
+.logout:hover {
+	color: #cccccc;
+}
 
 </style>
