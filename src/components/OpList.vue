@@ -205,30 +205,33 @@ export default {
 				const op = this.opList[idx]
 				const name = op.OperationName
 
-				if (name == '估值确认') {
-					this.$router.push({ name : 'confirmValuation' })
+				if (name == '估值') {
+					this.$router.push({ name : 'valuation' })
 				}
-				if (name == '正式报单') {
-					this.$router.push({ name : 'form' })
-				}
-				if (name == '初审确认') {
-					this.$router.push({ name : 'confirmFirstCheck' })
-				}
-				if (name == '立项') {
-					this.$router.push({ name : 'setUpProject' })
-				}
-				if (name == '产品匹配确认') {
-					this.$router.push({ name : 'confirmMatch' })
-				}
-				if (name == '补充资料') {
-					this.$router.push({ name : 'addData' })
-				}
-				if (name == '产品终审结果确认') {
-					this.$router.push({ name : 'confirmLastCheck' })
-				}
-				if (name == '打印合同') {
-					this.$router.push({ name : 'printDeal' })
-				}
+				// if (name == '估值确认') {
+				// 	this.$router.push({ name : 'confirmValuation' })
+				// }
+				// if (name == '正式报单') {
+				// 	this.$router.push({ name : 'form' })
+				// }
+				// if (name == '初审确认') {
+				// 	this.$router.push({ name : 'confirmFirstCheck' })
+				// }
+				// if (name == '立项') {
+				// 	this.$router.push({ name : 'setUpProject' })
+				// }
+				// if (name == '产品匹配确认') {
+				// 	this.$router.push({ name : 'confirmMatch' })
+				// }
+				// if (name == '补充资料') {
+				// 	this.$router.push({ name : 'addData' })
+				// }
+				// if (name == '产品终审结果确认') {
+				// 	this.$router.push({ name : 'confirmLastCheck' })
+				// }
+				// if (name == '打印合同') {
+				// 	this.$router.push({ name : 'printDeal' })
+				// }
 			}
 		},
 
