@@ -94,3 +94,21 @@
 	background: #fdd78f;
 }
 
+
+.main-title {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+}
+.span-title {
+
+}
+.w-100 {
+	width: 100% !important;
+}
+.sec {
+	width: 900px;
+	margin: 0 auto;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
