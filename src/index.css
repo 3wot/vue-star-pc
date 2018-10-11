@@ -16,13 +16,16 @@
 	text-align: left;
 }
 .upload-item {
-	height: 1.2rem;
-	width: 1.2rem;
-	margin-right: .2rem;
-	margin-bottom: .2rem;
+	height: 100px;
+	width: 100px;
+	margin-right: 5px;
+	margin-bottom: 5px;
 	float: left;
 	position: relative;
 	background-color: #ededed;
+}
+.upload-item:hover {
+	/*border: .1px solid #409eff;*/
 }
 .upload-item img {
 	height: 100%;
@@ -30,9 +33,21 @@
 } 
 .dele-icon {
 	position: absolute;
-	top: -0.2rem;
-	right: -0.2rem;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    background-color: #409eff;
+    display: none;
+    cursor: pointer;
 }
+.upload-item:hover .dele-icon {
+	display: block;
+}
+
 .danger {
 	color: red;
 	display: none;
@@ -111,4 +126,27 @@
 	margin: 0 auto;
 	overflow-x: hidden;
 	overflow-y: auto;
+	border-bottom: 2px solid #aaa;
+	padding: 20px 0;
+}
+.sec:last-child {
+	border-bottom: none;
+}
+
+.show-table {
+	border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+.show-table td {
+	padding: 3px;
+}
+.m-t-20 {
+	margin-top: 20px;
+}
+.tip {
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    color: #aaa;
+    text-align: left;
 }

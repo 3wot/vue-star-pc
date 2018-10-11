@@ -6,14 +6,11 @@
 
 	<div class="upload-content">
 		<div v-for="(item,index) in imgArr" :key="index" class="upload-item">
-			<div class="dele-icon" @click="dele(index)"><i class="el-icon-close"></i></div>
 			<!-- <img src="item"> -->
 			{{item}}
 		</div>
 		
-		<div class="upload-item" @click="upload">
-			<img src="../../static/plus.png" alt="">
-		</div>
+		
 
 		<div style="clear: both;"></div>
 
@@ -24,14 +21,13 @@
 </template>
 
 <script>
-// import Router from 'vue-router'
-import URLS from '../router/link'
+
 
 export default {
 	components:{
 	// Button,Field
 	},
-	name: 'ImgUpload',
+	name: 'ImgList',
 	props: ['arr'],
 	data () {
 		return {
@@ -44,21 +40,6 @@ export default {
 		this.imgArr = this.arr
 	},
 	methods:{
-		// 点击上传
-		upload () {
-			this.add('A')
-		},
-
-		// 添加
-		add (url) {
-			this.imgArr.push(url)	
-		},
-
-
-		// 删除图片
-		dele(idx) {
-			this.imgArr.splice(idx,1)
-		},
 
 
 
