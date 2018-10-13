@@ -5,7 +5,7 @@ import Login from '@/components/Login'
 import Index from '@/components/Index'
 import OpList from '@/components/OpList'
 import Valuation from '@/components/Valuation'
-
+import FirstCheck from '@/components/FirstCheck'
 
 // import Look from '@/components/Look'
 // import ConfirmValuation from '@/components/ConfirmValuation'
@@ -55,6 +55,12 @@ export default new Router({
 			path: '/valuation',
 			name: 'valuation',
 			component: Valuation
+		},
+		{
+			// 初审
+			path: '/firstCheck',
+			name: 'firstCheck',
+			component: FirstCheck
 		},
 		// {
 		// 	// 查看所有资料

@@ -1,6 +1,5 @@
 .upload-img {
 	background-color: #ffffff;
-	margin-bottom: .2rem;
 }
 .upload-title {
 	height: 1rem;
@@ -16,8 +15,8 @@
 	text-align: left;
 }
 .upload-item {
-	height: 100px;
-	width: 100px;
+	height: 80px;
+	width: 80px;
 	margin-right: 5px;
 	margin-bottom: 5px;
 	float: left;

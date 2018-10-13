@@ -9,22 +9,22 @@
 				<div class="sec">
 					<p class="main-title"><span class="span-title">操作</span></p>
 					<el-form :model="form1" :size="formSize" :rules="rules" label-width="120px" label-position="left">
-						<el-row gutter="15">
+						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="房本照片" prop="">
+							  	<el-form-item label="房本照片">
 									<ImgList :arr="op1"></ImgList>
 								</el-form-item>
 						  	</el-col>
 
 						  	<el-col :span="12">
-							  	<el-form-item label="房屋坐落" prop="">
+							  	<el-form-item label="房屋坐落">
 									<el-input placeholder="请输入房屋坐落"></el-input>
 								</el-form-item>
 						  	</el-col>
 
 						  	<el-col :span="12">
-						  		<el-form-item label="房屋建筑面积" prop="">
+						  		<el-form-item label="房屋建筑面积">
 									<el-input placeholder="请输入房屋建筑面积"></el-input>
 								</el-form-item>
 						  	</el-col>
@@ -65,19 +65,19 @@
 						  	</el-col>
 
 						  	<el-col :span="12">
-							  	<el-form-item label="总楼层数" prop="">
+							  	<el-form-item label="总楼层数">
 									<el-input placeholder="请输入总楼层数"></el-input>
 								</el-form-item>
 						  	</el-col>
 
 						  	<el-col :span="12">
-							  	<el-form-item label="所在楼层" prop="">
+							  	<el-form-item label="所在楼层">
 									<el-input placeholder="请输入所在楼层"></el-input>
 								</el-form-item>
 						  	</el-col>
 
 						  	<el-col :span="12">
-							  	<el-form-item label="建成年代" prop="">
+							  	<el-form-item label="建成年代">
 									<el-date-picker class="w-100" type="year" placeholder="请选择建成年代"></el-date-picker>
 								</el-form-item>
 						  	</el-col>
@@ -170,10 +170,10 @@
 					<p class="tip">备注【评估信息仅供参考，最终估值以下户为准】</p>
 
 					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
-						<el-row gutter="15">
+						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="上传估值报告" prop="">
+							  	<el-form-item label="上传估值报告">
 									<ImgUpload :arr="arr1"></ImgUpload>
 								</el-form-item>
 						  	</el-col>
@@ -210,12 +210,21 @@ data () {
 	return {
 
 		formSize : 'small',
+
+		form1 : {
+
+		},
+		form2 : {
+
+		},
 		op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
 		op2 : ['住宅','别墅','商业','公寓','办公'],
 		op3 : [6.5,5],
 		op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
 
-		arr1: [],
+		rules : {},
+
+		arr1 : [],
 
 
 	}

@@ -208,6 +208,11 @@ export default {
 				if (name == '估值') {
 					this.$router.push({ name : 'valuation' })
 				}
+				if (name == '初审') {
+					this.$router.push({ name : 'firstCheck' })
+				}
+
+				
 				// if (name == '估值确认') {
 				// 	this.$router.push({ name : 'confirmValuation' })
 				// }
