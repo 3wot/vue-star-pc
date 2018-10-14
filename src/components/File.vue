@@ -211,7 +211,6 @@ methods:{
 table td {
 	width : 130px;
 
-
 }
 
 </style>
