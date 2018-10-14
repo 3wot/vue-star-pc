@@ -6,6 +6,18 @@ import Index from '@/components/Index'
 import OpList from '@/components/OpList'
 import Valuation from '@/components/Valuation'
 import FirstCheck from '@/components/FirstCheck'
+import SecondCheck from '@/components/SecondCheck'
+import Match from '@/components/Match'
+import Contact from '@/components/Contact'
+import Add from '@/components/Add'
+import Xiahu from '@/components/Xiahu'
+import LastCheck from '@/components/LastCheck'
+import PrintDeal from '@/components/PrintDeal'
+import Notarization from '@/components/Notarization'
+import Jindi from '@/components/Jindi'
+import Loan from '@/components/Loan'
+import File from '@/components/File'
+
 
 // import Look from '@/components/Look'
 // import ConfirmValuation from '@/components/ConfirmValuation'
@@ -21,11 +33,7 @@ Vue.use(Router)
 
 export default new Router({
 	routes: [
-		// {
-		//   path: '/',
-		//   name: 'HelloWorld',
-		//   component: HelloWorld
-		// },
+
 		{
 			// 登录
 			path: '/',
@@ -38,12 +46,6 @@ export default new Router({
 			name: 'index',
 			component: Index
 		},
-		// {
-		// 	// 预报单
-		// 	path: '/addOrder',
-		// 	name: 'addOrder',
-		// 	component: AddOrder
-		// },
 		{
 			// 操作列表
 			path: '/opList',
@@ -61,6 +63,72 @@ export default new Router({
 			path: '/firstCheck',
 			name: 'firstCheck',
 			component: FirstCheck
+		},
+		{
+			// 二审
+			path: '/secondCheck',
+			name: 'secondCheck',
+			component: SecondCheck
+		},
+		{
+			// 产品匹配
+			path: '/match',
+			name: 'match',
+			component: Match
+		},
+		{
+			// 联系产品供应方
+			path: '/contact',
+			name: 'contact',
+			component: Contact
+		},
+		{
+			// 补充资料
+			path: '/add',
+			name: 'add',
+			component: Add
+		},
+		{
+			// 下户
+			path: '/xiahu',
+			name: 'xiahu',
+			component: Xiahu
+		},
+		{
+			// 产品终审
+			path: '/lastCheck',
+			name: 'lastCheck',
+			component: LastCheck
+		},
+		{
+			// 打印合同
+			path: '/printDeal',
+			name: 'printDeal',
+			component: PrintDeal
+		},
+		{
+			// 产品方面签公证
+			path: '/notarization',
+			name: 'notarization',
+			component: Notarization
+		},
+		{
+			// 产品方进抵
+			path: '/jindi',
+			name: 'jindi',
+			component: Jindi
+		},
+		{
+			// 产品方放款
+			path: '/loan',
+			name: 'loan',
+			component: Loan
+		},
+		{
+			// 归档
+			path: '/file',
+			name: 'file',
+			component: File
 		},
 		// {
 		// 	// 查看所有资料
@@ -110,12 +178,7 @@ export default new Router({
 		// 	name: 'confirmLastCheck',
 		// 	component: ConfirmLastCheck
 		// },
-		// {
-		// 	// 打印合同
-		// 	path: '/printDeal',
-		// 	name: 'printDeal',
-		// 	component: PrintDeal
-		// }
+
 
 	]
 })

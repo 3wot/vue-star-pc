@@ -84,13 +84,6 @@ export default {
 				{
 					"Id" : "AAA",
 					"OperationId" : "12354",
-					"OperationName" : "立项报告",
-					"CreationDateTime" : "",
-					"Status" : "1", // 0，未操作，1，已操作
-				},
-				{
-					"Id" : "AAA",
-					"OperationId" : "12354",
 					"OperationName" : "二审",
 					"CreationDateTime" : "",
 					"Status" : "1", // 0，未操作，1，已操作
@@ -211,7 +204,36 @@ export default {
 				if (name == '初审') {
 					this.$router.push({ name : 'firstCheck' })
 				}
-
+				if (name == '二审') {
+					this.$router.push({ name : 'secondCheck' })
+				}
+				if (name == '产品匹配') {
+					this.$router.push({ name : 'match' })
+				}
+				if (name == '联系产品供应方') {
+					this.$router.push({ name : 'contact' })
+				}
+				if (name == '下户') {
+					this.$router.push({ name : 'xiahu' })
+				}
+				if (name == '产品终审') {
+					this.$router.push({ name : 'lastCheck' })
+				}
+				if (name == '打印合同') {
+					this.$router.push({ name : 'printDeal' })
+				}
+				if (name == '产品方面签公证') {
+					this.$router.push({ name : 'notarization' })
+				}
+				if (name == '产品方进抵') {
+					this.$router.push({ name : 'jindi' })
+				}
+				if (name == '产品方放款') {
+					this.$router.push({ name : 'loan' })
+				}
+				if (name == '归档') {
+					this.$router.push({ name : 'file' })
+				}
 				
 				// if (name == '估值确认') {
 				// 	this.$router.push({ name : 'confirmValuation' })

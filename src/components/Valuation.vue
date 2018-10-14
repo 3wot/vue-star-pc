@@ -31,7 +31,7 @@
 
 						  	<el-col :span="12">
 						  		<el-form-item label="房屋性质">
-								    <el-select class="w-100" placeholder="请选择房屋性质">
+								    <el-select class="w-100" v-model="val1" placeholder="请选择房屋性质">
 								      	<el-option v-for="(item,index) in op1" :key="index" :label="item" :value="item"></el-option>
 								    </el-select>
 								</el-form-item>
@@ -210,6 +210,7 @@ data () {
 	return {
 
 		formSize : 'small',
+		val1: '',
 
 		form1 : {
 

@@ -1,36 +1,24 @@
 <template>
-	<div class="print-deal">
+	<div class="loan">
 		<el-container class="c-outer">
 
-			<Header back="true" title="打印合同"></Header>
+			<Header back="true" title="产品方放款"></Header>
 
 			<el-main class="c-main">
 				
-				
-				
 				<div class="sec">
 					
-					
-
 					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="合同照片">
-									<ImgUpload :arr="arr1"></ImgUpload>
+							  	<el-form-item label="操作放款">
+									<el-button class="pull-left" type="primary">放款</el-button>
 								</el-form-item>
 						  	</el-col>
 						</el-row>
 					</el-form>
 				</div>
-
-				<div class="sec">
-					
-					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
-				</div>
-
 
 			</el-main>
 		</el-container>
@@ -40,15 +28,12 @@
 
 <script>
 import Header from './Header'
-import ImgUpload from './ImgUpload'
-import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
+	Header,
 },
-name: 'PrintDeal',
+name: 'Loan',
 data () {
 	return {
 
@@ -89,7 +74,7 @@ methods:{
 </script>
 
 <style scoped>
-.print-deal {
+.loan {
 	position: absolute;
 	top: 0px;
 	left: 0px;

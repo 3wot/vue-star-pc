@@ -1,8 +1,8 @@
 <template>
-	<div class="print-deal">
+	<div class="xiahu">
 		<el-container class="c-outer">
 
-			<Header back="true" title="打印合同"></Header>
+			<Header back="true" title="下户"></Header>
 
 			<el-main class="c-main">
 				
@@ -16,7 +16,7 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="合同照片">
+							  	<el-form-item label="下户照片">
 									<ImgUpload :arr="arr1"></ImgUpload>
 								</el-form-item>
 						  	</el-col>
@@ -48,7 +48,7 @@ export default {
 	// Button,Field
 	Header, ImgUpload, ImgList
 },
-name: 'PrintDeal',
+name: 'Xiahu',
 data () {
 	return {
 
@@ -89,7 +89,7 @@ methods:{
 </script>
 
 <style scoped>
-.print-deal {
+.xiahu {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -107,5 +107,6 @@ table td {
 
 
 }
+
 
 </style>

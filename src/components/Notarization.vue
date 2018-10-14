@@ -1,8 +1,8 @@
 <template>
-	<div class="print-deal">
+	<div class="notarization">
 		<el-container class="c-outer">
 
-			<Header back="true" title="打印合同"></Header>
+			<Header back="true" title="产品方面签公证"></Header>
 
 			<el-main class="c-main">
 				
@@ -16,7 +16,7 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="合同照片">
+							  	<el-form-item label="现场照片">
 									<ImgUpload :arr="arr1"></ImgUpload>
 								</el-form-item>
 						  	</el-col>
@@ -89,7 +89,7 @@ methods:{
 </script>
 
 <style scoped>
-.print-deal {
+.notarization {
 	position: absolute;
 	top: 0px;
 	left: 0px;

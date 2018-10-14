@@ -120,6 +120,15 @@
 .w-100 {
 	width: 100% !important;
 }
+.w-100px {
+	width: 100px;
+}
+.w-150px {
+	width: 150px;
+}
+.m-b-15 {
+	margin-bottom: 15px;
+}
 .sec {
 	width: 900px;
 	margin: 0 auto;
@@ -135,6 +144,11 @@
 .show-table {
 	border: 1px solid #ddd;
     border-collapse: collapse;
+    width: 700px;
+    line-height: 1.4;
+}
+.show-table-sm {
+	font-size: 12px;
 }
 .show-table td {
 	padding: 3px;
@@ -148,4 +162,7 @@
     font-size: 12px;
     color: #aaa;
     text-align: left;
+}
+.f-18 {
+	font-size: 18px;
 }
