@@ -1,15 +1,57 @@
 
 // 域名
-const HOST = 'http://domain/service.asmx/'
+const HOST = 'http://www.windant.com/Service1.svc/'
 
 // 相对地址
 const urls = {
+
 	'Login' : 'Login',
-	'UploadImage' : 'UploadImage',
+	'NewOrder': 'NewOrder',
 	'OrderList' : 'OrderList',
 	'OrderOperationList' : 'OrderOperationList',
-	'OperationList' : 'OperationList',
-	'NewOrder' : 'NewOrder',
+	'GetHouseValuationParams' : 'GetHouseValuationParams',
+
+	'HouseValuation' : 'HouseValuation',
+	'CompleteHouseValuation': 'CompleteHouseValuation',
+	'GetConfirmHouseValuationParams' : 'GetConfirmHouseValuationParams',
+	'CompleteConfirmHouseValuation' : 'CompleteConfirmHouseValuation',
+	'SubmitBorrowerInfo' : 'SubmitBorrowerInfo',
+
+	'GetAuditBorrowerInfoParams' : 'GetAuditBorrowerInfoParams',
+	'AuditBorrowerInfo' : 'AuditBorrowerInfo',
+	'CompleteAuditBorrowerInfo' : 'CompleteAuditBorrowerInfo',
+	'GetConfirmAuditBorrowerInfoParams' : 'GetConfirmAuditBorrowerInfoParams',
+	'CompleteConfirmAuditBorrowerInfo' : 'CompleteConfirmAuditBorrowerInfo',
+
+	'OrderValidation' : 'OrderValidation',
+	'GetSecondAuditionParams' : 'GetSecondAuditionParams',
+	'CompleteSecondAudition' : 'CompleteSecondAudition',
+	'GetProductClassList' : 'GetProductClassList',
+	'GetProductList' : 'GetProductList',
+
+	'GetProductMatchParams' : 'GetProductMatchParams',
+	'CompleteProductMatch' : 'CompleteProductMatch',
+	'GetConfirmProductMatchParams' : 'GetConfirmProductMatchParams',
+	'CompleteConfirmProductMatch' : 'CompleteConfirmProductMatch',
+	'GetContactProductProviderParams' : 'GetContactProductProviderParams',
+
+	'CompleteContactProductProvider' : 'CompleteContactProductProvider',
+	'CompleteHouseVisit' : 'CompleteHouseVisit',
+	'CompleteLoanApproval' : 'CompleteLoanApproval',
+	'GetConfirmLoanApprovalParams' : 'GetConfirmLoanApprovalParams',
+	'CompleteConfirmLoanApproval' : 'CompleteConfirmLoanApproval',
+
+	'GetContractTemplateList' : 'GetContractTemplateList',
+	'UploadContract' : 'UploadContract',
+	'CompletePrintContract' : 'CompletePrintContract',
+	'CompleteSignContract' : 'CompleteSignContract',
+	'CompletePledge' : 'CompletePledge',
+
+	'CompleteLoanReceived' : 'CompleteLoanReceived',
+	'CompleteUploadLoanReceivedCertificate' : 'CompleteUploadLoanReceivedCertificate',
+	'CompleteFiling' : 'CompleteFiling',
+	'CancelOrder' : 'CancelOrder',
+
 }
 
 // 外部方法
