@@ -5,12 +5,10 @@
  	
 
 	<div class="upload-content">
-		<div v-for="(item,index) in imgArr" :key="index" class="upload-item">
-			<!-- <img src="item"> -->
-			{{item}}
+		<div v-for="(item,index) in arr" :key="index" class="upload-item">
+			<img :src="item">
+			<!-- {{item}} -->
 		</div>
-		
-		
 
 		<div style="clear: both;"></div>
 
@@ -31,13 +29,13 @@ export default {
 	props: ['arr'],
 	data () {
 		return {
-			imgArr : [],
+			
 
 		}
 	},
 	mounted () {
-		// 点击上传
-		this.imgArr = this.arr
+		
+		
 	},
 	methods:{
 

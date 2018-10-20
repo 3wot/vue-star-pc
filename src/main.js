@@ -13,11 +13,21 @@ Vue.use(ElementUI)
 
 // 全局变量
 window.USER_INFO = {
-    uid : 'AAA',
+    uid : '',
     token: '',
+    OperatorRoleId: '',
+    OperatorRoleName: '',
 }
 
-Vue.prototype.GETJSON = GETJSON
+Vue.prototype.pp = GETJSON
+Vue.prototype.warn = function(msg) {
+	this.$message({
+      	message: msg,
+      	type: 'warning',
+    })	
+}
+
+
 Vue.prototype.JCACHE = JCACHE
 
 Vue.config.productionTip = false

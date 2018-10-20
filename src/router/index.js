@@ -48,37 +48,37 @@ export default new Router({
 		},
 		{
 			// 操作列表
-			path: '/opList',
+			path: '/opList/:id/:hid',
 			name: 'opList',
 			component: OpList
 		},
 		{
 			// 估值
-			path: '/valuation',
+			path: '/valuation/:id/:hid/:oprid',
 			name: 'valuation',
 			component: Valuation
 		},
 		{
 			// 初审
-			path: '/firstCheck',
+			path: '/firstCheck/:id/:hid/:oprid',
 			name: 'firstCheck',
 			component: FirstCheck
 		},
 		{
 			// 二审
-			path: '/secondCheck',
+			path: '/secondCheck/:id/:hid/:oprid',
 			name: 'secondCheck',
 			component: SecondCheck
 		},
 		{
 			// 产品匹配
-			path: '/match',
+			path: '/match/:id/:hid/:oprid',
 			name: 'match',
 			component: Match
 		},
 		{
 			// 联系产品供应方
-			path: '/contact',
+			path: '/contact/:id/:hid/:oprid',
 			name: 'contact',
 			component: Contact
 		},
@@ -90,43 +90,43 @@ export default new Router({
 		},
 		{
 			// 下户
-			path: '/xiahu',
+			path: '/xiahu/:id/:hid/:oprid',
 			name: 'xiahu',
 			component: Xiahu
 		},
 		{
 			// 产品终审
-			path: '/lastCheck',
+			path: '/lastCheck/:id/:hid/:oprid',
 			name: 'lastCheck',
 			component: LastCheck
 		},
 		{
 			// 打印合同
-			path: '/printDeal',
+			path: '/printDeal/:id/:hid/:oprid',
 			name: 'printDeal',
 			component: PrintDeal
 		},
 		{
 			// 产品方面签公证
-			path: '/notarization',
+			path: '/notarization/:id/:hid/:oprid',
 			name: 'notarization',
 			component: Notarization
 		},
 		{
 			// 产品方进抵
-			path: '/jindi',
+			path: '/jindi/:id/:hid/:oprid',
 			name: 'jindi',
 			component: Jindi
 		},
 		{
 			// 产品方放款
-			path: '/loan',
+			path: '/loan/:id/:hid/:oprid',
 			name: 'loan',
 			component: Loan
 		},
 		{
 			// 归档
-			path: '/file',
+			path: '/file/:id/:hid/:oprid',
 			name: 'file',
 			component: File
 		},

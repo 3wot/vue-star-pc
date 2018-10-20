@@ -2,7 +2,8 @@ import Router from 'vue-router'
 import router from './index'
 import URLS from '@/router/link'
 // 引入axios
-import axios from 'axios'
+// import axios from 'axios'
+import $ from 'jquery'
 // 数据服务
 const GETJSON = (urlKey, data, cb) => {
     // 地址
@@ -31,47 +32,82 @@ const GETJSON = (urlKey, data, cb) => {
         }
         
     }
-    // 发请求
-    let config = {
-        headers : {
-            'Content-Type':'application/json;charset=UTF-8'
-        },
-    };
     const postData = JSON.stringify(param)
-    console.log("url:",url)
-    axios.post(url, postData)
-    .then(res => {
-        // 返回格式
-        // {
-        //     "d": {
-        //         "__type": "OutputNewOrder:#GMOA",
-        //         "msg": "token验证失败",
-        //         "ret": "fail",
-        //         "data": {
-        //             "__type": "OutputNewOrderData:#GMOA",
-        //             "HouseId": "",
-        //             "OrderId": ""
-        //         }
-        //     }
-        // }
-        const resData = {
-            ret : res.d.ret == 'ok',
-            msg : res.d.msg,
-            data : res.d.data,
-        }
-        if(cb && typeof cb == 'function') {
-            cb(resData)
+    // console.log("url:",url)
+    // axios.post(url, postData)
+    // .then(res => {
+    //     // 返回格式
+    //     // {
+    //     //     "d": {
+    //     //         "__type": "OutputNewOrder:#GMOA",
+    //     //         "msg": "token验证失败",
+    //     //         "ret": "fail",
+    //     //         "data": {
+    //     //             "__type": "OutputNewOrderData:#GMOA",
+    //     //             "HouseId": "",
+    //     //             "OrderId": ""
+    //     //         }
+    //     //     }
+    //     // }
+    //     const resData = {
+    //         ret : res.d.ret == 'ok',
+    //         msg : res.d.msg,
+    //         data : res.d.data,
+    //     }
+    //     if(cb && typeof cb == 'function') {
+    //         cb(resData)
+    //     }
+
+    // })
+    // .catch(error => {
+    //     if(cb && typeof cb == 'function') {
+    //         const data = {
+    //             ret: false,
+    //             msg: "请求失败"
+    //         }
+    //         cb(data)
+    //     }
+    // })
+    $.ajax({
+        type: "POST",
+        url: url,
+        contentType: "application/json;charset=UTF-8",
+        data: JSON.stringify(param),
+        success: function (res) {
+            // 返回格式
+            // {
+            //     "d": {
+            //         "__type": "OutputNewOrder:#GMOA",
+            //         "msg": "token验证失败",
+            //         "ret": "fail",
+            //         "data": {
+            //             "__type": "OutputNewOrderData:#GMOA",
+            //             "HouseId": "",
+            //             "OrderId": ""
+            //         }
+            //     }
+            // }
+            const resData = {
+                ret : res.d.ret == 'ok',
+                msg : res.d.msg,
+                data : res.d.data,
+            }
+            if(cb && typeof cb == 'function') {
+                cb(resData)
+            }
+
+        },
+        error: function (err) {
+            console.error(err)
+            if(cb && typeof cb == 'function') {
+                const data = {
+                    ret: false,
+                    msg: "请求失败"
+                }
+                cb(data)
+            }
         }
 
-    })
-    .catch(error => {
-        if(cb && typeof cb == 'function') {
-            const data = {
-                ret: false,
-                msg: "请求失败"
-            }
-            cb(data)
-        }
-    })
+    });
 }
 export default GETJSON

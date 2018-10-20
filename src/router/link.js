@@ -1,6 +1,6 @@
 
 // 域名
-const HOST = 'http://www.windant.com/Service1.svc/'
+const HOST = 'http://www.windant.com:9005/Service1.svc/'
 
 // 相对地址
 const urls = {

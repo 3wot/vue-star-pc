@@ -12,82 +12,82 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="房本照片">
+								<el-form-item label="房本照片">
 									<ImgList :arr="op1"></ImgList>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="房屋坐落">
+							<el-col :span="12">
+								<el-form-item label="房屋坐落">
 									<el-input placeholder="请输入房屋坐落"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="房屋建筑面积">
+							<el-col :span="12">
+								<el-form-item label="房屋建筑面积">
 									<el-input placeholder="请输入房屋建筑面积"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="房屋性质">
-								    <el-select class="w-100" v-model="val1" placeholder="请选择房屋性质">
-								      	<el-option v-for="(item,index) in op1" :key="index" :label="item" :value="item"></el-option>
-								    </el-select>
+							<el-col :span="12">
+								<el-form-item label="房屋性质">
+									<el-select class="w-100" v-model="val1" placeholder="请选择房屋性质">
+										<el-option v-for="(item,index) in op1" :key="index" :label="item" :value="item"></el-option>
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="用途">
-								    <el-select class="w-100" placeholder="请选择用途">
-								      	<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
-								      	
-								    </el-select>
+							<el-col :span="12">
+								<el-form-item label="用途">
+									<el-select class="w-100" placeholder="请选择用途">
+										<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
+
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="抵押成数">
-								    <el-select class="w-100" placeholder="请选择抵押成数">
-								      	<el-option v-for="(item,index) in op3" :key="index" :label="item" :value="item"></el-option>
-								      	
-								    </el-select>
+							<el-col :span="12">
+								<el-form-item label="抵押成数">
+									<el-select class="w-100" placeholder="请选择抵押成数">
+										<el-option v-for="(item,index) in op3" :key="index" :label="item" :value="item"></el-option>
+
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="房屋朝向">
-								    <el-select class="w-100" placeholder="请选择房屋朝向">
-								      	<el-option v-for="(item,index) in op4" :key="index" :label="item" :value="item"></el-option>
-								      	
-								    </el-select>
+							<el-col :span="12">
+								<el-form-item label="房屋朝向">
+									<el-select class="w-100" placeholder="请选择房屋朝向">
+										<el-option v-for="(item,index) in op4" :key="index" :label="item" :value="item"></el-option>
+
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="总楼层数">
+							<el-col :span="12">
+								<el-form-item label="总楼层数">
 									<el-input placeholder="请输入总楼层数"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="所在楼层">
+							<el-col :span="12">
+								<el-form-item label="所在楼层">
 									<el-input placeholder="请输入所在楼层"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="建成年代">
+							<el-col :span="12">
+								<el-form-item label="建成年代">
 									<el-date-picker class="w-100" type="year" placeholder="请选择建成年代"></el-date-picker>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="24">
-							  	
+							<el-col :span="24">
+
 								<el-button class="pull-left" type="primary">估值</el-button>
 								
-						  	</el-col>
-						
+							</el-col>
+
 						</el-row>
 						
 
@@ -173,21 +173,17 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="上传估值报告">
+								<el-form-item label="上传估值报告">
 									<ImgUpload :arr="arr1"></ImgUpload>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
 
 				<div class="sec">
-					
 					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
 				</div>
-
 
 			</el-main>
 		</el-container>
@@ -202,50 +198,88 @@ import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
-},
-name: 'Valuation',
-data () {
-	return {
-
-		formSize : 'small',
-		val1: '',
-
-		form1 : {
-
-		},
-		form2 : {
-
-		},
-		op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
-		op2 : ['住宅','别墅','商业','公寓','办公'],
-		op3 : [6.5,5],
-		op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
-
-		rules : {},
-
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
+		Header, ImgUpload, ImgList
 	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
+	name: 'Valuation',
+	data () {
+		return {
+
+			formSize : 'small',
+			val1: '',
+
+			form1 : {
+
+			},
+			form2 : {
+
+			},
+			op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
+			op2 : ['住宅','别墅','商业','公寓','办公'],
+			op3 : [6.5,5],
+			op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
+			rules : {},
+			arr1 : [],
+		}
 	},
+	mounted () {
+		console.log(this.$route.params.id)
+	},
+	methods:{
+
+		gotoLook() {
+			// 调到预报单
+			const id = this.$route.params.id
+			console.log(id)
+			this.$router.push({ name: 'look', params: { id }})
+		},
+		
+		// 首页
+		gotoIndex() {
+			this.$router.push({ name : 'index' })
+		},
+
+		// 初始化
+		init () {
+			const id = this.$route.params.id
+			const hid = this.$route.params.hid
+			const param = {
+				OrderId: id,
+				HouseId: hid,
+			}
+			this.pp('GetHouseValuationParams', param, res => {
+				if (res.ret) {
+					
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
+
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const HouseValuationConfirmComment = this.HouseValuationConfirmComment
+
+			const param = {
+				OrderId: id,
+				HouseId: hid,
+				OperationRecordId: oprid,
+				HouseValuationConfirmComment,
+			}
+
+			this.pp('CompleteConfirmHouseValuation', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.$dialog.toast({
+						mes: res.msg,
+						icon: 'none',
+						timeout: 3000,
+					})
+				}
+			})
+		},
 
 		
 
