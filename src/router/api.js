@@ -101,7 +101,7 @@
 
 		// uid : 用户唯一标识id
 		// token : 用户身份验证token
-		// order_type : 获取报单类型，0，正在进行中，1，正常结案，2，中途结案 3，历史报单， 不传所有的
+		// order_type : 获取报单类型，0，正在进行中报单；1，正常结案，2，中途结案, 3，历史的，为空，所有的
 		
 	// 返回数据格式说明：
 	
@@ -112,7 +112,7 @@
 		// BorrowerMobile : 借款人手机号
 		// BorrowerIDNO : 借款人身份证号
 		// CreationDateTime : 报单创建日期时间, 格式：2018-08-01 18:00:00
-		// Status : 报单状态，0，正在进行中，1，正常结案，2，中途结案
+		// Status : 报单状态，获取报单类型，0，正在进行中报单；1，正常结案，2，中途结案, 3，历史的，为空，所有的
 		// CurrentOperationName : 报单当前操作名称
 
 // *获取报单操作列表接口-All
@@ -206,7 +206,8 @@
 		"Location" : "",
 		"Usage" : "",
 		"Area" : "",
-		"HouseCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"]
+		"HouseCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+		"C_HouseCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"]
 	}
 
 	// 返回数据格式：
@@ -226,6 +227,7 @@
 		// Usage : 用途, 无，住宅*，别墅，商业，公寓，办公
 		// Area : 房屋建筑面积
 		// HouseCertificateImageUrls : 房产证照片
+		// C_HouseCertificateImageUrls : 房产证缩略图照片
 		
 	// 返回数据格式说明：
 	
@@ -340,9 +342,14 @@
 			"HouseId" : "",
 			"OwnerName" : "",
 			"Location" : "",
+			"Type" : "",
 			"Usage" : "",
 			"Area" : "",
-			"PledgePercentage" : ""
+			"PledgePercentage" : "",
+			"Orientation" : "",
+			"TotalFloor" : "",
+			"Floor" : "",
+			"BuildingFinishYear" : ""
 		}
 
 		// 返回数据格式：
@@ -372,9 +379,14 @@
 			// HouseId : 估值房屋id
 			// OwnerName : 所有权人姓名
 			// Location : 房屋坐落
+			// Type : 房屋性质
 			// Usage : 用途, 无，住宅*，别墅，商业，公寓，办公
 			// Area : 房屋建筑面积
 			// PledgePercentage : 抵押成数
+			// Orientation : 朝向
+			// TotalFloor : 总层数
+			// Floor : 所在楼层
+			// BuildingFinishYear : 建成年代
 			
 		// 返回数据格式说明：
 		
@@ -395,7 +407,7 @@
 
 		// 接口地址: CompleteHouseValuation
 		
-		// 接口说明：完成风控初审操作
+		// 接口说明：完成房屋估值操作
 		
 		// 输入数据格式:
 		
@@ -861,9 +873,9 @@
 			// ret : 调用接口返回结果标志位，成功：ok，失败：fail
 			// msg : 失败错误信息	
 
-// ?立项页面接口(2)-销售
+// *立项页面接口(2)-销售
 
-	// 1. 获取立项页面参数接口
+	// *1. 获取立项页面参数接口
 
 		// 接口地址: GetOrderValidationParams
 		
@@ -899,7 +911,7 @@
 			// msg : 失败错误信息
 			// HasCompany : 是否有公司
 	
-	// 2. 提交立项页面数据接口
+	// *2. 提交立项页面数据接口
 
 		// 接口地址: OrderValidation
 		
@@ -1253,8 +1265,34 @@
 			"msg" : "",
 			"data" : 
 			{
-				"OrderValidationImageUrl" : "",
-				"C_OrderValidationImageUrl" : "",
+				"BorrowerName" : "",
+				"BorrowerIDNO" : "",
+				"BorrowerMobile" : "",
+				"BorrowerSpouseName" : "",
+				"BorrowerSpouseIDNO" : "",
+				"BorrowerSpouseMobile" : "",
+				"ExpectedBorrowAmount" : "",
+				"ExpectedBorrowPeriodInMonth" : "",
+				"LoanPriority" : "",
+				"BorrowUsage" : "",
+				"InterestReturnSource" : "",
+				"PrincipalReturnSource" : "",
+				"Location" : "",
+				"Usage" : "",
+				"ShareOwnerInfo" : "",
+				"Area" : "",
+				"PledgeInfo" : "",
+				"IsPledged" : "",
+				"PledgeOrgnization" : "",
+				"PledgePrice" : "",
+				"IsLoanPaidOff" : "",
+				"IsZhuanDan" : "",
+				"CompanyName" : "",
+				"CompanySecurityIDNO" : "",
+				"CompanyLegalPersonName" : "",
+				"CompanyLegalPersonIDNO" : "",
+				"BusinessScope" : "",
+				"SaleOrderValidationComment" : ""
 				"SecondAuditionImageUrl" : "",
 				"C_SecondAuditionImageUrl" : ""
 			}
@@ -1270,8 +1308,36 @@
 		
 			// ret : 调用接口返回结果标志位，成功：ok，失败：fail
 			// msg : 失败错误信息	
-			// OrderValidationImageUrl : 立项报告照片url
+			// BorrowerName : 客户姓名
+			// BorrowerIDNO : 客户身份证号码
+			// BorrowerMobile : 客户手机号码
+			// BorrowerSpouseName : 客户配偶姓名
+			// BorrowerSpouseIDNO : 客户配偶身份证号码
+			// BorrowerSpouseMobile : 客户配偶手机号码
+			// ExpectedBorrowAmount : 申请贷款金额
+			// ExpectedBorrowPeriodInMonth : 申请贷款期限
+			// LoanPriority : 客户需求侧重
+			// BorrowUsage : 借款用途
+			// InterestReturnSource : 利息还款来源
+			// PrincipalReturnSource : 本金还款来源
+			// Location : 房屋坐落
+			// Usage : 用途
+			// ShareOwnerInfo : 共有情况
+			// Area : 房屋建筑面积
+			// PledgeInfo : 抵押物现状
+			// IsPledged : 抵押状况
+			// PledgeOrgnization : 抵押机构
+			// PledgePrice : 抵押金额
+			// IsLoanPaidOff : 是否结清
+			// IsZhuanDan : 是否转单
+			// CompanyName : 企业名称
+			// CompanySecurityIDNO : 统一社会信用代码
+			// CompanyLegalPersonName : 法定代表人姓名
+			// CompanyLegalPersonIDNO : 法定代表人身份证号
+			// BusinessScope : 经营范围
+			// SaleOrderValidationComment : 销售经理立项建议					
 			// SecondAuditionImageUrl : 二审照片url
+			// C_SecondAuditionImageUrl : 二审照片缩略图url
 
 	// *4. 完成产品匹配操作接口
 
@@ -2311,7 +2377,7 @@
 
 // 新补充资料接口(6)
 
-	// 1. 获取所有补充资料选项
+	// *1. 获取所有补充资料选项
 
 		// 接口地址: GetMaterialList
 		
@@ -2351,7 +2417,7 @@
 			// FieldName : 补充资料字段名称
 			// Name : 补充资料显示名称
 
-	// 2. 风控或客服提交已选补充资料选项接口
+	// *2. 风控或客服提交已选补充资料选项接口
 
 		// 接口地址: SubmitMaterialList
 		
@@ -2362,7 +2428,11 @@
 		{
 			"uid" : "",
 			"token" : "",
-			"MaterialIds" : ["1", "2"]
+			"OrderId" : "",
+			"Materials" : [
+				{ "Id" : "1", "Comment": "" }, 
+				{ "Id" : "2", "Comment": "" }
+			]
 		}
 
 		// 返回数据格式：
@@ -2376,7 +2446,10 @@
 
 			// uid : 用户唯一标识id
 			// token : 用户身份验证token
-			// MaterialIds : 补充资料id数组
+			// OrderId : 报单id
+			// Materials : 补充资料数组
+			// Id : 补充资料id
+			// Comment : 补充资料备注
 			
 		// 返回数据格式说明：
 		
@@ -2403,8 +2476,8 @@
 			"msg" : "",
 			"data" : 
 				[	
-					{ "Id" : "1", "FieldName" : "BorrowerIDNOImageUrls", "Name" : "客户身份证照片"},
-					{ "Id" : "2", "FieldName" : "PermanentResidenceBookImageUrls", "Name" : "客户户口本照片"}
+					{ "Id" : "1", "FieldName" : "BorrowerIDNOImageUrls", "Name" : "客户身份证照片", "Comment" : "", "ImageUrls" : ["ImageUrl1", "ImageUrl2"], "C_ImageUrls" : ["ImageUrl1", "ImageUrl2"]},
+					{ "Id" : "2", "FieldName" : "PermanentResidenceBookImageUrls", "Name" : "客户户口本照片", "Comment" : "", "ImageUrls" : ["ImageUrl1", "ImageUrl2"], "C_ImageUrls" : ["ImageUrl1", "ImageUrl2"]}
 				]
 		}
 
@@ -2420,6 +2493,8 @@
 			// Id : 补充资料id
 			// FieldName : 补充资料字段名称
 			// Name : 补充资料显示名称
+			// ImageUrls : 补充资料图片url
+			// C_ImageUrls : 补充资料缩略图片url
 
 	// 4. 风控或客服是否可以发起补充资料请求接口
 

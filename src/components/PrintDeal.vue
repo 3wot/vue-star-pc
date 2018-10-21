@@ -6,29 +6,21 @@
 
 			<el-main class="c-main">
 				
-				
-				
 				<div class="sec">
-					
-					
-
-					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
+					<el-form class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="合同照片">
+								<el-form-item label="合同照片">
 									<ImgUpload :arr="arr1"></ImgUpload>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
 
 				<div class="sec">
-					
 					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
 				</div>
 
 
@@ -45,40 +37,21 @@ import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
-},
-name: 'PrintDeal',
-data () {
-	return {
-
-		formSize : 'small',
-
-		form2 : {
-
-		},
-
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
+		Header, ImgUpload, ImgList
 	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
+	name: 'PrintDeal',
+	data () {
+		return {
+
+
+		}
 	},
+	mounted () {
+		console.log(this.$route.params.id)
+	},
+	methods:{
+
+
 
 		
 

@@ -10,7 +10,7 @@
 					<el-form :size="formSize" label-width="130px" label-position="left">
 						<el-row>
 							<el-col :span="24">
-							  	<el-form-item label="立项报告">
+								<el-form-item label="立项报告">
 									<table class="show-table show-table-sm" cellpadding="0" cellspacing="0" border="1">
 										<tbody>
 											<tr>
@@ -123,13 +123,13 @@
 										</tbody>
 									</table>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="24">
-							  	<el-form-item label="二审报告">
+							<el-col :span="24">
+								<el-form-item label="二审报告">
 									<ImgList :arr="op1"></ImgList>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
@@ -139,24 +139,24 @@
 					<el-form :model="form1" :size="formSize" :rules="rules" label-width="130px" label-position="left">
 						<el-row>
 
-						  	<el-col :span="24">
-						  		<el-form-item label="产品渠道名称分类">
-								    <el-select class="w-100" placeholder="请选择产品渠道名称分类">
-								      	<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
-								      	
-								    </el-select>
-								</el-form-item>
-						  	</el-col>
+							<el-col :span="24">
+								<el-form-item label="产品渠道名称分类">
+									<el-select class="w-100" placeholder="请选择产品渠道名称分类">
+										<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
 
-						  	<el-col :span="24">
-						  		<el-form-item label="产品名称二级菜单">
-								    <el-checkbox-group class="pull-left" v-model="checkList">
-								    	<el-checkbox label="复选框 A"></el-checkbox>
-									    <el-checkbox label="复选框 B"></el-checkbox>
-									    <el-checkbox label="复选框 C"></el-checkbox>
-								  	</el-checkbox-group>
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
+
+							<el-col :span="24">
+								<el-form-item label="产品名称二级菜单">
+									<el-checkbox-group class="pull-left" v-model="checkList">
+										<el-checkbox label="复选框 A"></el-checkbox>
+										<el-checkbox label="复选框 B"></el-checkbox>
+										<el-checkbox label="复选框 C"></el-checkbox>
+									</el-checkbox-group>
+								</el-form-item>
+							</el-col>
 
 						</el-row>
 						
@@ -167,8 +167,8 @@
 
 				<div class="sec">
 					
-					<el-button class="pull-left" type="primary">完成</el-button>
-						
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
+
 					
 				</div>
 
@@ -232,9 +232,28 @@ methods:{
 		this.$router.push({ name : 'index' })
 	},
 
-		
+	sub () {
+		const { id, hid, oprid } = this.$route.params
+		const MatchProductIds = ['1','2','5']
+		const param = {
+			OrderId : id,
+			OperationRecordId : oprid,
+			MatchProductIds,
+		}
+		console.log(param)
+		this.pp('CompleteProductMatch', param, res => {
+			if (res.ret) {
+				// 跳到操作页面
+				this.$router.push({ name : 'opList', params: { id, hid }})
+			} else {
+				this.warn(res.msg)
+			}
+		})
 
 	},
+
+
+},
 
 
 }

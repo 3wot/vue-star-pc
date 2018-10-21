@@ -5,7 +5,7 @@
  	
 
 	<div class="upload-content">
-		<div v-for="(item,index) in arr" :key="index" class="upload-item">
+		<div v-for="(item,index) in imgArr" :key="index" class="upload-item">
 			<img :src="item">
 			<!-- {{item}} -->
 		</div>
@@ -26,19 +26,45 @@ export default {
 	// Button,Field
 	},
 	name: 'ImgList',
-	props: ['arr'],
+	props: ['arr','arrc'],
 	data () {
 		return {
 			
-
 		}
+	},
+	computed:{
+		imgArr:function(){
+			if (this.arr) {
+				if (typeof this.arr == 'string') {
+					let a = []
+					a.push(this.arr)
+					return a
+				} else {
+					return this.arr
+				}	
+			} else {
+				return []
+			}
+		},
+		imgArrC:function(){
+			if (this.arrc) {
+				if (typeof this.arrc == 'string') {
+					let a = []
+					a.push(this.arrc)
+					return a
+				} else {
+					return this.arrc
+				}	
+			} else {
+				return []
+			}
+		},
+
 	},
 	mounted () {
 		
-		
 	},
 	methods:{
-
 
 
 	},

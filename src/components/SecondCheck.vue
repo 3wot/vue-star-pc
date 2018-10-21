@@ -8,31 +8,31 @@
 				
 				<div class="sec">
 					<p class="main-title"><span class="span-title">操作</span></p>
-					<el-form :model="form1" :size="formSize" :rules="rules" label-width="130px" label-position="left">
+					<el-form :size="formSize" label-width="130px" label-position="left">
 						<el-row :gutter="15">
-						  	<el-col :span="12">
-							  	<el-form-item label="借款主体风险分析">
-									<el-input type="textarea"></el-input>
+							<el-col :span="12">
+								<el-form-item label="借款主体风险分析">
+									<el-input v-model="val1" type="textarea"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="还款来源分析">
-									<el-input type="textarea"></el-input>
+							<el-col :span="12">
+								<el-form-item label="还款来源分析">
+									<el-input v-model="val2" type="textarea"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-					  		<el-col :span="12">
-							  	<el-form-item label="偿债能力分析">
-									<el-input type="textarea"></el-input>
+							<el-col :span="12">
+								<el-form-item label="偿债能力分析">
+									<el-input v-model="val3" type="textarea"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="风控建议">
-									<el-input type="textarea"></el-input>
+							<el-col :span="12">
+								<el-form-item label="风控建议">
+									<el-input v-model="val4" type="textarea"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
 						</el-row>
 						
@@ -58,12 +58,8 @@
 								
 							</tr>
 							<tr>
-								<td colspan="8"></td>
-							</tr>
-							<tr>
 								<td colspan="8">借款相关主体</td>
 							</tr>
-							
 							<tr>
 								<td colspan="2"></td>
 								<td colspan="2">客户</td>
@@ -88,11 +84,6 @@
 								<td colspan="2">XX</td>
 								<td colspan="2">XX</td>
 							</tr>
-							
-
-							<tr>
-								<td colspan="8"></td>
-							</tr>
 							<tr>
 								<td colspan="8">借款项目</td>
 							</tr>
@@ -115,9 +106,6 @@
 								<td colspan="6">XX</td>
 							</tr>
 							
-							<tr>
-								<td colspan="8"></td>
-							</tr>
 							<tr>
 								<td colspan="8">抵押物信息</td>
 							</tr>
@@ -145,49 +133,44 @@
 								<td>抵押总价：</td>
 								<td></td>
 							</tr>
-
-							<tr>
-								<td colspan="8"></td>
-							</tr>
 							<tr>
 								<td colspan="8">风控意见</td>
 							</tr>
 							<tr>
 								<td colspan="2">借款主体风险分析</td>
-								<td colspan="6"></td>
+								<td colspan="6">{{val1}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">还款来源分析</td>
-								<td colspan="6"></td>
+								<td colspan="6">{{val2}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">偿债能力分析</td>
-								<td colspan="6"></td>
+								<td colspan="6">{{val3}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">风控建议</td>
-								<td colspan="6"></td>
+								<td colspan="6">{{val4}}</td>
 							</tr>
 
 						</tbody>
 					</table>
 					
 
-					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
+					<el-form :size="formSize" class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
-
 							<el-col :span="24">
-							  	<el-form-item label="上传二审报告">
-									<ImgUpload :arr="arr1"></ImgUpload>
+								<el-form-item label="上传二审报告">
+									<ImgUpload :arr="SecondAuditionImageUrl" :arrc="C_SecondAuditionImageUrl" :max="1"></ImgUpload>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
 
 
 				<div class="sec">
-					<el-button class="pull-left" type="primary">完成</el-button>
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
 
 			</el-main>
@@ -202,52 +185,155 @@ import ImgUpload from './ImgUpload'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload
-},
-name: 'SecondCheck',
-data () {
-	return {
-
-		formSize : 'small',
-		val1: '',
-
-		form1 : {
-
-		},
-		form2 : {
-
-		},
-		op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
-		op2 : ['住宅','别墅','商业','公寓','办公'],
-		op3 : [6.5,5],
-		op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
-
-		rules : {},
-
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
+		Header, ImgUpload
 	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
+	name: 'SecondCheck',
+	data () {
+		return {
 
-		
+			formSize : 'small',
+			// 初始化
+			"Area": "",
+            "BorrowUsage": "",
+            "BorrowerIDNO": "",
+            "BorrowerMobile": "",
+            "BorrowerName": "",
+            "BorrowerSpouseIDNO": "",
+            "BorrowerSpouseMobile": "",
+            "BorrowerSpouseName": "",
+            "CompanyName": "",
+            "CompanyPhone": "",
+            "CompanySecurityIDNO": "",
+            "ExpectedBorrowAmount": "",
+            "ExpectedBorrowPeriodInMonth": "",
+            "HouseTotalPrice": "",
+            "InterestReturnSource": "",
+            "Location": "",
+            "PledgeInfo": "",
+            "PledgePercentage": "",
+            "PledgePrice": "",
+            "PrincipalReturnSource": "",
+            "ShareOwnerInfo": "",
+            "Type": "",
+            "Usage": "",
+            // 截图
+            SecondAuditionImageUrl: [],
+            C_SecondAuditionImageUrl: [],
+
+            val1: '',
+            val2: '',
+            val3: '',
+            val4: '',
+		}
+	},
+	mounted () {
+		console.log(this.$route.params.id)
+	},
+	methods:{
+
+		gotoLook() {
+			// 调到预报单
+			const id = this.$route.params.id
+			console.log(id)
+			this.$router.push({ name: 'look', params: { id }})
+		},
+
+		// 首页
+		gotoIndex() {
+			this.$router.push({ name : 'index' })
+		},
+
+		// 初始化
+		init () {
+			const id = this.$route.params.id
+			const hid = this.$route.params.hid
+			const param = {
+				OrderId: id,
+				HouseId: hid,
+			}
+			this.pp('GetSecondAuditionParams', param, res => {
+				if (res.ret) {
+					const { 
+						Area,
+			            BorrowUsage,
+			            BorrowerIDNO,
+			            BorrowerMobile,
+			            BorrowerName,
+			            BorrowerSpouseIDNO,
+			            BorrowerSpouseMobile,
+			            BorrowerSpouseName,
+			            CompanyName,
+			            CompanyPhone,
+			            CompanySecurityIDNO,
+			            ExpectedBorrowAmount,
+			            ExpectedBorrowPeriodInMonth,
+			            HouseTotalPrice,
+			            InterestReturnSource,
+			            Location,
+			            PledgeInfo,
+			            PledgePercentage,
+			            PledgePrice,
+			            PrincipalReturnSource,
+			            ShareOwnerInfo,
+			            Type,
+			            Usage,
+					} = res.data || {}
+					this.Area = Area
+					this.BorrowUsage = BorrowUsage
+					this.BorrowerIDNO = BorrowerIDNO
+					this.BorrowerMobile = BorrowerMobile
+					this.BorrowerName = BorrowerName
+					this.BorrowerSpouseIDNO = BorrowerSpouseIDNO
+					this.BorrowerSpouseMobile = BorrowerSpouseMobile
+					this.BorrowerSpouseName = BorrowerSpouseName
+
+					this.CompanyName = CompanyName
+					this.CompanyPhone = CompanyPhone
+					this.CompanySecurityIDNO = CompanySecurityIDNO
+					this.ExpectedBorrowAmount = ExpectedBorrowAmount
+					this.ExpectedBorrowPeriodInMonth = ExpectedBorrowPeriodInMonth
+
+					this.HouseTotalPrice = HouseTotalPrice
+					this.InterestReturnSource = InterestReturnSource
+					this.Location = Location
+					this.PledgeInfo = PledgeInfo
+					this.PledgePercentage = PledgePercentage
+
+					this.PledgePrice = PledgePrice
+					this.PrincipalReturnSource = PrincipalReturnSource
+					this.ShareOwnerInfo = ShareOwnerInfo
+					this.Type = Type
+					this.Usage = Usage
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
+
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const SecondAuditionImageUrl = this.SecondAuditionImageUrl
+			const C_SecondAuditionImageUrl = this.C_SecondAuditionImageUrl
+
+			const param = {
+				OrderId: id,
+				// HouseId: hid,
+				OperationRecordId: oprid,
+				SecondAuditionImageUrl:SecondAuditionImageUrl.join(),
+				C_SecondAuditionImageUrl:C_SecondAuditionImageUrl.join(),
+			}
+			console.log(param)
+			this.pp('CompleteSecondAudition', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
+
 
 	},
 
@@ -271,6 +357,7 @@ methods:{
 }
 table td {
 	width : 130px;
+	padding: 0px;
 
 
 }
