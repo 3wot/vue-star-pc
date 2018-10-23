@@ -12,7 +12,7 @@
 
 							<el-col :span="24">
 								<el-form-item label="合同照片">
-									<ImgUpload :arr="arr1"></ImgUpload>
+									<ImgUpload :arr="ContractImageUrls" :arrc="C_ContractImageUrls"></ImgUpload>
 								</el-form-item>
 							</el-col>
 						</el-row>
@@ -20,9 +20,8 @@
 				</div>
 
 				<div class="sec">
-					<el-button class="pull-left" type="primary">完成</el-button>
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
-
 
 			</el-main>
 		</el-container>
@@ -42,8 +41,8 @@ export default {
 	name: 'PrintDeal',
 	data () {
 		return {
-
-
+			ContractImageUrls: [],
+			C_ContractImageUrls: [],
 		}
 	},
 	mounted () {
@@ -51,10 +50,31 @@ export default {
 	},
 	methods:{
 
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const ContractImageUrls = this.ContractImageUrls
+			const C_ContractImageUrls = this.C_ContractImageUrls
 
+			const param = {
+				OrderId: id,
+				// HouseId: hid,
+				OperationRecordId: oprid,
+				ContractImageUrls,
+				C_ContractImageUrls,
+			}
+			// console.log(param)
+			this.pp('CompletePrintContract', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
 
 		
-
 	},
 
 

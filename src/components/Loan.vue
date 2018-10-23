@@ -8,14 +8,14 @@
 				
 				<div class="sec">
 					
-					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
+					<el-form class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="操作放款">
-									<el-button class="pull-left" type="primary">放款</el-button>
+								<el-form-item label="操作放款">
+									<el-button class="pull-left" type="primary" @click="sub">放款</el-button>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
@@ -31,41 +31,37 @@ import Header from './Header'
 
 export default {
 	components:{
-	Header,
-},
-name: 'Loan',
-data () {
-	return {
+		Header,
+	},
+	name: 'Loan',
+	data () {
+		return {
 
-		formSize : 'small',
+		}
+	},
+	mounted () {
+		// console.log(this.$route.params.id)
+	},
+	methods:{
 
-		form2 : {
-
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const param = {
+				OrderId: id,
+				// HouseId: hid,
+				OperationRecordId: oprid,
+			}
+			// console.log(param)
+			this.pp('CompleteLoanReceived', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
 		},
-
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
-	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
-
-		
 
 	},
 

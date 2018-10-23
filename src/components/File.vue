@@ -13,112 +13,112 @@
 
 							<el-col :span="24">
 							  	<el-form-item label="客户身份证照片">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="客户配偶身份证照片">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="户口本照片">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="婚姻证明材料照片">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="房产证照片">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="房屋租赁合同照片">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="原始购房合同照片">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="契税发票">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="上家借款合同">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="上家结清证明">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="银行流水">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="征信报告">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="公司营业执照副本">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="企业征信">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="对公流水">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="购销合同">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="担保人财产共有人同意提供担保的书面文件">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="还款卡">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="实控人证明">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="企业财务报表">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="诉讼结案证明">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
 							  	<el-form-item label="其它">
-									<ImgList :arr="arr1"></ImgList>
+									<ImgList :arr="arr1" :arrc="arr2"></ImgList>
 								</el-form-item>
 						  	</el-col>
 						  	<el-col :span="24">
