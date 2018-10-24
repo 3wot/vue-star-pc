@@ -127,7 +127,7 @@
 
 							<el-col :span="24">
 								<el-form-item label="二审报告">
-									<ImgList :arr="op1"></ImgList>
+									<ImgList :arr="SecondAuditionImageUrl" :arrc="C_SecondAuditionImageUrl"></ImgList>
 								</el-form-item>
 							</el-col>
 						</el-row>
@@ -136,24 +136,14 @@
 				
 				<div class="sec">
 					
-					<el-form :model="form1" :size="formSize" :rules="rules" label-width="130px" label-position="left">
+					<el-form :size="formSize" label-width="130px" label-position="left">
 						<el-row>
-
 							<el-col :span="24">
-								<el-form-item label="产品渠道名称分类">
-									<el-select class="w-100" placeholder="请选择产品渠道名称分类">
-										<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
-
-									</el-select>
-								</el-form-item>
-							</el-col>
-
-							<el-col :span="24">
-								<el-form-item label="产品名称二级菜单">
-									<el-checkbox-group class="pull-left" v-model="checkList">
-										<el-checkbox label="复选框 A"></el-checkbox>
-										<el-checkbox label="复选框 B"></el-checkbox>
-										<el-checkbox label="复选框 C"></el-checkbox>
+								<el-form-item label="产品列表">
+									<el-checkbox-group class="pull-left text-left" v-model="MatchProductIds">
+										<el-tooltip v-for="(op,index) in optionList" :key="index" effect="dark" :content="op.Description" placement="top">
+											<el-checkbox class="check-item" :label="op.Id">{{op.Name + '（类别：'+op.ClassName+'）'}}</el-checkbox>
+										</el-tooltip>
 									</el-checkbox-group>
 								</el-form-item>
 							</el-col>
@@ -186,55 +176,149 @@ import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
 	Header, ImgUpload, ImgList
 },
 name: 'Valuation',
 data () {
 	return {
 
-		formSize : 'small',
-		val1: '',
-		checkList: [],
+		formSize : 'small',		
+		// 初始化
+		"BorrowerName" : "",
+		"BorrowerIDNO" : "",
+		"BorrowerMobile" : "",
+		"BorrowerSpouseName" : "",
+		"BorrowerSpouseIDNO" : "",
+		"BorrowerSpouseMobile" : "",
+		"ExpectedBorrowAmount" : "",
+		"ExpectedBorrowPeriodInMonth" : "",
+		"LoanPriority" : "",
+		"BorrowUsage" : "",
+		"InterestReturnSource" : "",
+		"PrincipalReturnSource" : "",
+		"Location" : "",
+		"Usage" : "",
+		"ShareOwnerInfo" : "",
+		"Area" : "",
+		"PledgeInfo" : "",
+		"IsPledged" : "",
+		"PledgeOrgnization" : "",
+		"PledgePrice" : "",
+		"IsLoanPaidOff" : "",
+		"IsZhuanDan" : "",
+		"CompanyName" : "",
+		"CompanySecurityIDNO" : "",
+		"CompanyLegalPersonName" : "",
+		"CompanyLegalPersonIDNO" : "",
+		"BusinessScope" : "",
+		"SaleOrderValidationComment" : "",
+		"SecondAuditionImageUrl" : "",
+		"C_SecondAuditionImageUrl" : "",
 
-		form1 : {
-
-		},
-		form2 : {
-
-		},
-		op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
-		op2 : ['住宅','别墅','商业','公寓','办公'],
-		op3 : [6.5,5],
-		op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
-
-		rules : {},
-
-		arr1 : [],
-
+		// 产品列表
+		optionList: [],
+		MatchProductIds: [],
 
 	}
 },
 mounted () {
-	console.log(this.$route.params.id)
+	this.init()
 },
 methods:{
 
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
+	// 初始化
+	init () {
+		const { id, hid } = this.$route.params
+		const param = {
+			OrderId: id,
+			// HouseId: hid,
+		}
+		// 获取初始化数据
+		this.pp('GetProductMatchParams', param, res => {
+			if (res.ret) {
+				const { 
+					BorrowerName,
+					BorrowerIDNO,
+					BorrowerMobile,
+					BorrowerSpouseName,
+					BorrowerSpouseIDNO,
+					BorrowerSpouseMobile,
+					ExpectedBorrowAmount,
+					ExpectedBorrowPeriodInMonth,
+					LoanPriority,
+					BorrowUsage,
+					InterestReturnSource,
+					PrincipalReturnSource,
+					Location,
+					Usage,
+					ShareOwnerInfo,
+					Area,
+					PledgeInfo,
+					IsPledged,
+					PledgeOrgnization,
+					PledgePrice,
+					IsLoanPaidOff,
+					IsZhuanDan,
+					CompanyName,
+					CompanySecurityIDNO,
+					CompanyLegalPersonName,
+					CompanyLegalPersonIDNO,
+					BusinessScope,
+					SaleOrderValidationComment,
+					SecondAuditionImageUrl,
+					C_SecondAuditionImageUrl,
+				} = res.data || {}
+					this.BorrowerName = BorrowerName
+					this.BorrowerIDNO = BorrowerIDNO
+					this.BorrowerMobile = BorrowerMobile
+					this.BorrowerSpouseName = BorrowerSpouseName
+					this.BorrowerSpouseIDNO = BorrowerSpouseIDNO
+					this.BorrowerSpouseMobile = BorrowerSpouseMobile
+					this.ExpectedBorrowAmount = ExpectedBorrowAmount
+					this.ExpectedBorrowPeriodInMonth = ExpectedBorrowPeriodInMonth
+					this.LoanPriority = LoanPriority
+					this.BorrowUsage = BorrowUsage
+					this.InterestReturnSource = InterestReturnSource
+					this.PrincipalReturnSource = PrincipalReturnSource
+					this.Location = Location
+					this.Usage = Usage
+					this.ShareOwnerInfo = ShareOwnerInfo
+					this.Area = Area
+					this.PledgeInfo = PledgeInfo
+					this.IsPledged = IsPledged
+					this.PledgeOrgnization = PledgeOrgnization
+					this.PledgePrice = PledgePrice
+					this.IsLoanPaidOff = IsLoanPaidOff
+					this.IsZhuanDan = IsZhuanDan
+					this.CompanyName = CompanyName
+					this.CompanySecurityIDNO = CompanySecurityIDNO
+					this.CompanyLegalPersonName = CompanyLegalPersonName
+					this.CompanyLegalPersonIDNO = CompanyLegalPersonIDNO
+					this.BusinessScope = BusinessScope
+					this.SaleOrderValidationComment = SaleOrderValidationComment
+					this.SecondAuditionImageUrl = SecondAuditionImageUrl
+					this.C_SecondAuditionImageUrl = C_SecondAuditionImageUrl
+			} else {
+				this.warn(res.msg)
+			}
+		})
+
+		// 获取产品列表
+		this.pp('GetProductList', param, res => {
+			if (res.ret) {
+				this.optionList = res.data
+			} else {
+				this.warn(res.msg)
+			}
+		})
+
+
 	},
 	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
-
+	// 确认
 	sub () {
 		const { id, hid, oprid } = this.$route.params
-		const MatchProductIds = ['1','2','5']
+		const MatchProductIds = this.MatchProductIds
 		const param = {
 			OrderId : id,
 			OperationRecordId : oprid,
@@ -277,6 +361,10 @@ table td {
 	min-width: 110px;
 
 
+}
+.check-item {
+	margin-right: 30px;
+	margin-left: 0px;
 }
 
 

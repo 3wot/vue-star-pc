@@ -670,7 +670,7 @@
 			// CompanyName : 企业名称
 			// CompanyPhone : 企业电话
 
-	// ？2. 获取借款人及其配偶风控信息接口
+	// ?2. 获取借款人及其配偶风控信息接口
 
 		// 接口地址: AuditBorrowerInfo
 		
@@ -2175,11 +2175,11 @@
 		// ret : 调用接口返回结果标志位，成功：ok，失败：fail
 		// msg : 失败错误信息
 
-// 获取报单当前信息接口-All
+// *获取报单当前信息接口-All
 
 	// 接口地址: GetOrderInfo
 		
-	// 接口说明：归档操作完成
+	// 接口说明：获取报单当前信息(所有资料)
 	
 	// 输入数据格式:
 	
@@ -2201,51 +2201,60 @@
 			"CurrentOperationName" : "",
 			"Status" : "",
 			"HouseValuationImageUrl" : "",
+			"C_HouseValuationImageUrl" : "",
 			"HouseValuationOperatorName" : "",
 			"HouseValuationDateTime" : "",
 			"FirstAuditionImageUrl" : "",
+			"C_FirstAuditionImageUrl" : "",
 			"FirstAuditionOperatorName" : "",
-			"FirstAuditionImageDateTime" : "",
+			"FirstAuditionDateTime" : "",
 			"OrderValidationImageUrl" : "",
+			"C_OrderValidationImageUrl" : "",
 			"OrderValidationOperatorName" : "",
 			"OrderValidationDateTime" : "",
 			"SecondAuditionImageUrl" : "",
+			"C_SecondAuditionImageUrl" : "",
 			"SecondAuditionOperatorName" : "",
 			"SecondAuditionDateTime" : "",
-			"MatchProductClass" : "",
-			"MatchProductName" : "",
-			"MatchProductDescription" : "",
+			"MatchProducts":["productname1","productname2"]
 			"MatchProductOperatorName" : "",
-			"MatchProductOperatorDateTime" : "",
+			"MatchProductDateTime" : "",
 			"HouseVisitImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_HouseVisitImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"HouseVisitOperatorName" : "",
 			"HouseVisitDateTime" : "",
 			"IsLoanApproved" : "",
 			"LoanApprovalImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_LoanApprovalImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"LoanAmount" : "",
 			"LoanPeriodInMonth" : "",
 			"LoanInterest" : "",
 			"LoanApprovalOperatorName" : "",
 			"LoanApprovalDateTime" : "",
 			"ContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_ContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"ContractOperatorName" : "",
 			"ContractDateTime" : "",
 			"SignContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_SignContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"SignContractOperatorName" : "",
 			"SignContractDateTime" : "",
 			"PledgeImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_PledgeImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"PledgeOperatorName" : "",
 			"PledgeDateTime" : "",
 			"LoanReceivedImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_LoanReceivedImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"LoanReceivedOperatorName" : "",
 			"LoanReceivedDateTime" : "",
-			"FilingImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"FilingOperatorName" : "",
 			"FilingDateTime" : "",
 			"BorrowerIDNOImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"BorrowerSpouseIDNOImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"PermanentResidenceBookImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"SpousePermanentResidenceBookImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"MarriageCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"SpouseMarriageCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"HouseCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"RentalContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"BuyContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
@@ -2254,6 +2263,7 @@
 			"LoanPaidOffCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"BankAccountStatementImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"PersonalCreditReportImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"SpousePersonalCreditReportImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"CompanyLicenseImageUrl" : ["ImageUrl1", "ImageUrl2"],
 			"CompanyCreditReportImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"CompanyBankAccountStatementImageUrls" : ["ImageUrl1", "ImageUrl2"],
@@ -2263,7 +2273,33 @@
 			"CompanyHoldingCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"CompanyFinancialStatementImageUrls" : ["ImageUrl1", "ImageUrl2"],
 			"LawsuitFinishCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
-			"OtherCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"]
+			"OtherCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			
+			"C_BorrowerIDNOImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_BorrowerSpouseIDNOImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_PermanentResidenceBookImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_SpousePermanentResidenceBookImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_MarriageCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_SpouseMarriageCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_HouseCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_RentalContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_BuyContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_DeedTaxInvoiceImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_LoanContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_LoanPaidOffCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_BankAccountStatementImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_PersonalCreditReportImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_SpousePersonalCreditReportImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_CompanyLicenseImageUrl" : ["ImageUrl1", "ImageUrl2"],
+			"C_CompanyCreditReportImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_CompanyBankAccountStatementImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_BuySellContractImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_GuarantorProofDocumentImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_BankCardImageUrl" : ["ImageUrl1", "ImageUrl2"],
+			"C_CompanyHoldingCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_CompanyFinancialStatementImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_LawsuitFinishCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"],
+			"C_OtherCertificateImageUrls" : ["ImageUrl1", "ImageUrl2"]
 		}
 	}
 
@@ -2282,66 +2318,104 @@
 		// CurrentOperationName : 当前操作名称,
 		// Status : 报单状态, 0，正在进行中，1，正常结案，2，中途结案
 		// HouseValuationImageUrl : 房屋估值报告照片url
+		// C_HouseValuationImageUrl : 房屋估值报告照片缩略图url
 		// HouseValuationOperatorName : 房屋估值操作人名称
 		// HouseValuationDateTime : 房屋估值日期时间
 		// FirstAuditionImageUrl : 一审报告照片url
+		// C_FirstAuditionImageUrl : 一审报告照片缩略图url
 		// FirstAuditionOperatorName : 一审操作人名称
 		// FirstAuditionImageDateTime : 一审时间
 		// OrderValidationImageUrl : 立项报告照片url
+		// C_OrderValidationImageUrl : 立项报告照片缩略图url
 		// OrderValidationOperatorName : 立项操作人名称
 		// OrderValidationDateTime : 立项时间
 		// SecondAuditionImageUrl : 二审照片url
+		// C_SecondAuditionImageUrl : 二审照片缩略图url
 		// SecondAuditionOperatorName : 二审操作人名称
 		// SecondAuditionDateTime : 二审日期时间
-		// MatchProductClass : 产品种类
-		// MatchProductName : 产品名称
-		// MatchProductDescription : 产品要素（介绍）
+		// MatchProducts : 匹配产品数组
 		// MatchProductOperatorName : 匹配产品操作人
-		// MatchProductOperatorDateTime : 匹配产品操作时间
-		// HouseVisitImageUrls : 下户照片
+		// MatchProductDateTime : 匹配产品操作时间
+		// HouseVisitImageUrls : 下户照片url
+		// C_HouseVisitImageUrls : 下户照片缩略图url
 		// HouseVisitOperatorName : 下户操作人
 		// HouseVisitDateTime : 下户操作时间
 		// IsLoanApproved : 是否批贷通过
-		// LoanApprovalImageUrls : 批贷函照片
+		// LoanApprovalImageUrls : 批贷函照片url
+		// C_LoanApprovalImageUrls : 批贷函照片缩略图url
 		// LoanAmount : 批贷金额
 		// LoanPeriodInMonth : 批贷期限
 		// LoanInterest : 批贷利率
 		// LoanApprovalOperatorName : 批贷(产品终审)操作人
 		// LoanApprovalDateTime : 批贷(产品终审)操作时间
 		// ContractImageUrls : 合同照片url
+		// C_ContractImageUrls : 合同照片缩略图url
 		// ContractOperatorName : 打印合同操作人
 		// ContractDateTime : 打印合同操作时间
-		// SignContractImageUrls : 公证面签现场照片
+		// SignContractImageUrls : 公证面签现场照片url
+		// C_SignContractImageUrls : 公证面签现场照片缩略图url
 		// SignContractOperatorName : 公证面签操作人
 		// SignContractDateTime : 公证面签操作时间
-		// PledgeImageUrls : 进抵现场照片
+		// PledgeImageUrls : 进抵现场照片url
+		// C_PledgeImageUrls : 进抵现场照片缩略图url
 		// PledgeOperatorName : 进抵操作人
 		// PledgeDateTime : 进抵操作时间
-		// LoanReceivedImageUrls : 放款现场照片
+		// LoanReceivedImageUrls : 放款现场照片url
+		// C_LoanReceivedImageUrls : 放款现场照片缩略图url
 		// LoanReceivedOperatorName : 放款操作人
 		// LoanReceivedDateTime : 放款操作时间
-		// BorrowerIDNOImageUrls : 客户身份证照片
-		// BorrowerSpouseIDNOImageUrls : 客户配偶身份证照片
-		// PermanentResidenceBookImageUrls : 户口本照片
-		// MarriageCertificateImageUrls : 婚姻证明材料照片
-		// HouseCertificateImageUrls : 房产证照片
-		// RentalContractImageUrls : 房屋租赁合同照片
-		// BuyContractImageUrls : 原始购房合同照片
-		// DeedTaxInvoiceImageUrls : 契税发票
-		// LoanContractImageUrls : 上家借款合同
-		// LoanPaidOffCertificateImageUrls : 上家结清证明
-		// BankAccountStatementImageUrls : 银行流水
-		// PersonalCreditReportImageUrls : 征信报告
-		// CompanyLicenseImageUrl : 公司营业执照副本
-		// CompanyCreditReportImageUrls : 企业征信
-		// CompanyBankAccountStatementImageUrls : 对公流水
-		// BuySellContractImageUrls : 购销合同
-		// GuarantorProofDocumentImageUrls : 担保人财产共有人同意提供担保的书面文件
-		// BankCardImageUrl : 还款卡
-		// CompanyHoldingCertificateImageUrls : 实控人证明
-		// CompanyFinancialStatementImageUrls : 企业财务报表
-		// LawsuitFinishCertificateImageUrls : 诉讼结案证明
-		// OtherCertificateImageUrls : 其它
+		
+		// BorrowerIDNOImageUrls : 客户身份证照片url
+		// BorrowerSpouseIDNOImageUrls : 客户配偶身份证照片url
+		// PermanentResidenceBookImageUrls : 客户户口本照片url
+		// SpousePermanentResidenceBookImageUrls : 客户配偶户口本照片url
+		// MarriageCertificateImageUrls : 客户婚姻证明材料照片url
+		// SpouseMarriageCertificateImageUrls : 客户配偶婚姻证明材料照片url
+		// HouseCertificateImageUrls : 房产证照片url
+		// RentalContractImageUrls : 房屋租赁合同照片url
+		// BuyContractImageUrls : 原始购房合同照片url
+		// DeedTaxInvoiceImageUrls : 契税发票照片url
+		// LoanContractImageUrls : 上家借款合同照片url
+		// LoanPaidOffCertificateImageUrls : 上家结清证明照片url
+		// BankAccountStatementImageUrls : 银行流水照片url
+		// PersonalCreditReportImageUrls : 客户征信报告照片url
+		// SpousePersonalCreditReportImageUrls : 客户配偶征信报告照片url
+		// CompanyLicenseImageUrl : 公司营业执照副本照片url
+		// CompanyCreditReportImageUrls : 企业征信照片url
+		// CompanyBankAccountStatementImageUrls : 对公流水照片url
+		// BuySellContractImageUrls : 购销合同照片url
+		// GuarantorProofDocumentImageUrls : 担保人财产共有人同意提供担保的书面文件照片url
+		// BankCardImageUrl : 还款卡照片url
+		// CompanyHoldingCertificateImageUrls : 实控人证明照片url
+		// CompanyFinancialStatementImageUrls : 企业财务报表照片url
+		// LawsuitFinishCertificateImageUrls : 诉讼结案证明照片url
+		// OtherCertificateImageUrls : 其它照片url
+
+		// C_BorrowerIDNOImageUrls : 客户身份证照片缩略图url
+		// C_BorrowerSpouseIDNOImageUrls : 客户配偶身份证照片缩略图url
+		// C_PermanentResidenceBookImageUrls : 客户户口本照片缩略图url
+		// C_SpousePermanentResidenceBookImageUrls : 客户配偶户口本照片缩略图url
+		// C_MarriageCertificateImageUrls : 客户婚姻证明材料照片缩略图url
+		// C_SpouseMarriageCertificateImageUrls : 客户配偶婚姻证明材料照片缩略图url
+		// C_HouseCertificateImageUrls : 房产证照片缩略图url
+		// C_RentalContractImageUrls : 房屋租赁合同照片缩略图url
+		// C_BuyContractImageUrls : 原始购房合同照片缩略图url
+		// C_DeedTaxInvoiceImageUrls : 契税发票照片缩略图url
+		// C_LoanContractImageUrls : 上家借款合同照片缩略图url
+		// C_LoanPaidOffCertificateImageUrls : 上家结清证明照片缩略图url
+		// C_BankAccountStatementImageUrls : 银行流水照片缩略图url
+		// C_PersonalCreditReportImageUrls : 客户征信报告照片缩略图url
+		// C_SpousePersonalCreditReportImageUrls : 客户配偶征信报告照片缩略图url
+		// C_CompanyLicenseImageUrl : 公司营业执照副本照片缩略图url
+		// C_CompanyCreditReportImageUrls : 企业征信照片缩略图url
+		// C_CompanyBankAccountStatementImageUrls : 对公流水照片缩略图url
+		// C_BuySellContractImageUrls : 购销合同照片缩略图url
+		// C_GuarantorProofDocumentImageUrls : 担保人财产共有人同意提供担保的书面文件照片缩略图url
+		// C_BankCardImageUrl : 还款卡照片缩略图url
+		// C_CompanyHoldingCertificateImageUrls : 实控人证明照片缩略图url
+		// C_CompanyFinancialStatementImageUrls : 企业财务报表照片缩略图url
+		// C_LawsuitFinishCertificateImageUrls : 诉讼结案证明照片缩略图url
+		// C_OtherCertificateImageUrls : 其它照片缩略图url
 
 // *结案接口
 
@@ -2375,7 +2449,7 @@
 		// ret : 调用接口返回结果标志位，成功：ok，失败：fail
 		// msg : 失败错误信息
 
-// 新补充资料接口(6)
+// *新补充资料接口(6)
 
 	// *1. 获取所有补充资料选项
 
@@ -2456,17 +2530,19 @@
 			// ret : 调用接口返回结果标志位，成功：ok，失败：fail
 			// msg : 失败错误信息
 
-	// 3. 销售获取风控或客服已选补充资料选项接口
+	// *3. 销售获取风控或客服已选补充资料选项接口
 
 		// 接口地址: GetSubmittedMaterialList
 		
-		// 接口说明：销售风控或客服提交已选补充资料选项
+		// 接口说明：销售获取风控或客服已选补充资料选项
 		
 		// 输入数据格式:
 		
 		{
 			"uid" : "",
-			"token" : ""
+			"token" : "",
+			"OrderId" : "",
+			"HouseId" : ""
 		}
 
 		// 返回数据格式：
@@ -2485,6 +2561,8 @@
 
 			// uid : 用户唯一标识id
 			// token : 用户身份验证token
+			// OrderId : 报单id
+			// HouseId : 房屋id
 			
 		// 返回数据格式说明：
 		
@@ -2496,7 +2574,7 @@
 			// ImageUrls : 补充资料图片url
 			// C_ImageUrls : 补充资料缩略图片url
 
-	// 4. 风控或客服是否可以发起补充资料请求接口
+	// *4. 风控或客服是否可以发起补充资料请求接口
 
 		// 接口地址: CanSubmitMaterialList
 		
@@ -2506,7 +2584,8 @@
 		
 		{
 			"uid" : "",
-			"token" : ""
+			"token" : "",
+			"OrderId" : ""
 		}
 
 		// 返回数据格式：
@@ -2523,7 +2602,7 @@
 
 			// uid : 用户唯一标识id
 			// token : 用户身份验证token
-			// MaterialIds : 补充资料id数组
+			// OrderId : 报单id
 			
 		// 返回数据格式说明：
 		
@@ -2531,7 +2610,7 @@
 			// msg : 失败错误信息
 			// CanSubmitMaterialList : 是否可以发起补充资料请求
 
-	// 5. 销售是否需要补充资料接口
+	// *5. 销售是否需要补充资料接口
 
 		// 接口地址: NeedToSupplementMaterial
 		
@@ -2565,7 +2644,7 @@
 			// msg : 失败错误信息
 			// NeedToSupplementMaterial : 销售是否需要补充资料
 
-	// 6. 销售提交已选补充资料接口
+	// *6. 销售提交已选补充资料接口
 
 		// 接口地址: SupplementMaterial
 		
@@ -2576,6 +2655,8 @@
 		{
 			"uid" : "",
 			"token" : "",
+			"OrderId" : "",
+			"HouseId" : "",
 			"Materials" : [
 				{ "Id" : "1", "ImageUrls" : ["ImageUrl1", "ImageUrl2"], "C_ImageUrls" : ["ImageUrl1", "ImageUrl2"] },
 				{ "Id" : "2", "ImageUrls" : ["ImageUrl1", "ImageUrl2"], "C_ImageUrls" : ["ImageUrl1", "ImageUrl2"] },
@@ -2593,6 +2674,8 @@
 
 			// uid : 用户唯一标识id
 			// token : 用户身份验证token
+			// OrderId : 报单id
+			// HouseId : 房屋id
 			// Materials : 补充资料数组
 			// Id : 补充材料id
 			// ImageUrls : 补充材料图片url

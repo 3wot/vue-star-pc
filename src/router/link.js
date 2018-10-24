@@ -52,6 +52,8 @@ const urls = {
 	'CompleteFiling' : 'CompleteFiling',
 	'CancelOrder' : 'CancelOrder',
 
+	'GetOrderInfo': 'GetOrderInfo',
+
 }
 
 // 外部方法
