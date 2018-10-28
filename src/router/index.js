@@ -84,7 +84,7 @@ export default new Router({
 		},
 		{
 			// 补充资料
-			path: '/add',
+			path: '/add/:id/:hid/:oprid',
 			name: 'add',
 			component: Add
 		},

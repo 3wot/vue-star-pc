@@ -1255,7 +1255,8 @@
 		{
 			"uid" : "",
 			"token" : "",
-			"OrderId" : ""
+			"OrderId" : "",
+			"HouseId" : ""
 		}
 
 		// 返回数据格式：
@@ -1303,6 +1304,7 @@
 			// uid : 用户唯一标识id
 			// token : 用户身份验证token
 			// OrderId : 报单id
+			// HouseId : 房屋id
 			
 		// 返回数据格式说明：
 		

@@ -149,7 +149,25 @@ export default {
 	methods:{
 		// 补充资料
 		gotoAdd() {
-			this.$router.push({ name: 'add' })
+			const { id, hid, oprid } = this.$route.params
+			const param = {
+				OrderId: id,
+			}
+			console.log(param)
+			this.pp('CanSubmitMaterialList', param, res => {
+				if (res.ret) {
+					// 跳到操作补充资料页面
+					const { CanSubmitMaterialList } = res.data
+					if (CanSubmitMaterialList) {
+						this.$router.push({ name: 'add', param: { id, hid, oprid }})
+					} else {
+						this.warn("暂时不能发起补充资料操作~")
+					}
+				} else {
+					this.warn("暂时不能发起补充资料操作")
+				}
+			})
+			
 		},
 
 		// 初始化

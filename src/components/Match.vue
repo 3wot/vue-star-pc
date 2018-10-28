@@ -22,42 +22,42 @@
 											</tr>
 											<tr>
 												<td>姓 名</td>
-												<td>XX</td>
+												<td>{{BorrowerName}}</td>
 												<td>身份证号</td>
-												<td>XX</td>
+												<td>{{BorrowerIDNO}}</td>
 												<td>联系电话</td>
-												<td>XX</td>
+												<td>{{BorrowerMobile}}</td>
 											</tr>
 											<tr>
 												<td>配偶</td>
-												<td>XX</td>
+												<td>{{BorrowerSpouseName}}</td>
 												<td>身份证号</td>
-												<td>XX</td>
+												<td>{{BorrowerSpouseIDNO}}</td>
 												<td>联系电话</td>
-												<td>XX</td>
+												<td>{{BorrowerSpouseMobile}}</td>
 											</tr>
 
 											<tr>
 												<td>申请贷款金额</td>
-												<td colspan="2"></td>
+												<td colspan="2">{{ExpectedBorrowAmount}}</td>
 												<td>申请贷款期限</td>
-												<td colspan="2"></td>
+												<td colspan="2">{{ExpectedBorrowPeriodInMonth}}</td>
 											</tr>
 											<tr>
 												<td>客户需求侧重</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{LoanPriority}}</td>
 											</tr>
 											<tr>
 												<td>借款用途</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{BorrowUsage}}</td>
 											</tr>
 											<tr>
 												<td>利息还款来源</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{InterestReturnSource}}</td>
 											</tr>
 											<tr>
 												<td>本金还款来源</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{PrincipalReturnSource}}</td>
 											</tr>
 
 											<tr>
@@ -65,33 +65,33 @@
 											</tr>
 											<tr>
 												<td>房屋坐落</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{Location}}</td>
 											</tr>
 											<tr>
 												<td>用途</td>
-												<td>XX</td>
+												<td>{{Usage}}</td>
 												<td>共有情况</td>
-												<td>XX</td>
+												<td>{{ShareOwnerInfo}}</td>
 												<td>房屋建筑面积</td>
-												<td>XX</td>
+												<td>{{Area}}</td>
 											</tr>
 											<tr>
 												<td>房屋现状</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{PledgeInfo}}</td>
 											</tr>
 											<tr>
 												<td>抵押状况</td>
-												<td>XX</td>
+												<td>{{IsPledged?"已抵押":"未抵押"}}</td>
 												<td>抵押机构</td>
-												<td>XX</td>
+												<td>{{PledgeOrgnization}}</td>
 												<td>抵押金额</td>
-												<td>XX</td>
+												<td>{{PledgePrice}}</td>
 											</tr>
 											<tr>
 												<td>是否结清</td>
-												<td colspan="2">XX</td>
+												<td colspan="2">{{IsLoanPaidOff?"已结清":"未结清"}}</td>
 												<td>是否转单</td>
-												<td colspan="2">XX</td>
+												<td colspan="2">{{IsZhuanDan?"是":"否"}}</td>
 											</tr>
 
 
@@ -100,24 +100,24 @@
 											</tr>
 											<tr>
 												<td>企业名称</td>
-												<td colspan="2"></td>
+												<td colspan="2">{{CompanyName}}</td>
 												<td>统一社会信用代码</td>
-												<td colspan="2"></td>
+												<td colspan="2">{{CompanySecurityIDNO}}</td>
 											</tr>
 											<tr>
 												<td>法定代表人姓名</td>
-												<td colspan="2"></td>
+												<td colspan="2">{{CompanyLegalPersonName}}</td>
 												<td>法定代表人身份证号</td>
-												<td colspan="2"></td>
+												<td colspan="2">{{CompanyLegalPersonIDNO}}</td>
 											</tr>
 											
 											<tr>
 												<td>经营范围</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{BusinessScope}}</td>
 											</tr>
 											<tr>
 												<td>销售经理立项建议</td>
-												<td colspan="5"></td>
+												<td colspan="5">{{SaleOrderValidationComment}}</td>
 											</tr>
 											
 										</tbody>
@@ -231,7 +231,7 @@ methods:{
 		const { id, hid } = this.$route.params
 		const param = {
 			OrderId: id,
-			// HouseId: hid,
+			HouseId: hid,
 		}
 		// 获取初始化数据
 		this.pp('GetProductMatchParams', param, res => {

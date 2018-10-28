@@ -307,6 +307,8 @@ export default {
 
 						OtherCertificateImageUrls,
 						C_OtherCertificateImageUrls,
+
+						BorrowerMobile, // 电话
 					} = res.data || {}
 					this.BorrowerIDNOImageUrls = BorrowerIDNOImageUrls
 					this.C_BorrowerIDNOImageUrls = C_BorrowerIDNOImageUrls
@@ -352,6 +354,8 @@ export default {
 					this.C_LawsuitFinishCertificateImageUrls = C_LawsuitFinishCertificateImageUrls
 					this.OtherCertificateImageUrls = OtherCertificateImageUrls
 					this.C_OtherCertificateImageUrls = C_OtherCertificateImageUrls
+
+					this.BorrowerMobile = BorrowerMobile
 				} else {
 					this.warn(res.msg)
 				}

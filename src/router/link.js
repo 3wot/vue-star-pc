@@ -54,6 +54,13 @@ const urls = {
 
 	'GetOrderInfo': 'GetOrderInfo',
 
+	'CanSubmitMaterialList': 'CanSubmitMaterialList',
+	'NeedToSupplementMaterial': 'NeedToSupplementMaterial',
+	'SupplementMaterial': 'SupplementMaterial',
+	'GetSubmittedMaterialList': 'GetSubmittedMaterialList',
+	'SubmitMaterialList': 'SubmitMaterialList',
+	'GetMaterialList': 'GetMaterialList',
+
 }
 
 // 外部方法
