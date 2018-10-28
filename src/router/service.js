@@ -72,6 +72,9 @@ const GETJSON = (urlKey, data, cb) => {
         if (val === true) {
             param[idx] = "True"
         }
+        if (val === false) {
+            param[idx] = "False"
+        }
     })
     // console.log(JSON.stringify(param))
     $.ajax({
