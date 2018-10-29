@@ -5,32 +5,23 @@
 			<Header back="true" title="产品方面签公证"></Header>
 
 			<el-main class="c-main">
-				
-				
-				
-				<div class="sec">
-					
-					
 
-					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
+				<div class="sec">
+					<el-form class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="现场照片">
-									<ImgUpload :arr="arr1"></ImgUpload>
+								<el-form-item label="现场照片">
+									<ImgUpload :arr="SignContractImageUrls" :arrc="C_SignContractImageUrls"></ImgUpload>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
 
 				<div class="sec">
-					
-					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
-
 
 			</el-main>
 		</el-container>
@@ -45,41 +36,45 @@ import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
-},
-name: 'PrintDeal',
-data () {
-	return {
+		Header, ImgUpload, ImgList
+	},
+	name: 'PrintDeal',
+	data () {
+		return {
+			SignContractImageUrls:[],
+			C_SignContractImageUrls:[],
 
-		formSize : 'small',
 
-		form2 : {
+		}
+	},
+	mounted () {
+		// console.log(this.$route.params.id)
+	},
+	methods:{
 
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const SignContractImageUrls = this.SignContractImageUrls
+			const C_SignContractImageUrls = this.C_SignContractImageUrls
+
+			const param = {
+				OrderId: id,
+				// HouseId: hid,
+				OperationRecordId: oprid,
+				SignContractImageUrls:SignContractImageUrls,
+				C_SignContractImageUrls:C_SignContractImageUrls,
+			}
+			// console.log(param)
+			this.pp('CompleteSignContract', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
 		},
-
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
-	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
-
 		
 
 	},

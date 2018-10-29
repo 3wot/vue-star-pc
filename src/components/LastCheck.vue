@@ -8,51 +8,54 @@
 				
 				<div class="sec">
 					<p class="main-title"><span class="span-title">操作</span></p>
-					<el-form :model="form1" :size="formSize" :rules="rules" label-width="130px" label-position="left">
+					<el-form label-width="130px" label-position="left">
 						<el-row :gutter="15">
 							
 							<el-col :span="24">
-							  	<el-form-item label="是否通过批贷">
-									<el-radio-group v-model="radio2">
-									    <el-radio :label="true">通过</el-radio>
-									    <el-radio :label="false">拒绝</el-radio>
-								  	</el-radio-group>
+								<el-form-item label="是否通过批贷">
+									<div class="text-left">
+										<el-radio-group v-model="IsLoanApproved">
+											<el-radio :label="true">通过</el-radio>
+											<el-radio :label="false">拒绝</el-radio>
+										</el-radio-group>	
+									</div>
+
 								</el-form-item>
-						  	</el-col>							
+							</el-col>							
 
-						  	<div v-if="radio2">
+							<div v-if="IsLoanApproved">
 
-						  		<el-col :span="24">
-								  	<el-form-item label="产品供应方批贷函">
-										<ImgUpload :arr="op1"></ImgUpload>
+								<el-col :span="24">
+									<el-form-item label="产品供应方批贷函">
+										<ImgUpload :arr="LoanApprovalImageUrls" :arrc="C_LoanApprovalImageUrls"></ImgUpload>
 									</el-form-item>
-							  	</el-col>
-							  	<el-col :span="24">
-								  	<el-form-item label="批贷金额">
-										<el-input placeholder="请输入批贷金额"></el-input>
+								</el-col>
+								<el-col :span="24">
+									<el-form-item label="批贷金额">
+										<el-input v-model="LoanAmount" placeholder="请输入批贷金额"></el-input>
 									</el-form-item>
-							  	</el-col>
-							  	<el-col :span="24">
-								  	<el-form-item label="批贷期限">
-										<el-input placeholder="请输入批贷期限"></el-input>
+								</el-col>
+								<el-col :span="24">
+									<el-form-item label="批贷期限">
+										<el-input  v-model="LoanPeriodInMonth" placeholder="请输入批贷期限"></el-input>
 									</el-form-item>
-							  	</el-col>
-							  	<el-col :span="24">
-								  	<el-form-item label="批贷利率">
-										<el-input placeholder="请输入批贷利率"></el-input>
+								</el-col>
+								<el-col :span="24">
+									<el-form-item label="批贷利率">
+										<el-input  v-model="LoanInterest" placeholder="请输入批贷利率"></el-input>
 									</el-form-item>
-							  	</el-col>
+								</el-col>
 
-						  	</div>
+							</div>
 
-						  	<div v-if="!radio2">
-						  		<el-col :span="24">
-								  	<el-form-item label="拒绝理由">
-										<el-input type="textarea" :rows="4" placeholder="请输入拒绝理由"></el-input>
+							<div v-if="!IsLoanApproved">
+								<el-col :span="24">
+									<el-form-item label="拒绝理由">
+										<el-input type="textarea" v-model="LoanRejectionComment" :rows="4" placeholder="请输入拒绝理由"></el-input>
 									</el-form-item>
-							  	</el-col>
+								</el-col>
 
-						  	</div>
+							</div>
 
 						</el-row>
 
@@ -60,7 +63,7 @@
 				</div>
 
 				<div class="sec">
-					<el-button class="pull-left" type="primary">完成</el-button>
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
 
 
@@ -77,44 +80,64 @@ import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
-},
-name: 'LastCheck',
-data () {
-	return {
 
-		formSize : 'small',
-		radio2: true,
+		Header, ImgUpload, ImgList
+	},
+	name: 'LastCheck',
+	data () {
+		return {
 
-		op1 : ['a','b','c'],
-		
-		form1 : {
+			"IsLoanApproved" : true,
+			"LoanApprovalImageUrls" : [],
+			"C_LoanApprovalImageUrls" : [],
+			"LoanAmount" : "",
+			"LoanPeriodInMonth" : "",
+			"LoanInterest" : "",
+			"LoanRejectionComment" : "",
 
+
+		}
+	},
+	mounted () {
+
+	},
+	methods:{
+
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			
+			const {
+				IsLoanApproved,
+				LoanApprovalImageUrls,
+				C_LoanApprovalImageUrls,
+				LoanAmount,
+				LoanPeriodInMonth,
+				LoanInterest,
+				LoanRejectionComment,
+			} = this
+			const param = {
+				OrderId: id,
+				// HouseId: hid,
+				OperationRecordId: oprid,
+				IsLoanApproved,
+				LoanApprovalImageUrls,
+				C_LoanApprovalImageUrls,
+				LoanAmount,
+				LoanPeriodInMonth,
+				LoanInterest,
+				LoanRejectionComment,
+			}
+			console.log(param)
+			this.pp('CompleteLoanApproval', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
 		},
-		
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
-	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
-
-		
 
 	},
 

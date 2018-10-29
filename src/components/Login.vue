@@ -35,13 +35,11 @@
 </template>
 
 <script>
-// import Router from 'vue-router'
-// import GETJSON from '../router/service'
 
 
 export default {
 	components:{
-	// Button,Field
+
 	},
 	name: 'Login',
 	data () {
@@ -52,7 +50,6 @@ export default {
 				remember: false,	
 			},
 			
-
 			rules : {
 				mobile : [
 				 	{ required: true, message: '请输入手机号', trigger: 'blur' },
@@ -71,7 +68,7 @@ export default {
 		
 		// 记录名字和密码
 		setName () {
-			console.log('记录名字')
+			// console.log('记录名字')
 			const data = {
 				mobile: this.loginForm.mobile,
 				pwd: this.loginForm.pwd
@@ -82,7 +79,7 @@ export default {
 		// 获取名字和密码
 		getName () {
 			const data = this.JCACHE.get('name')
-			console.log('获取名字和密码',data)
+			// console.log('获取名字和密码',data)
 			if (data) {
 				const { mobile, pwd } = data
 				this.loginForm.mobile = mobile
@@ -93,28 +90,36 @@ export default {
 		// 登录
 		handleLogin () {
 			const { pwd, mobile, remember } = this.loginForm
+			
 			if (mobile && pwd) {
-				
+				const platform = "pc"
 				const param = {
-					a: 'A'
+					mobile,
+					pwd,
+					platform,
 				}
-				this.GETJSON('Login', param, res => {
+				this.pp('Login', param, res => {
 					if (res.ret) {
-						const { uid, token } = res.data
+						const { 
+							uid,
+							token,
+							OperatorRoleId,
+							OperatorRoleName,
+						} = res.data || {}
+
 						USER_INFO.uid = uid
 						USER_INFO.token = token
+						USER_INFO.OperatorRoleId = OperatorRoleId
+						USER_INFO.OperatorRoleName = OperatorRoleName
 						// 首页
 						this.$router.push({ name : 'index' })
 					} else {
 						this.$message({
-				          	message: res.mes,
-				          	type: 'warning'
+				          	message: res.msg,
+				          	type: 'warning',
 				        })
 					}
 				})
-
-				// 调到首页
-				this.$router.push({ name : 'index' })
 				// 记住密码
 				if (remember) {
 					this.setName()

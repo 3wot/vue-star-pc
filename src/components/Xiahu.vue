@@ -6,29 +6,22 @@
 
 			<el-main class="c-main">
 				
-				
-				
 				<div class="sec">
 					
-					
-
-					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
+					<el-form class="m-t-20" :size="formSize" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="下户照片">
-									<ImgUpload :arr="arr1"></ImgUpload>
+								<el-form-item label="下户照片">
+									<ImgUpload :arr="HouseVisitImageUrls" :arrc="C_HouseVisitImageUrls"></ImgUpload>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
 
 				<div class="sec">
-					
-					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
 
 
@@ -41,47 +34,49 @@
 <script>
 import Header from './Header'
 import ImgUpload from './ImgUpload'
-import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
-},
-name: 'Xiahu',
-data () {
-	return {
-
-		formSize : 'small',
-
-		form2 : {
-
-		},
-
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
+		Header, ImgUpload,
 	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
+	name: 'Xiahu',
+	data () {
+		return {
+			formSize:'small',
+			HouseVisitImageUrls: [],
+			C_HouseVisitImageUrls: [],
+		}
+	},
+	mounted () {
+		console.log(this.$route.params.id)
 	},
 
+	methods:{
 		
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const HouseVisitImageUrls = this.HouseVisitImageUrls
+			const C_HouseVisitImageUrls = this.C_HouseVisitImageUrls
 
+			const param = {
+				OrderId: id,
+				// HouseId: hid,
+				OperationRecordId: oprid,
+				HouseVisitImageUrls:HouseVisitImageUrls,
+				C_HouseVisitImageUrls:C_HouseVisitImageUrls,
+			}
+			console.log(param)
+			this.pp('CompleteHouseVisit', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
+		
 	},
 
 

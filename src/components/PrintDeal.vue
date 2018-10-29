@@ -6,31 +6,22 @@
 
 			<el-main class="c-main">
 				
-				
-				
 				<div class="sec">
-					
-					
-
-					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
+					<el-form class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="合同照片">
-									<ImgUpload :arr="arr1"></ImgUpload>
+								<el-form-item label="合同照片">
+									<ImgUpload :arr="ContractImageUrls" :arrc="C_ContractImageUrls"></ImgUpload>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
 
 				<div class="sec">
-					
-					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
-
 
 			</el-main>
 		</el-container>
@@ -45,43 +36,45 @@ import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
-},
-name: 'PrintDeal',
-data () {
-	return {
+		Header, ImgUpload, ImgList
+	},
+	name: 'PrintDeal',
+	data () {
+		return {
+			ContractImageUrls: [],
+			C_ContractImageUrls: [],
+		}
+	},
+	mounted () {
+		console.log(this.$route.params.id)
+	},
+	methods:{
 
-		formSize : 'small',
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const ContractImageUrls = this.ContractImageUrls
+			const C_ContractImageUrls = this.C_ContractImageUrls
 
-		form2 : {
-
+			const param = {
+				OrderId: id,
+				// HouseId: hid,
+				OperationRecordId: oprid,
+				ContractImageUrls,
+				C_ContractImageUrls,
+			}
+			// console.log(param)
+			this.pp('CompletePrintContract', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
 		},
 
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
-	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
-
 		
-
 	},
 
 

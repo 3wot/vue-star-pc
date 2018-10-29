@@ -9,8 +9,8 @@
 			<Header title="首页"></Header>
 		  	<el-main class="c-main">
 				<el-button-group>
-				  	<el-button type="primary" :plain="type != 1" class="btn-150" @click="changeType(1)">进行中报单</el-button>
-				  	<el-button type="primary" :plain="type != 2" class="btn-150" @click="changeType(2)">历史报单</el-button>
+				  	<el-button type="primary" :plain="type != 0" class="btn-150" @click="changeType(0)">进行中报单</el-button>
+				  	<el-button type="primary" :plain="type != 3" class="btn-150" @click="changeType(3)">历史报单</el-button>
 				</el-button-group>
 				
 				<!-- <div class="table-outer"> -->
@@ -19,9 +19,10 @@
 						border
 						height="'calc(100% - 80px)'"
 						class="index-table"
-						:row-class-name="RowClass">
+						>
 						<el-table-column
 							prop="BorrowerName"
+							:formatter="formatterName"
 							label="姓名"
 							width="150">
 						</el-table-column>
@@ -35,7 +36,6 @@
 							label="状态">
 						</el-table-column>
 						<el-table-column
-							:formatter="formatter2"
 							label="操作">
 							<template slot-scope="scope">
 					        	<el-button
@@ -47,9 +47,6 @@
 					      	</template>
 						</el-table-column>
 					</el-table>
-
-
-
 				<!-- </div> -->
 
 		  	</el-main>
@@ -74,71 +71,50 @@ export default {
 	name: 'Index',
 	data () {
 		return {
-			// 1 进行 2 历史
-			type: 1,
+			// 0 进行 3 历史
+			type: 0,
 			// 订单列表
 			orderList: [
-				{
-					"Id" : "111",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 0, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "222",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 1, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "333",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 2, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},
-				{
-					"Id" : "444",
-					"BorrowerName" : "张三", 
-					"BorrowerMobile" : "15111112222", 
-					"BorrowerIDNO" : "XXXXXXXXXX", 
-					"CreationDateTime" : "2018-08-01 18:00:00", 
-					"Status" : 0, // 报单状态，0，正在进行中，1，正常结案，2，中途结案
-					"CurrentOperation" : "估值"
-				},	
+				// {
+				// 	"BorrowerIDNO": null,
+	   //              "BorrowerName": null,
+	   //              "CreationDateTime": "2018-10-20 05:53:15",
+	   //              "CurrentOperation": null,
+	   //              "HouseId": "11",
+	   //              "OrderId": "17",
+	   //              "Status": "0"
+				// },
+				// {
+				// 	"BorrowerIDNO": null,
+	   //              "BorrowerName": null,
+	   //              "CreationDateTime": "2018-10-20 05:53:15",
+	   //              "CurrentOperation": null,
+	   //              "HouseId": "11",
+	   //              "OrderId": "17",
+	   //              "Status": "0"
+				// },
 			],
 		}
 	},
 	mounted () {
-		
+		this.changeType(0)
 	},
 	methods:{
 
+		// 点击进行中或者历史
 		changeType(type) {
 			this.type = type
 			const param = {
 				order_type: type,
 			}
-			// this.GETJSON('OrderList', param, res => {
-			// 	console.log(res)
-			// 	if (res.ret) {
-					
-			// 	} else {
-			// 		this.$dialog.toast({
-			// 			mes: res.mes,
-			// 			icon: 'none',
-			// 			timeout: 2000,
-			// 		})
-			// 	}
-			// })
+			this.pp('OrderList', param, res => {
+				// console.log(res)
+				if (res.ret) {
+					this.orderList = res.data
+				} else {
+					this.warn(res.msg)
+				}
+			})
 		},
 		
 		// 新增
@@ -151,30 +127,31 @@ export default {
 		handleClick (idx) {
 			if (this.orderList && idx < this.orderList.length) {
 				const order = this.orderList[idx]
-				const id = order.Id
-				this.$router.push({ name : 'opList', params: { id }})
+				const id = order.OrderId
+				const hid = order.HouseId
+				this.$router.push({ name : 'opList', params: { id, hid }})
 			}
-			
 		},
 
 		// 格式化函数
 		formatter (row, column, cellValue, index) {
 			const { Status, CurrentOperation } = row || {}
 			if (Status == 0) {
-				return CurrentOperation
+				return CurrentOperation || '进行中'
 			} else if (Status == 1) {
 				return "正常结案"
 			} else if (Status == 2) {
 				return "中途结案"
 			}
 		},
-		// 格式化函数2
-		formatter2 (row, column, cellValue, index) {
-			const { Id } = row || {}
-			return '<a href="http://www.baidu.com">sss</a>'
 
+		// 名字格式化函数
+		formatterName (row, column, cellValue, index) {
+			const { BorrowerName } = row || {}
+			return BorrowerName || '暂无'
 		},
-
+		
+		// 换色
 		RowClass ({row, rowIndex}) {
 			const { Status } = row || {}
 			if (Status == 1) {
@@ -185,8 +162,6 @@ export default {
 			}
 			return ''
 		},
-
-
 
 	},
 

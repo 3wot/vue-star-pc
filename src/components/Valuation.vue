@@ -12,82 +12,84 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-							  	<el-form-item label="房本照片">
+								<el-form-item label="房本照片">
 									<ImgList :arr="op1"></ImgList>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="房屋坐落">
-									<el-input placeholder="请输入房屋坐落"></el-input>
+							<el-col :span="12">
+								<el-form-item label="房屋建筑面积">
+									<el-input v-model="form1.Area" placeholder="请输入房屋建筑面积"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="房屋建筑面积">
-									<el-input placeholder="请输入房屋建筑面积"></el-input>
+							<el-col :span="12">
+								<el-form-item label="房屋坐落">
+									<el-input v-model="form1.Location" placeholder="请输入房屋坐落"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="房屋性质">
-								    <el-select class="w-100" v-model="val1" placeholder="请选择房屋性质">
-								      	<el-option v-for="(item,index) in op1" :key="index" :label="item" :value="item"></el-option>
-								    </el-select>
+							
+
+							<el-col :span="12">
+								<el-form-item label="房屋性质">
+									<el-select class="w-100" v-model="form1.Type" placeholder="请选择房屋性质">
+										<el-option v-for="(item,index) in op1" :key="index" :label="item" :value="item"></el-option>
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="用途">
-								    <el-select class="w-100" placeholder="请选择用途">
-								      	<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
-								      	
-								    </el-select>
+							<el-col :span="12">
+								<el-form-item label="用途">
+									<el-select class="w-100" v-model="form1.Usage" placeholder="请选择用途">
+										<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
+
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="抵押成数">
-								    <el-select class="w-100" placeholder="请选择抵押成数">
-								      	<el-option v-for="(item,index) in op3" :key="index" :label="item" :value="item"></el-option>
-								      	
-								    </el-select>
+							<el-col :span="12">
+								<el-form-item label="抵押成数">
+									<el-select class="w-100" v-model="form1.PledgePercentage" placeholder="请选择抵押成数">
+										<el-option v-for="(item,index) in op3" :key="index" :label="item" :value="item"></el-option>
+
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-						  		<el-form-item label="房屋朝向">
-								    <el-select class="w-100" placeholder="请选择房屋朝向">
-								      	<el-option v-for="(item,index) in op4" :key="index" :label="item" :value="item"></el-option>
-								      	
-								    </el-select>
+							<el-col :span="12">
+								<el-form-item label="房屋朝向">
+									<el-select class="w-100" v-model="form1.Orientation" placeholder="请选择房屋朝向">
+										<el-option v-for="(item,index) in op4" :key="index" :label="item" :value="item"></el-option>
+
+									</el-select>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="总楼层数">
-									<el-input placeholder="请输入总楼层数"></el-input>
+							<el-col :span="12">
+								<el-form-item label="总楼层数">
+									<el-input v-model="form1.TotalFloor" placeholder="请输入总楼层数"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="所在楼层">
-									<el-input placeholder="请输入所在楼层"></el-input>
+							<el-col :span="12">
+								<el-form-item label="所在楼层">
+									<el-input v-model="form1.Floor" placeholder="请输入所在楼层"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="12">
-							  	<el-form-item label="建成年代">
-									<el-date-picker class="w-100" type="year" placeholder="请选择建成年代"></el-date-picker>
+							<el-col :span="12">
+								<el-form-item label="建成年代">
+									<el-date-picker v-model="form1.BuildingFinishYear" value-format="yyyy" class="w-100" type="year" placeholder="请选择建成年代"></el-date-picker>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 
-						  	<el-col :span="24">
-							  	
-								<el-button class="pull-left" type="primary">估值</el-button>
+							<el-col :span="24">
+
+								<el-button class="pull-left" type="primary" @click="valuation">估值</el-button>
 								
-						  	</el-col>
-						
+							</el-col>
+
 						</el-row>
 						
 
@@ -113,81 +115,76 @@
 							</tr>
 							<tr>
 								<td>房屋坐落</td>
-								<td colspan="4">XXXXXXX</td>
+								<td colspan="4">{{form1.Location}}</td>
 							</tr>
 							<tr>
 								<td>房屋建筑面积</td>
-								<td>123</td>
+								<td>{{form1.Area}}</td>
 								<td>用途</td>
-								<td colspan="2">XXXX</td>
+								<td colspan="2">{{form1.Usage}}</td>
 							</tr>
 							<tr>
 								<td>总楼层数</td>
-								<td>123</td>
+								<td>{{form1.TotalFloor}}</td>
 								<td>房屋所在楼层</td>
-								<td colspan="2">XXXX</td>
+								<td colspan="2">{{form1.Floor}}</td>
 							</tr>
 							<tr>
 								<td>房屋朝向</td>
-								<td>123</td>
+								<td>{{form1.Orientation}}</td>
 								<td>建成年代</td>
-								<td colspan="2">XXXX</td>
+								<td colspan="2">{{form1.BuildingFinishYear}}</td>
 							</tr>
 							<tr>
 								<td>房屋单价</td>
-								<td>123</td>
+								<td>{{HouseUnitPrice}}</td>
 								<td>房屋总价</td>
-								<td colspan="2">XXXX</td>
+								<td colspan="2">{{HouseTotalPrice}}</td>
 							</tr>
 							<tr>
 								<td>抵押成数</td>
-								<td>123</td>
+								<td>{{form1.PledgePercentage}}</td>
 								<td>抵押总价</td>
-								<td colspan="2">XXXX</td>
+								<td colspan="2">{{HousePledgePrice}}</td>
 							</tr>
 							<tr>
 								<td>行政区均价</td>
-								<td>123</td>
+								<td>{{HouseAveragePrice}}</td>
 								<td>成交周期</td>
-								<td colspan="2">XXXX</td>
+								<td colspan="2">{{HouseDealPeriod}}</td>
 							</tr>
 							<tr>
 								<td rowspan="2">周边小区价格</td>
 								<td>小区1</td>
-								<td>XX</td>
+								<td>{{HouseNearbyAveragePrice1}}</td>
 								<td>小区2</td>
-								<td>XX</td>
+								<td>{{HouseNearbyAveragePrice2}}</td>
 							</tr>
 							<tr>
 								<td>小区3</td>
-								<td>XX</td>
+								<td>{{HouseNearbyAveragePrice3}}</td>
 								<td>小区4</td>
-								<td>XX</td>
+								<td>{{HouseNearbyAveragePrice4}}</td>
 							</tr>
 							
 						</tbody>
 					</table>
 					<p class="tip">备注【评估信息仅供参考，最终估值以下户为准】</p>
 
-					<el-form :size="formSize" class="m-t-20" :model="form2" label-width="120px" label-position="left">
+					<el-form :size="formSize" class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
-
 							<el-col :span="24">
-							  	<el-form-item label="上传估值报告">
-									<ImgUpload :arr="arr1"></ImgUpload>
+								<el-form-item label="上传估值报告">
+									<ImgUpload :arr="HouseValuationImageUrl" :arrc="C_HouseValuationImageUrl" :max="1"></ImgUpload>
 								</el-form-item>
-						  	</el-col>
+							</el-col>
 						</el-row>
 					</el-form>
 				</div>
 
 				<div class="sec">
-					
-					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
-
 
 			</el-main>
 		</el-container>
@@ -202,52 +199,185 @@ import ImgList from './ImgList'
 
 export default {
 	components:{
-	// Button,Field
-	Header, ImgUpload, ImgList
-},
-name: 'Valuation',
-data () {
-	return {
-
-		formSize : 'small',
-		val1: '',
-
-		form1 : {
-
-		},
-		form2 : {
-
-		},
-		op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
-		op2 : ['住宅','别墅','商业','公寓','办公'],
-		op3 : [6.5,5],
-		op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
-
-		rules : {},
-
-		arr1 : [],
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
+		Header, ImgUpload, ImgList
 	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
+	name: 'Valuation',
+	data () {
+		return {
+			formSize : 'small',
+			form1 : {
+				"OwnerName" : "",
+				"Location" : "",
+				"Usage" : "住宅",
+				"Area" : "",
+				"PledgePercentage" : "",
+				Orientation: "",
+				TotalFloor: "",
+				Floor: "",
+				BuildingFinishYear: "",
+				Type: '', // 房屋性质
+			},
+			rules : {
+				Area : [
+				 	{ required: true, message: '请输入房屋建筑面积', trigger: 'blur' },
+				],
+				Usage : [
+				 	{ required: true, message: '请输入用途', trigger: 'blur' }
+				],
+				PledgePercentage : [
+				 	{ required: true, message: '请输入抵押成数', trigger: 'blur' }
+				],
+			},
+			// 房本照片
+			HouseCertificateImageUrls:[],
+			C_HouseCertificateImageUrls: [],
+			// 上传报告
+			HouseValuationImageUrl: [],
+			C_HouseValuationImageUrl: [],
 
+			op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
+			op2 : ['住宅','别墅','商业','公寓','办公'],
+			op3 : ['6.5','5'],
+			op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
+
+			//估值返回字段
+		 	"HouseAveragePrice": "",
+            "HouseDealPeriod": "",
+            "HouseNearbyAveragePrice1": "",
+            "HouseNearbyAveragePrice2": "",
+            "HouseNearbyAveragePrice3": "",
+            "HouseNearbyAveragePrice4": "",
+            "HousePledgePrice": "",
+            "HouseTotalPrice": "",
+            "HouseUnitPrice": "",
+
+            temp: false, // 是否估值成功
+		}
+	},
+	mounted () {
+		// console.log(this.$route.params.id)
+		this.init()
+	},
+	methods:{
+
+		gotoLook() {
+			// 调到预报单
+			const id = this.$route.params.id
+			console.log(id)
+			this.$router.push({ name: 'look', params: { id }})
+		},
 		
+		// 首页
+		gotoIndex() {
+			this.$router.push({ name : 'index' })
+		},
+
+		// 估值
+		valuation () {
+			console.log(this.form1)
+			const id = this.$route.params.id
+			const hid = this.$route.params.hid
+			const {
+				OwnerName,
+				Location,
+				Usage,
+				Area,
+				PledgePercentage,
+				Type,
+				Orientation,
+				TotalFloor,
+				Floor,
+				BuildingFinishYear,
+			} = this.form1
+			const param = {
+				OrderId: id,
+				HouseId: hid,
+				OwnerName,
+				Location,
+				Usage,
+				Area,
+				PledgePercentage,
+				Type,
+				Orientation,
+				TotalFloor,
+				Floor,
+				BuildingFinishYear,
+			}
+			this.pp('HouseValuation', param, res => {
+				if (res.ret) {
+					const {
+						HouseAveragePrice,
+			            HouseDealPeriod,
+			            HouseNearbyAveragePrice1,
+			            HouseNearbyAveragePrice2,
+			            HouseNearbyAveragePrice3,
+			            HouseNearbyAveragePrice4,
+			            HousePledgePrice,
+			            HouseTotalPrice,
+			            HouseUnitPrice,
+					} = res.data || {}
+
+					this.HouseAveragePrice = HouseAveragePrice
+					this.HouseDealPeriod = HouseDealPeriod
+					this.HouseNearbyAveragePrice1 = HouseNearbyAveragePrice1
+					this.HouseNearbyAveragePrice2 = HouseNearbyAveragePrice2
+					this.HouseNearbyAveragePrice3 = HouseNearbyAveragePrice3
+					this.HouseNearbyAveragePrice4 = HouseNearbyAveragePrice4
+					this.HousePledgePrice = HousePledgePrice
+					this.HouseTotalPrice = HouseTotalPrice
+					this.HouseUnitPrice = HouseUnitPrice
+				} else {
+					this.warn(res.msg)
+				}
+			})
+
+		},
+
+		// 初始化
+		init () {
+			const id = this.$route.params.id
+			const hid = this.$route.params.hid
+			const param = {
+				OrderId: id,
+				HouseId: hid,
+			}
+			this.pp('GetHouseValuationParams', param, res => {
+				if (res.ret) {
+					const { 
+						HouseCertificateImageUrls,
+						C_HouseCertificateImageUrls,
+					} = res.data || {}
+					this.HouseCertificateImageUrls = HouseCertificateImageUrls
+					this.C_HouseCertificateImageUrls = C_HouseCertificateImageUrls
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
+
+		// 确认
+		sub () {
+			const { id, hid, oprid } = this.$route.params
+			const HouseValuationImageUrl = this.HouseValuationImageUrl
+			const C_HouseValuationImageUrl = this.C_HouseValuationImageUrl
+
+			const param = {
+				OrderId: id,
+				HouseId: hid,
+				OperationRecordId: oprid,
+				HouseValuationImageUrl:HouseValuationImageUrl.join(),
+				C_HouseValuationImageUrl:C_HouseValuationImageUrl.join(),
+			}
+			console.log(param)
+			this.pp('CompleteHouseValuation', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name : 'opList', params: { id, hid }})
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
 
 	},
 

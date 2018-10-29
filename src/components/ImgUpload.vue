@@ -5,13 +5,13 @@
  	
 
 	<div class="upload-content">
-		<div v-for="(item,index) in imgArr" :key="index" class="upload-item">
+		<div v-for="(item,index) in arr" :key="index" class="upload-item">
 			<div class="dele-icon" @click="dele(index)"><i class="el-icon-close"></i></div>
-			<!-- <img src="item"> -->
-			{{item}}
+			<img :src="item">
+			<!-- {{item}} -->
 		</div>
 		
-		<div class="upload-item" @click="upload">
+		<div v-if="arr.length < maxNum" class="upload-item" @click="upload">
 			<img src="../../static/plus.png" alt="">
 		</div>
 
@@ -32,36 +32,40 @@ export default {
 	// Button,Field
 	},
 	name: 'ImgUpload',
-	props: ['arr'],
+	props: ['arr','arrc','max'],
 	data () {
 		return {
-			imgArr : [],
-
+			maxNum: 999,
 		}
 	},
 	mounted () {
-		// 点击上传
-		this.imgArr = this.arr
+		if (this.max) {
+			this.maxNum = this.max
+		} else {
+			this.maxNum = 999
+		}
 	},
 	methods:{
 		// 点击上传
 		upload () {
-			this.add('A')
+			this.add('http://zx.youzhu.com/uploadfile/2017/0326/20170326104024702.jpg')
 		},
 
 		// 添加
 		add (url) {
-			this.imgArr.push(url)	
+			this.arr.push(url)
+			if (this.arrc) {
+				this.arrc.push(url)	
+			}
 		},
-
 
 		// 删除图片
 		dele(idx) {
-			this.imgArr.splice(idx,1)
+			this.arr.splice(idx,1)
+			if (this.arrc) {
+				this.arrc.splice(idx,1)	
+			}
 		},
-
-
-
 	},
 
 

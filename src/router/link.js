@@ -1,6 +1,6 @@
 
 // 域名
-const HOST = 'http://www.windant.com/Service1.svc/'
+const HOST = 'http://www.windant.com:9005/Service1.svc/'
 
 // 相对地址
 const urls = {
@@ -51,6 +51,15 @@ const urls = {
 	'CompleteUploadLoanReceivedCertificate' : 'CompleteUploadLoanReceivedCertificate',
 	'CompleteFiling' : 'CompleteFiling',
 	'CancelOrder' : 'CancelOrder',
+
+	'GetOrderInfo': 'GetOrderInfo',
+
+	'CanSubmitMaterialList': 'CanSubmitMaterialList',
+	'NeedToSupplementMaterial': 'NeedToSupplementMaterial',
+	'SupplementMaterial': 'SupplementMaterial',
+	'GetSubmittedMaterialList': 'GetSubmittedMaterialList',
+	'SubmitMaterialList': 'SubmitMaterialList',
+	'GetMaterialList': 'GetMaterialList',
 
 }
 

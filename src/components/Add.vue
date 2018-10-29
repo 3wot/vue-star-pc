@@ -8,35 +8,35 @@
 				
 				<div class="sec">
 					<p class="main-title"><span class="span-title">操作</span></p>
-					<el-form :model="form1" :size="formSize" :rules="rules" label-width="120px" label-position="left">
+					<el-form :size="formSize" label-width="120px" label-position="left">
 						<el-row>
 							<el-col :span="24">
-							  	<el-form-item label="需要补充的资料">
-									<el-checkbox-group class="pull-left" v-model="checkbox1">
-								      	<el-checkbox class="pull-left check-item" v-for="(item,index) in op1" :key="index" :label="item" border></el-checkbox>
-								    </el-checkbox-group>
+								<el-form-item label="需要补充的资料">
+									<!-- <el-checkbox-group class="pull-left" v-model="Materials"> -->
+										<div v-for="(item,index) in option1" class="add-item">
+											<el-checkbox class="pull-left check-item" :key="index" :label="item.Id" v-model="item.checked" border>{{item.Name}}</el-checkbox>	
+											<el-input class="add-input" v-model="item.Comment" placeholder="请输入备注"></el-input>
+										</div>
+									<!-- </el-checkbox-group> -->
 								</el-form-item>
-						  	</el-col>
-						  	<el-col :span="24">
-							  	<el-form-item label="备注">
+							</el-col>
+							<!-- <el-col :span="24">
+								<el-form-item label="备注">
 									<el-input type="textarea" :rows="4" placeholder="请输入内容"></el-input>
 								</el-form-item>
-						  	</el-col>
+							</el-col> -->
 							
 							
-						
+
 						</el-row>
 						
 
 					</el-form>
 				</div>
-			
+
 
 				<div class="sec">
-					
-					<el-button class="pull-left" type="primary">完成</el-button>
-						
-					
+					<el-button class="pull-left" type="primary" @click="sub">完成</el-button>
 				</div>
 
 
@@ -51,47 +51,84 @@ import Header from './Header'
 
 export default {
 	components:{
-	Header,
-},
-name: 'Add',
-data () {
-	return {
-
-		formSize : 'small',
-		checkbox1 : [],
-
-		form1 : {
-
-		},
-		form2 : {
-
-		},
-		op1 : ['商品房','经济适用房','央产房','已购公房','客户配偶身份证照片客户配偶身份证照片'],
-		
-
-		
-
-
-	}
-},
-mounted () {
-	console.log(this.$route.params.id)
-},
-methods:{
-
-	gotoLook() {
-		// 调到预报单
-		const id = this.$route.params.id
-		console.log(id)
-		this.$router.push({ name: 'look', params: { id }})
+		Header,
 	},
-	
-	// 首页
-	gotoIndex() {
-		this.$router.push({ name : 'index' })
-	},
+	name: 'Add',
+	data () {
+		return {
 
-		
+			formSize : 'small',
+			Materials : [],
+			option1: [],
+
+
+		}
+	},
+	mounted () {
+		// console.log(this.$route.params.id)
+		this.init()
+	},
+	methods:{
+
+		// 格式化
+		format (opArr) {
+			if (opArr && opArr.length) {
+				opArr.map(item => {
+					item.checked = false
+					item.Comment = ""
+				})
+			}
+			return opArr
+		},
+
+		// 初始化
+		init() {
+			const { id, hid, oprid } = this.$route.params
+			const param = {
+				// OrderId : id,
+				// OperationRecordId : oprid,
+			}
+			console.log(param)
+			this.pp('GetMaterialList', param, res => {
+				if (res.ret) {
+					const arr = this.format(res.data)
+					this.option1 = arr
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
+
+		// 提交
+		sub() {
+			let Materials = []
+			const option1 = this.option1
+			option1.map(item => {
+				if (item.checked) {
+					Materials.push({
+						Id: item.Id,
+						Comment: item.Comment,
+					})
+				}
+			})
+			const { id, hid, oprid } = this.$route.params
+			const param = {
+				OrderId : id,
+				Materials,
+			}
+			// console.log(param)
+			this.pp('SubmitMaterialList', param, res => {
+				if (res.ret) {
+					// 跳到操作页面
+					this.$router.push({ name:'opList', params: { id, hid }})
+					this.warn("提交成功！")
+				} else {
+					this.warn(res.msg)
+				}
+			})
+		},
+
+
 
 	},
 
@@ -115,6 +152,14 @@ methods:{
 	margin-left: 0 !important;
 	margin-right: 15px;
 	margin-bottom: 15px;
+}
+.add-input {
+	float: left;
+	width: 150px;
+}
+.add-item {
+	width: 50%;
+	float: left;
 }
 
 
