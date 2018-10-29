@@ -7,8 +7,12 @@
 	<div class="upload-content">
 		<div v-for="(item,index) in arr" :key="index" class="upload-item">
 			<div class="dele-icon" @click="dele(index)"><i class="el-icon-close"></i></div>
-			<img :src="item">
+			<img :src="item" @click="showBig(index)">
 			<!-- {{item}} -->
+
+		</div>
+
+		<div v-if="showBigTemp" :style="styleObj" class="upload-img-outer" @click="hideBig">
 		</div>
 		
 		<div v-if="arr.length < maxNum" class="upload-item" @click="upload">
@@ -29,13 +33,19 @@ import URLS from '../router/link'
 
 export default {
 	components:{
-	// Button,Field
+		
 	},
 	name: 'ImgUpload',
 	props: ['arr','arrc','max'],
 	data () {
 		return {
 			maxNum: 999,
+			showBigTemp: false,
+			styleObj: {
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: 'contain',
+				backgroundPosition: 'center',
+			}
 		}
 	},
 	mounted () {
@@ -55,7 +65,7 @@ export default {
 		add (url) {
 			this.arr.push(url)
 			if (this.arrc) {
-				this.arrc.push(url)	
+				this.arrc.push(url)
 			}
 		},
 
@@ -66,6 +76,19 @@ export default {
 				this.arrc.splice(idx,1)	
 			}
 		},
+
+		// 显示大图
+		showBig (idx) {
+			if (idx>=0 && idx<this.arrc.length) {
+				const src = this.arrc[idx]
+				this.styleObj.backgroundImage = 'url('+src+')'
+				this.showBigTemp = true
+			}
+		},
+
+		hideBig () {
+			this.showBigTemp = false
+		},
 	},
 
 
@@ -73,6 +96,14 @@ export default {
 </script>
 
 <style scoped>
-
+.upload-img-outer {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
 
 </style>
