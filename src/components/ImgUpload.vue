@@ -5,7 +5,7 @@
  	
 
 	<div class="upload-content">
-		<div v-for="(item,index) in arr" :key="index" class="upload-item">
+		<div v-for="(item,index) in arrc" :key="index" class="upload-item">
 			<div class="dele-icon" @click="dele(index)"><i class="el-icon-close"></i></div>
 			<img :src="item" @click="showBig(index)">
 			<!-- {{item}} -->
@@ -79,8 +79,8 @@ export default {
 
 		// 显示大图
 		showBig (idx) {
-			if (idx>=0 && idx<this.arrc.length) {
-				const src = this.arrc[idx]
+			if (idx>=0 && idx<this.arr.length) {
+				const src = this.arr[idx]
 				this.styleObj.backgroundImage = 'url('+src+')'
 				this.showBigTemp = true
 			}

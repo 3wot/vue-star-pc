@@ -44,6 +44,12 @@
 						          	size="small">
 					          		详情
 					        	</el-button>
+					        	<el-button
+					          		@click.native.prevent="handleLookClick(scope.$index)"
+						          	type="text"
+						          	size="small">
+					          		全部资料
+					        	</el-button>
 					      	</template>
 						</el-table-column>
 					</el-table>
@@ -130,6 +136,16 @@ export default {
 				const id = order.OrderId
 				const hid = order.HouseId
 				this.$router.push({ name : 'opList', params: { id, hid }})
+			}
+		},
+
+		// 全部资料页面
+		handleLookClick (idx) {
+			if (this.orderList && idx < this.orderList.length) {
+				const order = this.orderList[idx]
+				const id = order.OrderId
+				const hid = order.HouseId
+				this.$router.push({ name : 'look', params: { id, hid }})
 			}
 		},
 

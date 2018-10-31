@@ -43,19 +43,6 @@ export default {
 	computed:{
 
 		imgArr:function(){
-			if (this.arr) {
-				if (typeof this.arr == 'string') {
-					let a = []
-					a.push(this.arr)
-					return a
-				} else {
-					return this.arr
-				}	
-			} else {
-				return []
-			}
-		},
-		imgArrC:function(){
 			if (this.arrc) {
 				if (typeof this.arrc == 'string') {
 					let a = []
@@ -63,6 +50,19 @@ export default {
 					return a
 				} else {
 					return this.arrc
+				}	
+			} else {
+				return []
+			}
+		},
+		imgArrC:function(){
+			if (this.arr) {
+				if (typeof this.arr == 'string') {
+					let a = []
+					a.push(this.arr)
+					return a
+				} else {
+					return this.arr
 				}	
 			} else {
 				return []

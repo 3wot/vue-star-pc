@@ -17,9 +17,8 @@ import Notarization from '@/components/Notarization'
 import Jindi from '@/components/Jindi'
 import Loan from '@/components/Loan'
 import File from '@/components/File'
+import Look from '@/components/Look'
 
-
-// import Look from '@/components/Look'
 // import ConfirmValuation from '@/components/ConfirmValuation'
 // import Form from '@/components/Form'
 // import ConfirmFirstCheck from '@/components/ConfirmFirstCheck'
@@ -130,12 +129,12 @@ export default new Router({
 			name: 'file',
 			component: File
 		},
-		// {
-		// 	// 查看所有资料
-		// 	path: '/look',
-		// 	name: 'look',
-		// 	component: Look
-		// },
+		{
+			// 查看所有资料
+			path: '/look/:id/:hid',
+			name: 'look',
+			component: Look
+		},
 		// {
 		// 	// 估值确认
 		// 	path: '/confirmValuation',
