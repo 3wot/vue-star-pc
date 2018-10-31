@@ -16,7 +16,21 @@
 		</div>
 		
 		<div v-if="arr.length < maxNum" class="upload-item" @click="upload">
+<!-- 			<el-upload
+			 	action="http://localhost:57570/UploadFile.ashx"
+				:multiple="true"
+				:limit="10"
+				:show-file-list="false"
+				:on-success="uploadSuccess"
+				:on-error="uploadError"
+				:before-upload="uploadBefore"
+				
+				
+				>
+				<img src="../../static/plus.png" alt="">
+			</el-upload> -->
 			<img src="../../static/plus.png" alt="">
+			<input type="file" @change="fileChanged" ref="file" multiple="multiple" accept="image/jpg,image/jpeg,image/png,image/bmp">
 		</div>
 
 		<div style="clear: both;"></div>
@@ -30,6 +44,7 @@
 <script>
 // import Router from 'vue-router'
 import URLS from '../router/link'
+import $ from 'jquery'
 
 export default {
 	components:{
@@ -45,7 +60,13 @@ export default {
 				backgroundRepeat: 'no-repeat',
 				backgroundSize: 'contain',
 				backgroundPosition: 'center',
-			}
+			},
+			files: [],
+			// 上传请求头
+			headerObj: {
+				'Content-Type': 'multipart/form-data'
+			},
+
 		}
 	},
 	mounted () {
@@ -58,7 +79,52 @@ export default {
 	methods:{
 		// 点击上传
 		upload () {
-			this.add('http://zx.youzhu.com/uploadfile/2017/0326/20170326104024702.jpg')
+			// this.add('http://zx.youzhu.com/uploadfile/2017/0326/20170326104024702.jpg')
+			console.log(this.files)
+		},
+
+		uploadSuccess (res, file, fileList) {
+			console.log('AAAAA')
+			console.log(res)
+			console.log(file)
+			console.log(fileList)
+		},
+
+		uploadError (err, file, fileList) {
+			console.log('BBBBB')
+			console.log(err)
+			console.log(file)
+			console.log(fileList)
+		},
+
+		fileChanged (file) {
+			//这里是重点，将文件转化为formdata数据上传
+	        let fd = new FormData()
+	        fd.append('aaa', file)
+	        console.log(this.$refs.file.files)
+			// const param = {
+			// 	uid: USER_INFO.uid,
+			// 	token: USER_INFO.token,
+			// 	OrderId: 1,
+			// }
+			// param[file.name] = file
+			// const url = "http://localhost:57570/UploadFile.ashx"
+	  //      	$.ajax({
+		 //        type: "POST",
+		 //        url: url,
+		 //        // contentType: "application/json;charset=UTF-8",
+		 //        data: JSON.stringify(param),
+		 //        success: function (res) {
+		 //           	console.log('AAAAA')
+			// 		console.log(res)
+		 //        },
+		 //        error: function (err) {
+	  //           	console.log('AAAAA')
+			// 		console.log(err)
+		 //        }
+
+		 //    });
+	  //       return false;
 		},
 
 		// 添加

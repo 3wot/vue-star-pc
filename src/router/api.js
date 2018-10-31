@@ -38,18 +38,18 @@
 		// OperatorRoleId : 用户角色id
 		// OperatorRoleName : 用户角色名称
 
-// 上传图片接口-All
+// 上传文件接口-All
 
-	// 接口地址: UploadImage
+	// 接口地址: UploadFile
 	
 	// 接口说明：上传图片并返回url地址，只支持单张图片
 	
-	// 输入数据格式:
+	// 输入数据格式:（注：form表单提交）
 	
 	{
 		"uid" : "",
 		"token" : "",
-		"filename" : ""
+		"files" : ""
 	}
 
 	// 返回数据格式：
@@ -57,7 +57,9 @@
 	{
 		"ret" : "ok",
 		"msg" : "",
-		"data" : { "ThumbnailUrl" : "", "OrignalUrl" : ""}
+		"data" : [
+			{ "Filename" : "", "OSSFileUrl" : "", "C_OSSFileUrl" : ""},
+		]
 	}
 
 	// 输入数据格式说明：
@@ -70,8 +72,41 @@
 	
 		// ret : 调用接口返回结果标志位，成功：ok，失败：fail
 		// msg : 失败错误信息
-		// ThumbnailUrl : 缩略图url
-		// OrignalUrl : 原图url
+		// Filename : 上传原文件名
+		// OSSFileUrl : oss文件url
+		// C_OSSFileUrl : 如果上传文件是图片的话，该值为图片缩略图url，否则该值与OSSFileUrl相同
+
+// 删除文件接口-All
+
+	// 接口地址: DeleteFile
+	
+	// 接口说明：删除文件
+	
+	// 输入数据格式:（注：form表单提交）
+	
+	{
+		"uid" : "",
+		"token" : "",
+		"OSSFileUrl" : ""
+	}
+
+	// 返回数据格式：
+
+	{
+		"ret" : "ok",
+		"msg" : ""
+	}
+
+	// 输入数据格式说明：
+
+		// uid : 用户唯一标识id
+		// token : 用户身份验证token
+		// OSSFileUrl : 文件url，对于图片是指原图url
+		
+	// 返回数据格式说明：
+	
+		// ret : 调用接口返回结果标志位，成功：ok，失败：fail
+		// msg : 失败错误信息
 
 // *获取报单接口-All
 
