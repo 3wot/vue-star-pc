@@ -67,12 +67,12 @@
 								<td colspan="3">借款人</td>
 								<td colspan="3">借款人配偶</td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td>公安不良行为</td>
 								<td colspan="3">{{SecurityInfo.Borrower}}</td>
 								<td colspan="3">{{SecurityInfo.BorrowerSpouse}}</td>
 								
-							</tr>
+							</tr> -->
 							<tr>
 								<td>法院涉诉</td>
 								<td colspan="3">{{LawsuitInfo.Borrower}}</td>
@@ -394,6 +394,13 @@ methods:{
 		const { id, hid, oprid } = this.$route.params
 		const FirstAuditionImageUrl = this.FirstAuditionImageUrl
 		const C_FirstAuditionImageUrl = this.C_FirstAuditionImageUrl
+
+		if (FirstAuditionImageUrl.length && C_FirstAuditionImageUrl.length) {
+
+		} else {
+			this.warn('请上传初审表！')
+			return
+		}
 
 		const param = {
 			OrderId: id,

@@ -249,7 +249,7 @@ export default {
 				OperationRecordId: oprid,
 				ContactProductProviderComment,
 			}
-			console.log(param)
+			// console.log(param)
 			this.pp('CompleteContactProductProvider', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

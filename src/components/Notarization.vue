@@ -66,6 +66,12 @@ export default {
 				C_SignContractImageUrls:C_SignContractImageUrls,
 			}
 			// console.log(param)
+			if (SignContractImageUrls.length && C_SignContractImageUrls.length) {
+
+			} else {
+				this.warn("请上传现场照片！")
+				return
+			}
 			this.pp('CompleteSignContract', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

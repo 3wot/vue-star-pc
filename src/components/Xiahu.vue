@@ -66,7 +66,13 @@ export default {
 				HouseVisitImageUrls:HouseVisitImageUrls,
 				C_HouseVisitImageUrls:C_HouseVisitImageUrls,
 			}
-			console.log(param)
+			if (HouseVisitImageUrls.length && C_HouseVisitImageUrls.length) {
+
+			} else {
+				this.warn("请上传下户照片！")
+				return
+			}
+			// console.log(param)
 			this.pp('CompleteHouseVisit', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

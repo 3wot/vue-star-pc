@@ -46,7 +46,7 @@ export default {
 		}
 	},
 	mounted () {
-		console.log(this.$route.params.id)
+		// console.log(this.$route.params.id)
 	},
 	methods:{
 
@@ -64,6 +64,12 @@ export default {
 				C_ContractImageUrls,
 			}
 			// console.log(param)
+			if (ContractImageUrls.length && C_ContractImageUrls.length) {
+
+			} else {
+				this.warn("请上传合同照片！")
+				return
+			}
 			this.pp('CompletePrintContract', param, res => {
 				if (res.ret) {
 					// 跳到操作页面
