@@ -22,7 +22,7 @@ const GETJSON = (urlKey, data, cb) => {
         } else {
             const data = {
                 ret: false,
-                mes: "您还没有登陆！"
+                msg: "您还没有登陆！"
             }
             cb(data)
             setTimeout(() => {
