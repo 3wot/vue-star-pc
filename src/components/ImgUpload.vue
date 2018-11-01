@@ -30,7 +30,6 @@
 				<img src="../../static/plus.png" alt="">
 			</el-upload> -->
 			<img src="../../static/plus.png" alt="">
-			<input type="file" @change="fileChanged" ref="file" multiple="multiple" accept="image/jpg,image/jpeg,image/png,image/bmp">
 		</div>
 
 		<div style="clear: both;"></div>
@@ -43,7 +42,6 @@
 
 <script>
 // import Router from 'vue-router'
-import URLS from '../router/link'
 import $ from 'jquery'
 
 export default {
@@ -102,29 +100,34 @@ export default {
 	        let fd = new FormData()
 	        fd.append('aaa', file)
 	        console.log(this.$refs.file.files)
-			// const param = {
-			// 	uid: USER_INFO.uid,
-			// 	token: USER_INFO.token,
-			// 	OrderId: 1,
-			// }
-			// param[file.name] = file
-			// const url = "http://localhost:57570/UploadFile.ashx"
-	  //      	$.ajax({
-		 //        type: "POST",
-		 //        url: url,
-		 //        // contentType: "application/json;charset=UTF-8",
-		 //        data: JSON.stringify(param),
-		 //        success: function (res) {
-		 //           	console.log('AAAAA')
-			// 		console.log(res)
-		 //        },
-		 //        error: function (err) {
-	  //           	console.log('AAAAA')
-			// 		console.log(err)
-		 //        }
+	        const list = this.$refs.file.files
+			const param = {
+				uid: USER_INFO.uid,
+				token: USER_INFO.token,
+				OrderId: 1,
+			}
+			for (let i = 0; i < list.length; i++) {
+				const key = new Date().getTime()
+               	param[key] = list[i]
+            }
+			
+			const url = "http://localhost:57570/UploadFile.ashx"
+			console.log(param)
+	       	$.post({
+		        type: "POST",
+		        url: url,
+		        data: JSON.stringify(param),
+		        success: function (res) {
+		           	console.log('AAAAA')
+					console.log(res)
+		        },
+		        error: function (err) {
+	            	console.log('BBBBBB')
+					console.log(err)
+		        }
 
-		 //    });
-	  //       return false;
+		    });
+	  
 		},
 
 		// 添加

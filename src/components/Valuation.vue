@@ -79,8 +79,9 @@
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="建成年代">
-									<el-date-picker v-model="form1.BuildingFinishYear" value-format="yyyy" class="w-100" type="year" placeholder="请选择建成年代"></el-date-picker>
+								<el-form-item label="房龄">
+									<!-- <el-date-picker v-model="form1.BuildingFinishYear" value-format="yyyy" class="w-100" type="year" placeholder="请选择建成年代"></el-date-picker> -->
+									<el-input v-model="form1.BuildingFinishYear" placeholder="请输入房龄"></el-input>
 								</el-form-item>
 							</el-col>
 
@@ -132,8 +133,8 @@
 							<tr>
 								<td>房屋朝向</td>
 								<td>{{form1.Orientation}}</td>
-								<td>建成年代</td>
-								<td colspan="2">{{form1.BuildingFinishYear}}</td>
+								<td>房龄</td>
+								<td colspan="2" :class="{'td-danger': form1.BuildingFinishYear>=35}">{{form1.BuildingFinishYear}}</td>
 							</tr>
 							<tr>
 								<td>房屋单价</td>
@@ -403,6 +404,10 @@ table td {
 	width : 130px;
 
 
+}
+.td-danger {
+	background-color: red;
+	color: #ffffff;
 }
 
 
