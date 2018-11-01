@@ -372,6 +372,12 @@ export default {
 				OperationRecordId: oprid,
 				BorrowerMobile,
 			}
+			if (BorrowerMobile) {
+
+			} else {
+				this.warn("电话不能为空！")
+				return
+			}
 			// console.log(param)
 			this.pp('CompleteFiling', param, res => {
 				if (res.ret) {

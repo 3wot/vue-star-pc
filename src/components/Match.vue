@@ -324,7 +324,13 @@ methods:{
 			OperationRecordId : oprid,
 			MatchProductIds,
 		}
-		console.log(param)
+		if (MatchProductIds.length) {
+
+		} else {
+			this.warn('请选择产品！')
+			return
+		}
+		// console.log(param)
 		this.pp('CompleteProductMatch', param, res => {
 			if (res.ret) {
 				// 跳到操作页面

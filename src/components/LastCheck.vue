@@ -128,7 +128,18 @@ export default {
 				LoanInterest,
 				LoanRejectionComment,
 			}
-			console.log(param)
+			// console.log(param)
+			if (IsLoanApproved && LoanApprovalImageUrls.length && C_LoanApprovalImageUrls.length && LoanAmount && LoanPeriodInMonth && LoanInterest) {
+
+			} else {
+				if (!IsLoanApproved && LoanRejectionComment) {
+
+				} else {
+					this.warn('所有项目都需要填写')
+					return	
+				}
+			}
+			debugger
 			this.pp('CompleteLoanApproval', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

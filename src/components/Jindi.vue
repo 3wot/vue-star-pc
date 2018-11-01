@@ -64,6 +64,12 @@ export default {
 				C_PledgeImageUrls,
 			}
 			// console.log(param)
+			if (PledgeImageUrls.length && C_PledgeImageUrls.length) {
+
+			} else {
+				this.warn("请上传现场照片！")
+				return
+			}
 			this.pp('CompletePledge', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

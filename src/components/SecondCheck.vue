@@ -323,7 +323,14 @@ export default {
 				SecondAuditionImageUrl:SecondAuditionImageUrl.join(),
 				C_SecondAuditionImageUrl:C_SecondAuditionImageUrl.join(),
 			}
-			console.log(param)
+			if (SecondAuditionImageUrl.length && C_SecondAuditionImageUrl.length) {
+
+			} else {
+				this.warn("请上传二审报告")
+				return
+			}
+
+			// console.log(param)
 			this.pp('CompleteSecondAudition', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

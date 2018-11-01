@@ -16,7 +16,7 @@
 		</div>
 		
 		<div v-if="arr.length < maxNum" class="upload-item" @click="upload">
-<!-- 			<el-upload
+			<!-- <el-upload
 			 	action="http://localhost:57570/UploadFile.ashx"
 				:multiple="true"
 				:limit="10"
@@ -59,11 +59,6 @@ export default {
 				backgroundSize: 'contain',
 				backgroundPosition: 'center',
 			},
-			files: [],
-			// 上传请求头
-			headerObj: {
-				'Content-Type': 'multipart/form-data'
-			},
 
 		}
 	},
@@ -77,8 +72,8 @@ export default {
 	methods:{
 		// 点击上传
 		upload () {
-			// this.add('http://zx.youzhu.com/uploadfile/2017/0326/20170326104024702.jpg')
-			console.log(this.files)
+			this.add('http://zx.youzhu.com/uploadfile/2017/0326/20170326104024702.jpg')
+			// console.log(this.files)
 		},
 
 		uploadSuccess (res, file, fileList) {

@@ -362,6 +362,12 @@ export default {
 			const HouseValuationImageUrl = this.HouseValuationImageUrl
 			const C_HouseValuationImageUrl = this.C_HouseValuationImageUrl
 
+			if (HouseValuationImageUrl.length && C_HouseValuationImageUrl.length) {
+			} else {
+				this.warn('请上传估值报告！')
+				return
+			}
+
 			const param = {
 				OrderId: id,
 				HouseId: hid,
