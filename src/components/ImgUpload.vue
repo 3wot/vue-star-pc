@@ -17,24 +17,24 @@
 
 			<div v-if="arr.length < maxNum" class="upload-item">
 				<el-upload
-				:action="uploadUrl"
-				:multiple="true"
-				:limit="10"
-				:show-file-list="false"
-				:auto-upload="true"
-				:http-request="fnUploadRequest"
-				
-				>
-				<img src="../../static/plus.png" alt="">
-			</el-upload>
+					:action="uploadUrl"
+					:multiple="true"
+					:limit="10"
+					:show-file-list="false"
+					:auto-upload="true"
+					:http-request="fnUploadRequest"
+					
+					>
+					<img src="../../static/plus.png" alt="">
+				</el-upload>
 			<!-- <img src="../../static/plus.png" alt=""> -->
+			</div>
+
+			<div style="clear: both;"></div>
+
 		</div>
 
-		<div style="clear: both;"></div>
-
 	</div>
-
-</div>
 
 </template>
 
@@ -101,21 +101,29 @@ export default {
       	},
       	fnUploadRequest (option) {
       		const that = this
-      		const length = that.arr.length
-      		that.arr.push('../../static/loading.gif')
-      		that.arrc.push('../../static/loading.gif')
+      		
 
       	
       		let fd = new FormData()
       		const file = option.file
       		const { uid, token } = USER_INFO
-      		const OrderId = '5'
+      		const OrderId = window.sessionStorage.getItem('OrderId') + ""
       		const name = this.randomStr(5)
       		fd.append('uid', uid)
       		fd.append('token', token)
       		fd.append('OrderId', OrderId)
       		fd.append(name, file)
-      		
+      		if (uid && token && OrderId) {
+
+      		} else {
+      			that.warn('您没有登录,请您重新登录')
+      			return
+      		}
+      		// 添加loading
+      		const length = that.arr.length
+      		that.arr.push('../../static/loading.gif')
+      		that.arrc.push('../../static/loading.gif')
+
       		$.ajax({
 		        type: "POST",
 		        url: 'http://www.windant.com:9005/UpLoadFile.ashx',
