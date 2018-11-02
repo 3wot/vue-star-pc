@@ -209,7 +209,7 @@ export default {
 
 		// 处理点击操作
 		handleTapOp(idx) {
-			if (this.opList && idx < this.opList.length) {
+			if (this.opList && idx == this.opList.length-1) {
 				const op = this.opList[idx]
 				const { OperationRoleType, OperationName, OperationRecordId } = op
 				if (OperationRoleType == USER_INFO.OperatorRoleId) {
@@ -217,6 +217,8 @@ export default {
 				} else {
 					this.warn('您不能进入此操作')
 				}
+			} else {
+				this.warn('您不能进入此操作')
 			}
 		},
 

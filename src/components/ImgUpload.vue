@@ -39,9 +39,9 @@
 </template>
 
 <script>
-// import Router from 'vue-router'
 import $ from 'jquery'
 // import OSS from 'ali-oss'
+
 export default {
 	components:{
 		
@@ -99,45 +99,55 @@ export default {
 		    });
 			return false
       	},
-      	async fnUploadRequest (option) {
+      	fnUploadRequest (option) {
       		const that = this
-          	try {
-          		let fd = new FormData()
-          		const file = option.file
-          		const { uid, token } = USER_INFO
-          		const OrderId = '5'
-          		const name = this.randomStr(5)
-          		fd.append('uid', uid)
-          		fd.append('token', token)
-          		fd.append('OrderId', OrderId)
-          		fd.append(name, file)
-          		$.ajax({
-			        type: "POST",
-			        url: 'http://www.windant.com:9005/UpLoadFile.ashx',
-			        contentType: false,
-			        processData:false,
-                	mimeType:"multipart/form-data",
-			        data: fd,
-			        dataType: "json",
-			        success: function (res) {
-			            console.log(res)
-			            if (res.ret == 'ok') {
-			            	if (res.data && res.data.length) {
-			            		res.data.map(item => {
-			            			that.add(item.OSSFileUrl,item.C_OSSFileUrl)
-			            		})
-			            	}
-			            } else {
-			            	this.warn(file.name + "上传失败:" + res.msg)
-			            }
-			        },
-			        error: function (err) {
-			            this.warn(err)
-			        }
-			    });
-			} catch (e) {
-				console.log(e)
-			}
+      		const length = that.arr.length
+      		that.arr.push('../../static/loading.gif')
+      		that.arrc.push('../../static/loading.gif')
+
+      	
+      		let fd = new FormData()
+      		const file = option.file
+      		const { uid, token } = USER_INFO
+      		const OrderId = '5'
+      		const name = this.randomStr(5)
+      		fd.append('uid', uid)
+      		fd.append('token', token)
+      		fd.append('OrderId', OrderId)
+      		fd.append(name, file)
+      		
+      		$.ajax({
+		        type: "POST",
+		        url: 'http://www.windant.com:9005/UpLoadFile.ashx',
+		        contentType: false,
+		        processData:false,
+            	mimeType:"multipart/form-data",
+		        data: fd,
+		        dataType: "json",
+		        success: function (res) {
+		            if (res.ret == 'ok') {
+		            	if (res.data && res.data.length) {
+		            		res.data.map(item => {
+		            			that.add(item.OSSFileUrl,item.C_OSSFileUrl,length)
+		            		})
+		            	}
+		            } else {
+		            	that.warn(file.name + "上传失败:" + res.msg)
+		            	that.arr.splice(length,1)
+						if (that.arrc) {
+							that.arrc.splice(length,1)	
+						}
+		            }
+		        },
+		        error: function (err) {
+		            that.warn(err)
+		            that.arr.splice(length,1)
+					if (that.arrc) {
+						that.arrc.splice(length,1)	
+					}
+		        }
+		    });
+			
 		},
 		randomStr (len) {
 			len = len || 32;
@@ -150,11 +160,25 @@ export default {
 			return pwd;
 		},
 		// 添加
-		add (url,urlc) {
-			this.arr.push(url)
-			if (this.arrc) {
-				this.arrc.push(urlc)
+		add (url,urlc,index) {
+			if (index < this.arr.length) { // 没问题
+				this.arr.splice(index,1,url)
+				if (this.arrc) {
+					this.arrc.splice(index,1,urlc)
+				}	
+			} else { // 出现失败
+				let idxTemp
+				this.arr.map((item,idx) => {
+					if (item == '../../static/loading.gif') {
+						idxTemp = idx
+					}
+				})
+				this.arr.splice(idxTemp,1,url)
+				if (this.arrc) {
+					this.arrc.splice(idxTemp,1,urlc)
+				}
 			}
+			
 		},
 		// 删除图片
 		dele(idx) {
@@ -163,18 +187,19 @@ export default {
 			if (this.arrc) {
 				this.arrc.splice(idx,1)	
 			}
-			const { uid, token } = USER_INFO
-			const param = {
-				uid,
-				token,
-				OSSFileUrl,
-			}
+			
+			let fd = new FormData()
+      		const { uid, token } = USER_INFO
+      		fd.append('uid', uid)
+      		fd.append('token', token)
+      		fd.append('OSSFileUrl',OSSFileUrl)
 			$.ajax({
 		        type: "POST",
 		        url: 'http://www.windant.com:9005/DeleteFile.ashx',
-		        contentType: false,
-		        // contentType: "application/json;charset=UTF-8",
-		        data: JSON.stringify(param),
+		       	contentType: false,
+		        processData:false,
+            	mimeType:"multipart/form-data",
+		        data: fd,
 		        dataType: "json",
 		        success: function (res) {
 		            if (res.ret == 'ok') {
