@@ -15,21 +15,29 @@
 		<div v-if="showBigTemp" :style="styleObj" class="upload-img-outer" @click="hideBig">
 		</div>
 		
-		<div v-if="arr.length < maxNum" class="upload-item" @click="upload">
+		<div v-if="arr.length < maxNum" class="upload-item">
 			<!-- <el-upload
 			 	action="http://localhost:57570/UploadFile.ashx"
 				:multiple="true"
 				:limit="10"
 				:show-file-list="false"
-				:on-success="uploadSuccess"
-				:on-error="uploadError"
-				:before-upload="uploadBefore"
+				:
 				
 				
 				>
-				<img src="../../static/plus.png" alt="">
+				
 			</el-upload> -->
-			<img src="../../static/plus.png" alt="">
+			<el-upload
+				:auto-upload="false"
+				:action="uploadUrl"
+				:on-success="uploadSuccess"
+				:data="data_extra"
+				:headers="uploadHeaders"
+				:http-request="uploadReq"
+				multiple>
+				<img src="../../static/plus.png" alt="">
+			</el-upload>
+			
 		</div>
 
 		<div style="clear: both;"></div>
@@ -43,6 +51,7 @@
 <script>
 // import Router from 'vue-router'
 import $ from 'jquery'
+import OSS from 'ali-oss'
 
 export default {
 	components:{
@@ -59,6 +68,11 @@ export default {
 				backgroundSize: 'contain',
 				backgroundPosition: 'center',
 			},
+
+			uploadUrl: 'http://39.106.17.212:9005/UploadFile.ashx',
+			uploadHeaders: {
+	       		uthorization: '',
+	      	},
 
 		}
 	},
@@ -90,6 +104,41 @@ export default {
 			console.log(fileList)
 		},
 
+		uploadReq (option) {
+			
+	        let ossData = JSON.parse(ret.data.data)
+	        let relativePath = ossData.relativePath
+	        let client = new OSS.Wrapper({
+				policy: ossData.policy,
+				accessKeyId: ossData.accessid,
+				accessKeySecret: ossData.accesssecret,
+				bucket: ossData.bucket,
+				signature: ossData.signature
+	        })
+	        let file = option.file
+	        const point = file.name.lastIndexOf('.')
+	        let suffix = file.name.substr(point)
+	        let fileName = file.name.substr(0, point)
+	        let date = vm.$moment().format('YYYYMMDDHHmm')
+	        let fileNames = `${fileName}_${date}${suffix}`
+	        // 分片上传文件
+	        ret = await client.multipartUpload(relativePath + fileNames, file, {
+	          progress: async function (p) {
+	            let e = {}
+	            e.percent = p * 100
+	            option.onProgress(e)
+	          }
+	        })
+	        console.log(ret)
+	        if (ret.res.statusCode === 200) {
+	          option.onSuccess(ret)
+	          return ret
+	        } else {
+	          vm.disabled = false
+	          option.onError('上传失败')
+	        }
+		},
+
 		fileChanged (file) {
 			//这里是重点，将文件转化为formdata数据上传
 	        let fd = new FormData()
@@ -106,7 +155,7 @@ export default {
                	param[key] = list[i]
             }
 			
-			const url = "http://localhost:57570/UploadFile.ashx"
+			const url = ""
 			console.log(param)
 	       	$.post({
 		        type: "POST",
