@@ -68,42 +68,42 @@
 							</tr>
 							<tr>
 								<td colspan="2">名称：</td>
-								<td colspan="2">XX</td>
-								<td colspan="2">XX</td>
-								<td colspan="2">XX</td>
+								<td colspan="2">{{BorrowerName}}</td>
+								<td colspan="2">{{BorrowerSpouseName}}</td>
+								<td colspan="2">{{CompanyName}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">证件号码：</td>
-								<td colspan="2">XX</td>
-								<td colspan="2">XX</td>
-								<td colspan="2">XX</td>
+								<td colspan="2">{{BorrowerIDNO}}</td>
+								<td colspan="2">{{BorrowerSpouseIDNO}}</td>
+								<td colspan="2">{{CompanySecurityIDNO}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">联系电话：</td>
-								<td colspan="2">XX</td>
-								<td colspan="2">XX</td>
-								<td colspan="2">XX</td>
+								<td colspan="2">{{BorrowerMobile}}</td>
+								<td colspan="2">{{BorrowerSpouseMobile}}</td>
+								<td colspan="2">{{CompanyPhone}}</td>
 							</tr>
 							<tr>
 								<td colspan="8">借款项目</td>
 							</tr>
 							<tr>
 								<td colspan="2">申请贷款金额：</td>
-								<td colspan="2">XXX</td>
+								<td colspan="2">{{ExpectedBorrowAmount}}</td>
 								<td colspan="2">申请贷款期限：</td>
-								<td colspan="2">XXX</td>
+								<td colspan="2">{{ExpectedBorrowPeriodInMonth}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">借款用途：</td>
-								<td colspan="6">XX</td>
+								<td colspan="6">{{BorrowUsage}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">利息还款来源：</td>
-								<td colspan="6">XX</td>
+								<td colspan="6">{{InterestReturnSource}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">本金还款来源：</td>
-								<td colspan="6">XX</td>
+								<td colspan="6">{{PrincipalReturnSource}}</td>
 							</tr>
 							
 							<tr>
@@ -111,27 +111,27 @@
 							</tr>
 							<tr>
 								<td>房屋坐落：</td>
-								<td colspan="7"></td>
+								<td colspan="7">{{Location}}</td>
 							</tr>
 							<tr>
 								<td>房屋性质：</td>
-								<td></td>
+								<td>{{Type}}</td>
 								<td>共有情况：</td>
-								<td></td>
+								<td>{{ShareOwnerInfo}}</td>
 								<td>房屋建筑面积：</td>
-								<td></td>
+								<td>{{Area}}</td>
 								<td>用途：</td>
-								<td></td>
+								<td>{{Usage}}</td>
 							</tr>
 							<tr>
 								<td>房屋使用状态：</td>
-								<td></td>
+								<td>{{PledgeInfo}}</td>
 								<td>房屋总价：</td>
-								<td></td>
+								<td>{{HouseTotalPrice}}</td>
 								<td>抵押成数：</td>
-								<td></td>
+								<td>{{PledgePercentage}}</td>
 								<td>抵押总价：</td>
-								<td></td>
+								<td>{{PledgePrice}}</td>
 							</tr>
 							<tr>
 								<td colspan="8">风控意见</td>
@@ -227,7 +227,8 @@ export default {
 		}
 	},
 	mounted () {
-		console.log(this.$route.params.id)
+		// console.log(this.$route.params.id)
+		this.init()
 	},
 	methods:{
 
