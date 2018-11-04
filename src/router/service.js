@@ -13,10 +13,12 @@ const GETJSON = (urlKey, data, cb) => {
     if (urlKey == 'Login') { // 登录接口不添加uid和token
         param = data
     } else { // 其他接口添加uid和token
-        if (USER_INFO.uid && USER_INFO.token) {
+        const uid = window.sessionStorage.getItem('uid')
+        const token = window.sessionStorage.getItem('token')
+        if (uid && token) {
             const json = {
-                uid: USER_INFO.uid,
-                token: USER_INFO.token
+                uid: uid,
+                token: token
             }
             param = Object.assign(data,json)    
         } else {
