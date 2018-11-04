@@ -13,7 +13,7 @@
 
 							<el-col :span="24">
 								<el-form-item label="房本照片">
-									<ImgList :arr="op1"></ImgList>
+									<ImgList :arr="HouseCertificateImageUrls" :arrc="C_HouseCertificateImageUrls"></ImgList>
 								</el-form-item>
 							</el-col>
 
