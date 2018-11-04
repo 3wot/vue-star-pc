@@ -19,7 +19,7 @@
 				<el-upload
 					:action="uploadUrl"
 					:multiple="true"
-					:limit="10"
+					:limit="200"
 					:show-file-list="false"
 					:auto-upload="true"
 					:http-request="fnUploadRequest"
@@ -40,6 +40,7 @@
 
 <script>
 import $ from 'jquery'
+import loadingUrl from '@/assets/loading.gif'
 // import OSS from 'ali-oss'
 
 export default {
@@ -50,6 +51,7 @@ export default {
 	props: ['arr','arrc','max'],
 	data () {
 		return {
+			loadingUrl: loadingUrl,
 			maxNum: 999,
 			showBigTemp: false,
 			styleObj: {
@@ -57,7 +59,8 @@ export default {
 				backgroundSize: 'contain',
 				backgroundPosition: 'center',
 			},
-			uploadUrl: 'http://www.windant.com:9005/UpLoadFile.ashx',
+			// uploadUrl: 'http://www.windant.com:9005/UpLoadFile.ashx',
+			uploadUrl: '/UpLoadFile.ashx',
 		}
 	},
 	mounted () {
@@ -73,32 +76,7 @@ export default {
 			// this.add('http://zx.youzhu.com/uploadfile/2017/0326/20170326104024702.jpg')
 			// console.log(this.files)
 		},
-		uploadBefore (file) {
-      		let fd = new FormData()
-      		const { uid, token } = USER_INFO
-      		const OrderId = '5'
-      		const name = this.randomStr(5)
-      		fd.append('uid', uid)
-      		fd.append('token', token)
-      		fd.append('OrderId', OrderId)
-      		fd.append(name, file)
-      		$.ajax({
-		        type: "POST",
-		        url: 'http://www.windant.com:9005/UpLoadFile.ashx',
-		        contentType: false,
-		        processData:false,
-            	mimeType:"multipart/form-data",
-		        data: fd,
-		        success: function (res) {
-		            console.log(res)
-		        },
-		        error: function (err) {
-		            console.error(err)
-		            
-		        }
-		    });
-			return false
-      	},
+		
       	fnUploadRequest (option) {
       		const that = this
       		
@@ -121,12 +99,13 @@ export default {
       		}
       		// 添加loading
       		const length = that.arr.length
-      		that.arr.push('../../static/loading.gif')
-      		that.arrc.push('../../static/loading.gif')
+      		that.arr.push(loadingUrl)
+      		that.arrc.push(loadingUrl)
 
       		$.ajax({
 		        type: "POST",
-		        url: 'http://www.windant.com:9005/UpLoadFile.ashx',
+		        // url: 'http://www.windant.com:9005/UpLoadFile.ashx',
+		        url: '/UpLoadFile.ashx',
 		        contentType: false,
 		        processData:false,
             	mimeType:"multipart/form-data",
@@ -177,7 +156,7 @@ export default {
 			} else { // 出现失败
 				let idxTemp
 				this.arr.map((item,idx) => {
-					if (item == '../../static/loading.gif') {
+					if (item == loadingUrl) {
 						idxTemp = idx
 					}
 				})
@@ -203,7 +182,8 @@ export default {
       		fd.append('OSSFileUrl',OSSFileUrl)
 			$.ajax({
 		        type: "POST",
-		        url: 'http://www.windant.com:9005/DeleteFile.ashx',
+		        // url: 'http://www.windant.com:9005/DeleteFile.ashx',
+		        url: '/DeleteFile.ashx',
 		       	contentType: false,
 		        processData:false,
             	mimeType:"multipart/form-data",
