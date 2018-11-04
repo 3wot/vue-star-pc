@@ -139,7 +139,6 @@ export default {
 					return	
 				}
 			}
-			debugger
 			this.pp('CompleteLoanApproval', param, res => {
 				if (res.ret) {
 					// 跳到操作页面
