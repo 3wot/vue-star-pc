@@ -38,7 +38,14 @@ export default {
 
 		// 后退
 		goBack () {
-			this.$router.go(-1)	
+			const { name } = this.$route
+			const { id, hid } = this.$route.params
+			if (name == 'opList' || name == 'look') { // 返回首页
+				this.$router.push({ name : 'index' })
+			} else {
+				this.$router.push({ name : 'opList', params: { id, hid }})
+			}
+			// this.$router.go(-1)	
 		},
 	
 

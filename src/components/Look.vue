@@ -227,10 +227,11 @@
 
 <script>
 import ImgList from './ImgList'
+import Header from './Header'
 
 export default {
 	components:{
-		ImgList,
+		ImgList, Header
 	},
 	name: 'Look',
 	data () {
