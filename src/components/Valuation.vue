@@ -41,7 +41,7 @@
 
 							<el-col :span="12">
 								<el-form-item label="用途">
-									<el-select class="w-100" v-model="form1.Usage" placeholder="请选择用途">
+									<el-select class="w-100" v-model="form1.Usage" @change="changeUsage" placeholder="请选择用途">
 										<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
 
 									</el-select>
@@ -222,7 +222,7 @@ export default {
 				"Location" : "",
 				"Usage" : "住宅",
 				"Area" : "",
-				"PledgePercentage" : "",
+				"PledgePercentage" : "6.5",
 				Orientation: "",
 				TotalFloor: "",
 				Floor: "",
@@ -249,7 +249,7 @@ export default {
 
 			op1 : ['商品房','经济适用房','央产房','已购公房','其它'],
 			op2 : ['住宅','别墅','商业','公寓','办公'],
-			op3 : ['6.5','5'],
+			op3 : ['4','4.5','5','5.5','6','6.5','7','7.5','8'],
 			op4 : ['无','北','南','西','东','东北','西北','东南','西南'],
 
 			//估值返回字段
@@ -279,6 +279,16 @@ export default {
 			this.$router.push({ name: 'look', params: { id }})
 		},
 		
+		// 修改用途
+		changeUsage(e) {
+			const { Usage } = this.form1
+			if (Usage == '住宅') {
+				this.form1.PledgePercentage = '6.5'
+			} else {
+				this.form1.PledgePercentage = '5'
+			}
+		},
+
 		// 首页
 		gotoIndex() {
 			this.$router.push({ name : 'index' })

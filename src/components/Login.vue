@@ -3,8 +3,13 @@
 
 		<img class="bg" src="../../static/login.jpg">
 
+
+		<div class="login-logo">
+			<img src="../../static/hlogo.png">
+
+		</div>
 		<div class="login-form">
-			
+			<p class="login-title">业务管理系统 1.0</p>
 			<el-form :model="loginForm" :rules="rules" label-width="90px" label-position="left">
 				<el-form-item label="账号" prop="mobile">
 					<el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
@@ -171,6 +176,23 @@ export default {
 	border-radius: 10px;
 	padding: 30px;
 	z-index: 99;
+}
+.login-logo {
+	position: absolute;
+	text-align: center;
+	top: 120px;
+	left: 0px;
+	right: 0px;
+}
+.login-logo img {
+	width: 180px;
+	margon: 0 auto;
+}
+.login-title {
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 }
 
 </style>

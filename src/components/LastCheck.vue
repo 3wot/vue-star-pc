@@ -31,18 +31,18 @@
 									</el-form-item>
 								</el-col>
 								<el-col :span="24">
-									<el-form-item label="批贷金额">
-										<el-input v-model="LoanAmount" placeholder="请输入批贷金额"></el-input>
+									<el-form-item label="批贷金额(万元)">
+										<el-input v-model="LoanAmount" placeholder="请输入批贷金额(万元)"></el-input>
 									</el-form-item>
 								</el-col>
 								<el-col :span="24">
-									<el-form-item label="批贷期限">
-										<el-input  v-model="LoanPeriodInMonth" placeholder="请输入批贷期限"></el-input>
+									<el-form-item label="批贷期限(月)">
+										<el-input  v-model="LoanPeriodInMonth" placeholder="请输入批贷期限(月)"></el-input>
 									</el-form-item>
 								</el-col>
 								<el-col :span="24">
-									<el-form-item label="批贷利率">
-										<el-input  v-model="LoanInterest" placeholder="请输入批贷利率"></el-input>
+									<el-form-item label="批贷月利率(%)">
+										<el-input  v-model="LoanInterest" placeholder="请输入批贷月利率(%)"></el-input>
 									</el-form-item>
 								</el-col>
 
