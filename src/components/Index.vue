@@ -23,7 +23,7 @@
 						<el-table-column
 							prop="BorrowerName"
 							:formatter="formatterName"
-							label="姓名"
+							label="客户姓名"
 							width="150">
 						</el-table-column>
 						<el-table-column

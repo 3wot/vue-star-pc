@@ -13,6 +13,11 @@
 						<el-row>
 
 							<el-col :span="24">
+								<el-form-item label="客户电话：">
+									<div>{{BorrowerMobile}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
 								<el-form-item label="报单状态：">
 									<div>{{Status == 0 ? '进行中' : (Status == 1 ? '正常结案' : '中途结案')}}</div>
 								</el-form-item>
@@ -339,6 +344,8 @@ export default {
 			C_CompanyFinancialStatementImageUrls: [], // 企业财务报表照片缩略图url
 			C_LawsuitFinishCertificateImageUrls: [], // 诉讼结案证明照片缩略图url
 			C_OtherCertificateImageUrls: [], // 其它照片缩略图url
+
+			BorrowerMobile: '',
 		}
 	},
 	mounted () {
@@ -471,6 +478,8 @@ export default {
 						C_CompanyFinancialStatementImageUrls, // 企业财务报表照片缩略图url
 						C_LawsuitFinishCertificateImageUrls, // 诉讼结案证明照片缩略图url
 						C_OtherCertificateImageUrls, // 其它照片缩略图url
+
+						BorrowerMobile,
 					} = formatData || {}
 					this.CurrentOperationName = CurrentOperationName // 当前操作名称,
 					this.Status = Status // 报单状态, 0，正在进行中，1，正常结案，2，中途结案
@@ -561,6 +570,8 @@ export default {
 					this.C_CompanyFinancialStatementImageUrls = C_CompanyFinancialStatementImageUrls // 企业财务报表照片缩略图url
 					this.C_LawsuitFinishCertificateImageUrls = C_LawsuitFinishCertificateImageUrls // 诉讼结案证明照片缩略图url
 					this.C_OtherCertificateImageUrls = C_OtherCertificateImageUrls // 其它照片缩略图url
+
+					this.BorrowerMobile = BorrowerMobile
 				} else {
 					this.warn(res.msg)
 				}

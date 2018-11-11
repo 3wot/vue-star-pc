@@ -169,3 +169,8 @@
 .text-left {
 	text-align: left;
 }
+.label-danger .el-form-item__label:before{
+	content: "*";
+    color: red;
+    margin-right: 4px;
+}

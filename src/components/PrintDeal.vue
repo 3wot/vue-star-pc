@@ -11,6 +11,23 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
+								<el-form-item label="合同模板">
+									<table class="show-table" cellpadding="0" cellspacing="0" border="1">
+										<thead>
+											<th width="400">模板名称</th>
+											<th width="120">点击下载</th>
+										</thead>
+										<tbody>
+											<tr v-for="(dd,index) in DocumentUrls" :key="index">
+												<td>{{dd.Name}}</td>
+												<td><a :href="dd.DocumentUrl" :download="dd.Name+'.doc'">点击下载</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</el-form-item>
+							</el-col>
+
+							<el-col :span="24">
 								<el-form-item label="合同照片">
 									<ImgUpload :arr="ContractImageUrls" :arrc="C_ContractImageUrls"></ImgUpload>
 								</el-form-item>
@@ -43,12 +60,29 @@ export default {
 		return {
 			ContractImageUrls: [],
 			C_ContractImageUrls: [],
+
+			DocumentUrls: [],
 		}
 	},
 	mounted () {
 		// console.log(this.$route.params.id)
+		this.init()
 	},
 	methods:{
+
+		// 初始化
+		init() {
+			const param = {}
+			this.pp('GetContractTemplateList', param, res => {
+				if (res.ret) {
+					this.DocumentUrls = res.data
+				} else {
+					this.warn(res.msg)
+				}
+			})
+
+		},
+
 
 		// 确认
 		sub () {

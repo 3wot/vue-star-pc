@@ -84,7 +84,9 @@ export default {
       	
       		let fd = new FormData()
       		const file = option.file
-      		const { uid, token } = USER_INFO
+      		// const { uid, token } = USER_INFO
+      		const uid = window.sessionStorage.getItem('uid')
+        	const token = window.sessionStorage.getItem('token')
       		const OrderId = window.sessionStorage.getItem('OrderId') + ""
       		const name = this.randomStr(5)
       		fd.append('uid', uid)
@@ -176,7 +178,9 @@ export default {
 			}
 			
 			let fd = new FormData()
-      		const { uid, token } = USER_INFO
+      		// const { uid, token } = USER_INFO
+      		const uid = window.sessionStorage.getItem('uid')
+        	const token = window.sessionStorage.getItem('token')
       		fd.append('uid', uid)
       		fd.append('token', token)
       		fd.append('OSSFileUrl',OSSFileUrl)
