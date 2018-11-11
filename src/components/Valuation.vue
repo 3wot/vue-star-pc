@@ -311,6 +311,13 @@ export default {
 				Floor,
 				BuildingFinishYear,
 			} = this.form1
+
+			if (Location && Area && Usage && PledgePercentage) {
+
+			} else {
+				this.warn('请完成标红的项目！')
+				return
+			}
 			const param = {
 				OrderId: id,
 				HouseId: hid,
@@ -396,7 +403,6 @@ export default {
 				HouseValuationImageUrl:HouseValuationImageUrl.join(),
 				C_HouseValuationImageUrl:C_HouseValuationImageUrl.join(),
 			}
-			console.log(param)
 			this.pp('CompleteHouseValuation', param, res => {
 				if (res.ret) {
 					// 跳到操作页面
