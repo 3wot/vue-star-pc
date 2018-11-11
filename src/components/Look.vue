@@ -32,15 +32,46 @@
 									<ImgList :arr="FirstAuditionImageUrl" :arrc="C_FirstAuditionImageUrl"></ImgList>
 								</el-form-item>
 							</el-col>
+							<el-col :span="24">
+								<el-form-item label="一审确认意见：">
+									<div>{{FirstAuditionConfirmComment}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="销售立项意见：">
+									<div>{{SaleOrderValidationComment}}</div>
+								</el-form-item>
+							</el-col>
 
+							
 							<el-col :span="24">
 								<el-form-item label="二审报告：">
 									<ImgList :arr="SecondAuditionImageUrl" :arrc="C_SecondAuditionImageUrl"></ImgList>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
+								<el-form-item label="二审意见：">
+									<div>{{SecondAuditionComment}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="二审确认意见：">
+									<div>{{SecondAuditionConfirmComment}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="联系产品供应方意见：">
+									<div>{{ContactProductProviderComment}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
 								<el-form-item label="匹配产品：">
 									<el-tag class="look-tag" v-for="(item,index) in MatchProducts" :key="index">{{item}}</el-tag>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="匹配产品确认意见：">
+									<div>{{ConfirmMatchProductComment}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
@@ -54,18 +85,24 @@
 									<div>{{IsLoanApproved ? '通过' : '未通过'}}</div>
 								</el-form-item>
 							</el-col>
+							<el-col :span="24" v-if="!IsLoanApproved">
+								<el-form-item label="贷款拒绝意见：">
+									<div>{{LoanRejectionComment}}</div>
+								</el-form-item>
+							</el-col>
+							
 							<el-col :span="24">
-								<el-form-item label="批贷金额：">
+								<el-form-item label="批贷金额(万元)：">
 									<div>{{LoanAmount}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
-								<el-form-item label="批贷期限：">
+								<el-form-item label="批贷期限(月)：">
 									<div>{{LoanPeriodInMonth}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
-								<el-form-item label="批贷利率：">
+								<el-form-item label="批贷月利率(%)：">
 									<div>{{LoanInterest}}</div>
 								</el-form-item>
 							</el-col>
@@ -346,6 +383,13 @@ export default {
 			C_OtherCertificateImageUrls: [], // 其它照片缩略图url
 
 			BorrowerMobile: '',
+			FirstAuditionConfirmComment: '',
+			SaleOrderValidationComment: '',
+			SecondAuditionComment: '',
+			SecondAuditionConfirmComment: '',
+			ContactProductProviderComment: '',
+			ConfirmMatchProductComment: '',
+			LoanRejectionComment: '',
 		}
 	},
 	mounted () {
@@ -480,6 +524,13 @@ export default {
 						C_OtherCertificateImageUrls, // 其它照片缩略图url
 
 						BorrowerMobile,
+						FirstAuditionConfirmComment,
+						SaleOrderValidationComment,
+						SecondAuditionComment,
+						SecondAuditionConfirmComment,
+						ContactProductProviderComment,
+						ConfirmMatchProductComment,
+						LoanRejectionComment,
 					} = formatData || {}
 					this.CurrentOperationName = CurrentOperationName // 当前操作名称,
 					this.Status = Status // 报单状态, 0，正在进行中，1，正常结案，2，中途结案
@@ -503,7 +554,7 @@ export default {
 					this.IsLoanApproved = IsLoanApproved // 是否批贷通过
 					this.LoanApprovalImageUrls = LoanApprovalImageUrls // 批贷函照片url
 					this.C_LoanApprovalImageUrls = C_LoanApprovalImageUrls // 批贷函照片缩略图url
-					this.LoanAmount = LoanAmount // 批贷金额
+					this.LoanAmount = parseInt(LoanAmount) // 批贷金额
 					this.LoanPeriodInMonth = LoanPeriodInMonth // 批贷期限
 					this.LoanInterest = LoanInterest // 批贷利率
 										
@@ -572,6 +623,13 @@ export default {
 					this.C_OtherCertificateImageUrls = C_OtherCertificateImageUrls // 其它照片缩略图url
 
 					this.BorrowerMobile = BorrowerMobile
+					this.FirstAuditionConfirmComment = FirstAuditionConfirmComment
+					this.SaleOrderValidationComment = SaleOrderValidationComment
+					this.SecondAuditionComment = SecondAuditionComment
+					this.SecondAuditionConfirmComment = SecondAuditionConfirmComment
+					this.ContactProductProviderComment = ContactProductProviderComment
+					this.ConfirmMatchProductComment = ConfirmMatchProductComment
+					this.LoanRejectionComment = LoanRejectionComment
 				} else {
 					this.warn(res.msg)
 				}

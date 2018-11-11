@@ -156,15 +156,15 @@
 							</tr>
 							<tr>
 								<td rowspan="2">周边小区价格</td>
-								<td>小区1</td>
+								<td>{{HouseNearbyName1}}</td>
 								<td>{{HouseNearbyAveragePrice1}}</td>
-								<td>小区2</td>
+								<td>{{HouseNearbyName2}}</td>
 								<td>{{HouseNearbyAveragePrice2}}</td>
 							</tr>
 							<tr>
-								<td>小区3</td>
+								<td>{{HouseNearbyName3}}</td>
 								<td>{{HouseNearbyAveragePrice3}}</td>
-								<td>小区4</td>
+								<td>{{HouseNearbyName4}}</td>
 								<td>{{HouseNearbyAveragePrice4}}</td>
 							</tr>
 							
@@ -255,6 +255,10 @@ export default {
 			//估值返回字段
 		 	"HouseAveragePrice": "",
             "HouseDealPeriod": "",
+            "HouseNearbyName1": '',
+            "HouseNearbyName2": '',
+            "HouseNearbyName3": '',
+            "HouseNearbyName4": '',
             "HouseNearbyAveragePrice1": "",
             "HouseNearbyAveragePrice2": "",
             "HouseNearbyAveragePrice3": "",
@@ -337,6 +341,10 @@ export default {
 					const {
 						HouseAveragePrice,
 			            HouseDealPeriod,
+			            HouseNearbyName1,
+			            HouseNearbyName2,
+			            HouseNearbyName3,
+			            HouseNearbyName4,
 			            HouseNearbyAveragePrice1,
 			            HouseNearbyAveragePrice2,
 			            HouseNearbyAveragePrice3,
@@ -348,6 +356,10 @@ export default {
 
 					this.HouseAveragePrice = HouseAveragePrice
 					this.HouseDealPeriod = HouseDealPeriod
+					this.HouseNearbyName1 = HouseNearbyName1
+					this.HouseNearbyName2 = HouseNearbyName2
+					this.HouseNearbyName3 = HouseNearbyName3
+					this.HouseNearbyName4 = HouseNearbyName4
 					this.HouseNearbyAveragePrice1 = HouseNearbyAveragePrice1
 					this.HouseNearbyAveragePrice2 = HouseNearbyAveragePrice2
 					this.HouseNearbyAveragePrice3 = HouseNearbyAveragePrice3
