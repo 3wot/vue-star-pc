@@ -202,7 +202,7 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-								<el-form-item label="上传初审表" prop="">
+								<el-form-item label="上传初审表" class="label-danger">
 									<ImgUpload :arr="FirstAuditionImageUrl" :arrc="C_FirstAuditionImageUrl" :max="1"></ImgUpload>
 								</el-form-item>
 							</el-col>

@@ -8,11 +8,11 @@
 				
 				<div class="sec">
 					<p class="main-title"><span class="span-title">操作</span></p>
-					<el-form label-width="130px" label-position="left">
+					<el-form label-width="150px" label-position="left">
 						<el-row :gutter="15">
 							
 							<el-col :span="24">
-								<el-form-item label="是否通过批贷">
+								<el-form-item label="是否通过批贷" class="label-danger">
 									<div class="text-left">
 										<el-radio-group v-model="IsLoanApproved">
 											<el-radio :label="true">通过</el-radio>
@@ -26,22 +26,22 @@
 							<div v-if="IsLoanApproved">
 
 								<el-col :span="24">
-									<el-form-item label="产品供应方批贷函">
+									<el-form-item label="产品供应方批贷函" class="label-danger">
 										<ImgUpload :arr="LoanApprovalImageUrls" :arrc="C_LoanApprovalImageUrls"></ImgUpload>
 									</el-form-item>
 								</el-col>
 								<el-col :span="24">
-									<el-form-item label="批贷金额(万元)">
+									<el-form-item label="批贷金额(万元)" class="label-danger">
 										<el-input v-model="LoanAmount" placeholder="请输入批贷金额(万元)"></el-input>
 									</el-form-item>
 								</el-col>
 								<el-col :span="24">
-									<el-form-item label="批贷期限(月)">
+									<el-form-item label="批贷期限(月)" class="label-danger">
 										<el-input  v-model="LoanPeriodInMonth" placeholder="请输入批贷期限(月)"></el-input>
 									</el-form-item>
 								</el-col>
 								<el-col :span="24">
-									<el-form-item label="批贷月利率(%)">
+									<el-form-item label="批贷月利率(%)" class="label-danger">
 										<el-input  v-model="LoanInterest" placeholder="请输入批贷月利率(%)"></el-input>
 									</el-form-item>
 								</el-col>
@@ -50,7 +50,7 @@
 
 							<div v-if="!IsLoanApproved">
 								<el-col :span="24">
-									<el-form-item label="拒绝理由">
+									<el-form-item label="拒绝理由" class="label-danger">
 										<el-input type="textarea" v-model="LoanRejectionComment" :rows="4" placeholder="请输入拒绝理由"></el-input>
 									</el-form-item>
 								</el-col>
@@ -135,7 +135,7 @@ export default {
 				if (!IsLoanApproved && LoanRejectionComment) {
 
 				} else {
-					this.warn('所有项目都需要填写')
+					this.warn('请完成所有标红的项目')
 					return	
 				}
 			}

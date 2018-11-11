@@ -12,7 +12,7 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-								<el-form-item label="操作放款">
+								<el-form-item label="操作放款" class="label-danger">
 									<el-button class="pull-left" type="primary" @click="sub">放款</el-button>
 								</el-form-item>
 							</el-col>

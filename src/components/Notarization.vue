@@ -11,7 +11,7 @@
 						<el-row :gutter="15">
 
 							<el-col :span="24">
-								<el-form-item label="现场照片">
+								<el-form-item label="现场照片" class="label-danger">
 									<ImgUpload :arr="SignContractImageUrls" :arrc="C_SignContractImageUrls"></ImgUpload>
 								</el-form-item>
 							</el-col>

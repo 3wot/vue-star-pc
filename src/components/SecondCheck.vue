@@ -8,28 +8,28 @@
 				
 				<div class="sec">
 					<p class="main-title"><span class="span-title">操作</span></p>
-					<el-form :size="formSize" label-width="130px" label-position="left">
+					<el-form :size="formSize" label-width="150px" label-position="left">
 						<el-row :gutter="15">
 							<el-col :span="12">
-								<el-form-item label="借款主体风险分析">
+								<el-form-item label="借款主体风险分析" class="label-danger">
 									<el-input v-model="val1" type="textarea"></el-input>
 								</el-form-item>
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="还款来源分析">
+								<el-form-item label="还款来源分析" class="label-danger">
 									<el-input v-model="val2" type="textarea"></el-input>
 								</el-form-item>
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="偿债能力分析">
+								<el-form-item label="偿债能力分析" class="label-danger">
 									<el-input v-model="val3" type="textarea"></el-input>
 								</el-form-item>
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="风控建议">
+								<el-form-item label="风控建议" class="label-danger">
 									<el-input v-model="val4" type="textarea"></el-input>
 								</el-form-item>
 							</el-col>
@@ -160,7 +160,7 @@
 					<el-form :size="formSize" class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 							<el-col :span="24">
-								<el-form-item label="上传二审报告">
+								<el-form-item label="上传二审报告" class="label-danger">
 									<ImgUpload :arr="SecondAuditionImageUrl" :arrc="C_SecondAuditionImageUrl" :max="1"></ImgUpload>
 								</el-form-item>
 							</el-col>
@@ -328,6 +328,12 @@ export default {
 
 			} else {
 				this.warn("请上传二审报告")
+				return
+			}
+			if (val1 && val2 && val3 && val4) {
+
+			} else {
+				this.warn("请输入风控意见")
 				return
 			}
 

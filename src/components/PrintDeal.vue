@@ -28,7 +28,7 @@
 							</el-col>
 
 							<el-col :span="24">
-								<el-form-item label="合同照片">
+								<el-form-item label="合同照片" class="label-danger">
 									<ImgUpload :arr="ContractImageUrls" :arrc="C_ContractImageUrls"></ImgUpload>
 								</el-form-item>
 							</el-col>

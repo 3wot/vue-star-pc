@@ -139,7 +139,7 @@
 					<el-form :size="formSize" label-width="130px" label-position="left">
 						<el-row>
 							<el-col :span="24">
-								<el-form-item label="产品列表">
+								<el-form-item label="产品列表" class="label-danger">
 									<el-checkbox-group class="pull-left text-left" v-model="MatchProductIds">
 										<el-tooltip v-for="(op,index) in optionList" :key="index" effect="dark" :content="op.Description" placement="top">
 											<el-checkbox class="check-item" :label="op.Id">{{op.Name + '（类别：'+op.ClassName+'）'}}</el-checkbox>

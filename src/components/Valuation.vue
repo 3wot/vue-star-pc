@@ -18,13 +18,13 @@
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="房屋建筑面积">
+								<el-form-item label="房屋建筑面积" class="label-danger">
 									<el-input v-model="form1.Area" placeholder="请输入房屋建筑面积"></el-input>
 								</el-form-item>
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="房屋坐落">
+								<el-form-item label="房屋坐落" class="label-danger">
 									<el-input v-model="form1.Location" placeholder="请输入房屋坐落"></el-input>
 								</el-form-item>
 							</el-col>
@@ -40,7 +40,7 @@
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="用途">
+								<el-form-item label="用途" class="label-danger">
 									<el-select class="w-100" v-model="form1.Usage" @change="changeUsage" placeholder="请选择用途">
 										<el-option v-for="(item,index) in op2" :key="index" :label="item" :value="item"></el-option>
 
@@ -49,7 +49,7 @@
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="抵押成数">
+								<el-form-item label="抵押成数" class="label-danger">
 									<el-select class="w-100" v-model="form1.PledgePercentage" placeholder="请选择抵押成数">
 										<el-option v-for="(item,index) in op3" :key="index" :label="item" :value="item"></el-option>
 
@@ -175,7 +175,7 @@
 					<el-form :size="formSize" class="m-t-20" label-width="120px" label-position="left">
 						<el-row :gutter="15">
 							<el-col :span="24">
-								<el-form-item label="上传估值报告">
+								<el-form-item label="上传估值报告" class="label-danger">
 									<ImgUpload :arr="HouseValuationImageUrl" :arrc="C_HouseValuationImageUrl" :max="1"></ImgUpload>
 								</el-form-item>
 							</el-col>
