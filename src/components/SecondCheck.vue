@@ -291,7 +291,7 @@ export default {
 					this.CompanyName = CompanyName
 					this.CompanyPhone = CompanyPhone
 					this.CompanySecurityIDNO = CompanySecurityIDNO
-					this.ExpectedBorrowAmount = ExpectedBorrowAmount
+					this.ExpectedBorrowAmount = parseFloat(ExpectedBorrowAmount/10000)
 					this.ExpectedBorrowPeriodInMonth = ExpectedBorrowPeriodInMonth
 
 					this.HouseTotalPrice = parseFloat(HouseTotalPrice/10000)
@@ -330,6 +330,10 @@ export default {
 				this.warn("请上传二审报告")
 				return
 			}
+			const val1 = this.val1
+			const val2 = this.val2
+			const val3 = this.val3
+			const val4 = this.val4
 			if (val1 && val2 && val3 && val4) {
 
 			} else {
