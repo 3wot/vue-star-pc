@@ -13,6 +13,7 @@
 			</div>
 
 			<div v-if="showBigTemp" :style="styleObj" class="upload-img-outer" @click="hideBig">
+				<a :href="showBigSrc" target="_blank" class="big-a">新页面打开图片</a>
 			</div>
 
 			<div v-if="arr.length < maxNum" class="upload-item">
@@ -54,6 +55,7 @@ export default {
 			loadingUrl: loadingUrl,
 			maxNum: 999,
 			showBigTemp: false,
+			showBigSrc: '',
 			styleObj: {
 				backgroundRepeat: 'no-repeat',
 				backgroundSize: 'contain',
@@ -210,6 +212,7 @@ export default {
 			if (idx>=0 && idx<this.arr.length) {
 				const src = this.arr[idx]
 				this.styleObj.backgroundImage = 'url('+src+')'
+				this.showBigSrc = src
 				this.showBigTemp = true
 			}
 		},

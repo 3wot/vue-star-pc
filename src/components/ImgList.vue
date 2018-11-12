@@ -11,6 +11,7 @@
 		</div>
 
 		<div v-if="showBigTemp" :style="styleObj" class="upload-img-outer" @click="hideBig">
+			<a :href="showBigSrc" target="_blank" class="big-a">新页面打开图片</a>
 		</div>
 
 		<div style="clear: both;"></div>
@@ -33,6 +34,7 @@ export default {
 	data () {
 		return {
 			showBigTemp: false,
+			showBigSrc: '',
 			styleObj: {
 				backgroundRepeat: 'no-repeat',
 				backgroundSize: 'contain',
@@ -80,6 +82,7 @@ export default {
 			if (idx>=0 && idx<this.imgArrC.length) {
 				const src = this.imgArrC[idx]
 				this.styleObj.backgroundImage = 'url('+src+')'
+				this.showBigSrc = src
 				this.showBigTemp = true
 			}
 		},

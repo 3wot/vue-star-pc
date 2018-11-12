@@ -174,3 +174,13 @@
     color: red;
     margin-right: 4px;
 }
+.big-a {
+	color: #409eff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 12px;
+    margin-left: 15px;
+    border: 1px solid #409eff;
+    border-radius: 5px;
+    padding: 1px 10px;
+}
