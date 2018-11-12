@@ -370,7 +370,7 @@ table td {
 }
 .check-item {
 	margin-right: 30px;
-	margin-left: 0px;
+	margin-left: 0px !important;
 }
 
 
