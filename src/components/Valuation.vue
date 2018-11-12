@@ -8,7 +8,7 @@
 				
 				<div class="sec">
 					<p class="main-title"><span class="span-title">操作</span></p>
-					<el-form :model="form1" :size="formSize" :rules="rules" label-width="120px" label-position="left">
+					<el-form :model="form1" :size="formSize" :rules="rules" label-width="130px" label-position="left">
 						<el-row :gutter="15">
 
 							<el-col :span="24">
@@ -18,8 +18,8 @@
 							</el-col>
 
 							<el-col :span="12">
-								<el-form-item label="房屋建筑面积" class="label-danger">
-									<el-input v-model="form1.Area" placeholder="请输入房屋建筑面积"></el-input>
+								<el-form-item label="房屋建筑面积(㎡)" class="label-danger">
+									<el-input v-model="form1.Area" placeholder="请输入房屋建筑面积(㎡)"></el-input>
 								</el-form-item>
 							</el-col>
 
@@ -137,35 +137,35 @@
 								<td colspan="2" :class="{'td-danger': BuildingYear>=35}">{{BuildingYear}}</td>
 							</tr>
 							<tr>
-								<td>房屋单价</td>
+								<td>房屋单价(元/平米)</td>
 								<td>{{HouseUnitPrice}}</td>
-								<td>房屋总价</td>
+								<td>房屋总价(万)</td>
 								<td colspan="2">{{HouseTotalPrice}}</td>
 							</tr>
 							<tr>
 								<td>抵押成数</td>
 								<td>{{form1.PledgePercentage}}</td>
-								<td>抵押总价</td>
+								<td>抵押总价(万)</td>
 								<td colspan="2">{{HousePledgePrice}}</td>
 							</tr>
 							<tr>
-								<td>行政区均价</td>
+								<td>行政区均价(元/平米)</td>
 								<td>{{HouseAveragePrice}}</td>
-								<td>成交周期</td>
+								<td>成交周期(日)</td>
 								<td colspan="2">{{HouseDealPeriod}}</td>
 							</tr>
 							<tr>
 								<td rowspan="2">周边小区价格</td>
-								<td>{{HouseNearbyName1}}</td>
-								<td>{{HouseNearbyAveragePrice1}}</td>
-								<td>{{HouseNearbyName2}}</td>
-								<td>{{HouseNearbyAveragePrice2}}</td>
+								<td>{{HouseNearbyName1}}&nbsp;</td>
+								<td>{{HouseNearbyAveragePrice1}}&nbsp;</td>
+								<td>{{HouseNearbyName2}}&nbsp;</td>
+								<td>{{HouseNearbyAveragePrice2}}&nbsp;</td>
 							</tr>
 							<tr>
-								<td>{{HouseNearbyName3}}</td>
-								<td>{{HouseNearbyAveragePrice3}}</td>
-								<td>{{HouseNearbyName4}}</td>
-								<td>{{HouseNearbyAveragePrice4}}</td>
+								<td>{{HouseNearbyName3}}&nbsp;</td>
+								<td>{{HouseNearbyAveragePrice3}}&nbsp;</td>
+								<td>{{HouseNearbyName4}}&nbsp;</td>
+								<td>{{HouseNearbyAveragePrice4}}&nbsp;</td>
 							</tr>
 							
 						</tbody>
@@ -446,9 +446,8 @@ export default {
 	height: 50px;
 }
 table td {
-	width : 130px;
-
-
+	max-width: 150px;
+	min-width: 120px;
 }
 .td-danger {
 	background-color: red;

@@ -88,9 +88,9 @@
 								<td colspan="8">借款项目</td>
 							</tr>
 							<tr>
-								<td colspan="2">申请贷款金额：</td>
+								<td colspan="2">申请贷款金额(万)：</td>
 								<td colspan="2">{{ExpectedBorrowAmount}}</td>
-								<td colspan="2">申请贷款期限：</td>
+								<td colspan="2">申请贷款期限(月)：</td>
 								<td colspan="2">{{ExpectedBorrowPeriodInMonth}}</td>
 							</tr>
 							<tr>
@@ -118,7 +118,7 @@
 								<td>{{Type}}</td>
 								<td>共有情况：</td>
 								<td>{{ShareOwnerInfo}}</td>
-								<td>房屋建筑面积：</td>
+								<td>房屋建筑面积(㎡)：</td>
 								<td>{{Area}}</td>
 								<td>用途：</td>
 								<td>{{Usage}}</td>
@@ -126,11 +126,11 @@
 							<tr>
 								<td>房屋使用状态：</td>
 								<td>{{PledgeInfo}}</td>
-								<td>房屋总价：</td>
+								<td>房屋总价(万)：</td>
 								<td>{{HouseTotalPrice}}</td>
 								<td>抵押成数：</td>
 								<td>{{PledgePercentage}}</td>
-								<td>抵押总价：</td>
+								<td>抵押总价(万)：</td>
 								<td>{{PledgePrice}}</td>
 							</tr>
 							<tr>
@@ -294,13 +294,13 @@ export default {
 					this.ExpectedBorrowAmount = ExpectedBorrowAmount
 					this.ExpectedBorrowPeriodInMonth = ExpectedBorrowPeriodInMonth
 
-					this.HouseTotalPrice = HouseTotalPrice
+					this.HouseTotalPrice = parseFloat(HouseTotalPrice/10000)
 					this.InterestReturnSource = InterestReturnSource
 					this.Location = Location
 					this.PledgeInfo = PledgeInfo
 					this.PledgePercentage = PledgePercentage
 
-					this.PledgePrice = PledgePrice
+					this.PledgePrice = parseFloat(PledgePrice/10000)
 					this.PrincipalReturnSource = PrincipalReturnSource
 					this.ShareOwnerInfo = ShareOwnerInfo
 					this.Type = Type
@@ -369,10 +369,13 @@ export default {
 	width : 190px;
 	height: 50px;
 }
+table {
+	width: 800px;
+}
 table td {
-	width : 130px;
-	padding: 0px;
-
+    min-width: 90px;
+    max-width: 160px;
+    padding: 2px;
 
 }
 

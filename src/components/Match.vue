@@ -38,9 +38,9 @@
 											</tr>
 
 											<tr>
-												<td>申请贷款金额</td>
+												<td>申请贷款金额(万)</td>
 												<td colspan="2">{{ExpectedBorrowAmount}}</td>
-												<td>申请贷款期限</td>
+												<td>申请贷款期限(月)</td>
 												<td colspan="2">{{ExpectedBorrowPeriodInMonth}}</td>
 											</tr>
 											<tr>
@@ -72,7 +72,7 @@
 												<td>{{Usage}}</td>
 												<td>共有情况</td>
 												<td>{{ShareOwnerInfo}}</td>
-												<td>房屋建筑面积</td>
+												<td>房屋建筑面积(㎡)</td>
 												<td>{{Area}}</td>
 											</tr>
 											<tr>
@@ -84,7 +84,7 @@
 												<td>{{IsPledged?"已抵押":"未抵押"}}</td>
 												<td>抵押机构</td>
 												<td>{{PledgeOrgnization}}</td>
-												<td>抵押金额</td>
+												<td>抵押金额(万)</td>
 												<td>{{PledgePrice}}</td>
 											</tr>
 											<tr>
@@ -274,7 +274,7 @@ methods:{
 					this.BorrowerSpouseName = BorrowerSpouseName
 					this.BorrowerSpouseIDNO = BorrowerSpouseIDNO
 					this.BorrowerSpouseMobile = BorrowerSpouseMobile
-					this.ExpectedBorrowAmount = ExpectedBorrowAmount
+					this.ExpectedBorrowAmount = parseFloat(ExpectedBorrowAmount/10000)
 					this.ExpectedBorrowPeriodInMonth = ExpectedBorrowPeriodInMonth
 					this.LoanPriority = LoanPriority
 					this.BorrowUsage = BorrowUsage
@@ -287,7 +287,7 @@ methods:{
 					this.PledgeInfo = PledgeInfo
 					this.IsPledged = IsPledged
 					this.PledgeOrgnization = PledgeOrgnization
-					this.PledgePrice = PledgePrice
+					this.PledgePrice = parseFloat(PledgePrice/10000)
 					this.IsLoanPaidOff = IsLoanPaidOff
 					this.IsZhuanDan = IsZhuanDan
 					this.CompanyName = CompanyName
