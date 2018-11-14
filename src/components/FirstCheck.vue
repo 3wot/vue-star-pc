@@ -37,27 +37,27 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td colspan="2">客户人</td>
+								<td colspan="2">客户</td>
 								<td colspan="2">客户配偶</td>
 								<td colspan="2">企业</td>
 							</tr>
 							<tr>
 								<td>名称：</td>
-								<td colspan="2">{{BorrowerName}}</td>
-								<td colspan="2">{{BorrowerSpouseName}}</td>
-								<td colspan="2">{{CompanyName}}</td>
+								<td colspan="2">{{BorrowerName||"-"}}</td>
+								<td colspan="2">{{BorrowerSpouseName||"-"}}</td>
+								<td colspan="2">{{CompanyName||"-"}}</td>
 							</tr>
 							<tr>
 								<td>证件号码：</td>
-								<td colspan="2">{{BorrowerIDNO}}</td>
-								<td colspan="2">{{BorrowerSpouseIDNO}}</td>
-								<td colspan="2">--</td>
+								<td colspan="2">{{BorrowerIDNO||"-"}}</td>
+								<td colspan="2">{{BorrowerSpouseIDNO||"-"}}</td>
+								<td colspan="2">-</td>
 							</tr>
 							<tr>
 								<td>联系电话：</td>
-								<td colspan="2">{{BorrowerMobile}}</td>
-								<td colspan="2">{{BorrowerSpouseMobile}}</td>
-								<td colspan="2">{{CompanyPhone}}</td>
+								<td colspan="2">{{BorrowerMobile||"-"}}</td>
+								<td colspan="2">{{BorrowerSpouseMobile||"-"}}</td>
+								<td colspan="2">{{CompanyPhone||"-"}}</td>
 							</tr>
 							<tr>
 								<td colspan="7">自然人风险</td>

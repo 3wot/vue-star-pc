@@ -19,7 +19,7 @@
 
 							<el-col :span="12">
 								<el-form-item label="房屋建筑面积(㎡)" class="label-danger">
-									<el-input v-model="form1.Area" placeholder="请输入房屋建筑面积(㎡)"></el-input>
+									<el-input type="number" v-model="form1.Area" placeholder="请输入房屋建筑面积(㎡)"></el-input>
 								</el-form-item>
 							</el-col>
 
@@ -68,13 +68,13 @@
 
 							<el-col :span="12">
 								<el-form-item label="总楼层数">
-									<el-input v-model="form1.TotalFloor" placeholder="请输入总楼层数"></el-input>
+									<el-input type="number" v-model="form1.TotalFloor" placeholder="请输入总楼层数"></el-input>
 								</el-form-item>
 							</el-col>
 
 							<el-col :span="12">
 								<el-form-item label="所在楼层">
-									<el-input v-model="form1.Floor" placeholder="请输入所在楼层"></el-input>
+									<el-input type="number" v-model="form1.Floor" placeholder="请输入所在楼层"></el-input>
 								</el-form-item>
 							</el-col>
 
@@ -116,56 +116,55 @@
 							</tr>
 							<tr>
 								<td>房屋坐落</td>
-								<td colspan="4">{{form1.Location}}</td>
-							</tr>
-							<tr>
+								<td colspan="4">{{form1.Location || '-'}}</td>
+							</tr>							<tr>
 								<td>房屋建筑面积</td>
-								<td>{{form1.Area}}</td>
+								<td>{{form1.Area|| '-'}}</td>
 								<td>用途</td>
-								<td colspan="2">{{form1.Usage}}</td>
+								<td colspan="2">{{form1.Usage|| '-'}}</td>
 							</tr>
 							<tr>
 								<td>总楼层数</td>
-								<td>{{form1.TotalFloor}}</td>
+								<td>{{form1.TotalFloor|| '-'}}</td>
 								<td>房屋所在楼层</td>
-								<td colspan="2">{{form1.Floor}}</td>
+								<td colspan="2">{{form1.Floor|| '-'}}</td>
 							</tr>
 							<tr>
 								<td>房屋朝向</td>
-								<td>{{form1.Orientation}}</td>
+								<td>{{form1.Orientation|| '-'}}</td>
 								<td>房龄</td>
-								<td colspan="2" :class="{'td-danger': BuildingYear>=35}">{{BuildingYear}}</td>
+								<td colspan="2" :class="{'td-danger': BuildingYear>=35}">{{BuildingYear|| '-'}}</td>
 							</tr>
 							<tr>
 								<td>房屋单价(元/平米)</td>
-								<td>{{HouseUnitPrice}}</td>
+								<td>{{HouseUnitPrice|| '-'}}</td>
 								<td>房屋总价(万)</td>
-								<td colspan="2">{{HouseTotalPrice}}</td>
+								<td colspan="2">{{HouseTotalPrice|| '-'}}</td>
 							</tr>
 							<tr>
 								<td>抵押成数</td>
-								<td>{{form1.PledgePercentage}}</td>
+								<td>{{form1.PledgePercentage|| '-'}}</td>
 								<td>抵押总价(万)</td>
-								<td colspan="2">{{HousePledgePrice}}</td>
+								<td colspan="2">{{HousePledgePrice|| '-'}}</td>
 							</tr>
 							<tr>
 								<td>行政区均价(元/平米)</td>
-								<td>{{HouseAveragePrice}}</td>
+								<td>{{HouseAveragePrice|| '-'}}</td>
 								<td>成交周期(日)</td>
-								<td colspan="2">{{HouseDealPeriod}}</td>
+								<td colspan="2">{{HouseDealPeriod|| '-'}}</td>
 							</tr>
 							<tr>
 								<td rowspan="2">周边小区价格</td>
-								<td>{{HouseNearbyName1}}&nbsp;</td>
-								<td>{{HouseNearbyAveragePrice1}}&nbsp;</td>
-								<td>{{HouseNearbyName2}}&nbsp;</td>
-								<td>{{HouseNearbyAveragePrice2}}&nbsp;</td>
+								<td>{{HouseNearbyName1|| '-'}}</td>
+								<td>{{HouseNearbyAveragePrice1|| '-'}}</td>
+								<td>{{HouseNearbyName2|| '-'}}</td>
+								<td>{{HouseNearbyAveragePrice2|| '-'}}</td>
 							</tr>
 							<tr>
-								<td>{{HouseNearbyName3}}&nbsp;</td>
-								<td>{{HouseNearbyAveragePrice3}}&nbsp;</td>
-								<td>{{HouseNearbyName4}}&nbsp;</td>
-								<td>{{HouseNearbyAveragePrice4}}&nbsp;</td>
+								<td>{{HouseNearbyName3|| '-'}}</td>
+								<td>{{HouseNearbyAveragePrice3|| '-'}}</td>
+								<td>{{HouseNearbyName4|| '-'}}</td>
+								<td>{{HouseNearbyAveragePrice4|| '-'}}</td>
 							</tr>
 							
 						</tbody>
