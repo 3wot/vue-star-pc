@@ -47,6 +47,7 @@
 							label="操作">
 							<template slot-scope="scope">
 					        	<el-button
+					        		v-if="type==0"
 					          		@click.native.prevent="handleClick(scope.$index)"
 						          	type="text"
 						          	size="small">

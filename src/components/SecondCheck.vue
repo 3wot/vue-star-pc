@@ -68,42 +68,42 @@
 							</tr>
 							<tr>
 								<td colspan="2">名称：</td>
-								<td colspan="2">{{BorrowerName}}</td>
-								<td colspan="2">{{BorrowerSpouseName}}</td>
-								<td colspan="2">{{CompanyName}}</td>
+								<td colspan="2">{{BorrowerName||'-'}}</td>
+								<td colspan="2">{{BorrowerSpouseName||'-'}}</td>
+								<td colspan="2">{{CompanyName||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">证件号码：</td>
-								<td colspan="2">{{BorrowerIDNO}}</td>
-								<td colspan="2">{{BorrowerSpouseIDNO}}</td>
-								<td colspan="2">{{CompanySecurityIDNO}}</td>
+								<td colspan="2">{{BorrowerIDNO||'-'}}</td>
+								<td colspan="2">{{BorrowerSpouseIDNO||'-'}}</td>
+								<td colspan="2">{{CompanySecurityIDNO||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">联系电话：</td>
-								<td colspan="2">{{BorrowerMobile}}</td>
-								<td colspan="2">{{BorrowerSpouseMobile}}</td>
-								<td colspan="2">{{CompanyPhone}}</td>
+								<td colspan="2">{{BorrowerMobile||'-'}}</td>
+								<td colspan="2">{{BorrowerSpouseMobile||'-'}}</td>
+								<td colspan="2">{{CompanyPhone||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="8">借款项目</td>
 							</tr>
 							<tr>
 								<td colspan="2">申请贷款金额(万)：</td>
-								<td colspan="2">{{ExpectedBorrowAmount}}</td>
+								<td colspan="2">{{ExpectedBorrowAmount||'-'}}</td>
 								<td colspan="2">申请贷款期限(月)：</td>
-								<td colspan="2">{{ExpectedBorrowPeriodInMonth}}</td>
+								<td colspan="2">{{ExpectedBorrowPeriodInMonth||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">借款用途：</td>
-								<td colspan="6">{{BorrowUsage}}</td>
+								<td colspan="6">{{BorrowUsage||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">利息还款来源：</td>
-								<td colspan="6">{{InterestReturnSource}}</td>
+								<td colspan="6">{{InterestReturnSource||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">本金还款来源：</td>
-								<td colspan="6">{{PrincipalReturnSource}}</td>
+								<td colspan="6">{{PrincipalReturnSource||'-'}}</td>
 							</tr>
 							
 							<tr>
@@ -111,46 +111,46 @@
 							</tr>
 							<tr>
 								<td>房屋坐落：</td>
-								<td colspan="7">{{Location}}</td>
+								<td colspan="7">{{Location||'-'}}</td>
 							</tr>
 							<tr>
 								<td>房屋性质：</td>
-								<td>{{Type}}</td>
+								<td>{{Type||'-'}}</td>
 								<td>共有情况：</td>
-								<td>{{ShareOwnerInfo}}</td>
+								<td>{{ShareOwnerInfo||'-'}}</td>
 								<td>房屋建筑面积(㎡)：</td>
-								<td>{{Area}}</td>
+								<td>{{Area||'-'}}</td>
 								<td>用途：</td>
-								<td>{{Usage}}</td>
+								<td>{{Usage||'-'}}</td>
 							</tr>
 							<tr>
 								<td>房屋使用状态：</td>
-								<td>{{PledgeInfo}}</td>
+								<td>{{PledgeInfo||'-'}}</td>
 								<td>房屋总价(万)：</td>
-								<td>{{HouseTotalPrice}}</td>
+								<td>{{HouseTotalPrice||'-'}}</td>
 								<td>抵押成数：</td>
-								<td>{{PledgePercentage}}</td>
+								<td>{{PledgePercentage||'-'}}</td>
 								<td>抵押总价(万)：</td>
-								<td>{{PledgePrice}}</td>
+								<td>{{PledgePrice||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="8">风控意见</td>
 							</tr>
 							<tr>
 								<td colspan="2">借款主体风险分析</td>
-								<td colspan="6">{{val1}}</td>
+								<td colspan="6">{{val1||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">还款来源分析</td>
-								<td colspan="6">{{val2}}</td>
+								<td colspan="6">{{val2||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">偿债能力分析</td>
-								<td colspan="6">{{val3}}</td>
+								<td colspan="6">{{val3||'-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="2">风控建议</td>
-								<td colspan="6">{{val4}}</td>
+								<td colspan="6">{{val4||'-'}}</td>
 							</tr>
 
 						</tbody>
@@ -298,9 +298,9 @@ export default {
 					this.InterestReturnSource = InterestReturnSource
 					this.Location = Location
 					this.PledgeInfo = PledgeInfo
-					this.PledgePercentage = PledgePercentage
+					this.PledgePercentage = parseFloat(PledgePercentage)
 
-					this.PledgePrice = parseFloat(PledgePrice/10000)
+					this.PledgePrice = parseFloat(HouseTotalPrice*PledgePercentage/100000)
 					this.PrincipalReturnSource = PrincipalReturnSource
 					this.ShareOwnerInfo = ShareOwnerInfo
 					this.Type = Type
