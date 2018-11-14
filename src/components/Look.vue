@@ -11,7 +11,11 @@
 					
 					<el-form label-width="170px" label-position="left" class="text-left">
 						<el-row>
-
+							<el-col :span="24">
+								<el-form-item label="报单ID：">
+									<div>{{$route.params.id}}</div>
+								</el-form-item>
+							</el-col>
 							<el-col :span="24">
 								<el-form-item label="客户电话：">
 									<div>{{BorrowerMobile}}</div>
@@ -20,6 +24,11 @@
 							<el-col :span="24">
 								<el-form-item label="报单状态：">
 									<div>{{Status == 0 ? '进行中' : (Status == 1 ? '正常结案' : '中途结案')}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="最后操作：">
+									<div>{{LastOperationName}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
@@ -278,6 +287,7 @@ export default {
 	name: 'Look',
 	data () {
 		return {
+			LastOperationName: '',
 			CurrentOperationName: '', // 当前操作名称,
 			Status: '', // 报单状态: [], 0，正在进行中，1，正常结案，2，中途结案
 			HouseValuationImageUrl: '', // 房屋估值报告照片url
@@ -421,6 +431,7 @@ export default {
 				if (res.ret) {
 					const formatData = this.format(res.data)
 					const {
+						LastOperationName,
 						CurrentOperationName, // 当前操作名称,
 						Status, // 报单状态, 0，正在进行中，1，正常结案，2，中途结案
 						HouseValuationImageUrl, // 房屋估值报告照片url
@@ -532,6 +543,7 @@ export default {
 						ConfirmMatchProductComment,
 						LoanRejectionComment,
 					} = formatData || {}
+					this.LastOperationName = LastOperationName
 					this.CurrentOperationName = CurrentOperationName // 当前操作名称,
 					this.Status = Status // 报单状态, 0，正在进行中，1，正常结案，2，中途结案
 					this.HouseValuationImageUrl = HouseValuationImageUrl // 房屋估值报告照片url
