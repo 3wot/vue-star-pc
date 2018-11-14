@@ -21,6 +21,14 @@
 						class="index-table"
 						>
 						<el-table-column
+							label="销售姓名"
+							width="150">
+							<template slot-scope="scope">
+								<el-badge v-if="type==0 && scope.row.NeedToOperate" is-dot></el-badge>
+								<span>{{scope.row.CreatorName}}</span>
+							</template>
+						</el-table-column>
+						<el-table-column
 							prop="BorrowerName"
 							:formatter="formatterName"
 							label="客户姓名"
@@ -50,12 +58,30 @@
 						          	size="small">
 					          		全部资料
 					        	</el-button>
+					        	<el-button
+					        		v-if="type==0"
+					          		@click.native.prevent="finish1(scope.$index)"
+						          	type="text"
+						          	size="small">
+					          		结案
+					        	</el-button>
 					      	</template>
 						</el-table-column>
 					</el-table>
 				<!-- </div> -->
 
 		  	</el-main>
+			<el-dialog
+				title="警告"
+				:visible.sync="finishDialog"
+				width="30%"
+				center>
+				<span>点击确定，将直接结案，请您慎重操作！</span>
+				<span slot="footer" class="dialog-footer">
+					<el-button @click="finishDialog = false">取 消</el-button>
+					<el-button type="primary" @click="finish2">确 定</el-button>
+				</span>
+			</el-dialog>
 		</el-container>
 		
 		
@@ -79,6 +105,8 @@ export default {
 		return {
 			// 0 进行 3 历史
 			type: 0,
+			finishDialog: false, // 结案弹框
+			finishIndex: null,
 			// 订单列表
 			orderList: [
 				// {
@@ -167,6 +195,32 @@ export default {
 		formatterName (row, column, cellValue, index) {
 			const { BorrowerName } = row || {}
 			return BorrowerName || '暂无'
+		},
+
+		// 结案
+		finish1 (idx) {
+			this.finishDialog = true
+			this.finishIndex = idx
+			
+		},
+
+		finish2() {
+			this.finishDialog = false
+			const index = this.finishIndex
+			if (index >=0) {
+				const { OrderId } = this.orderList[index]
+				const param = {
+					OrderId: OrderId,
+				}
+				this.pp('CancelOrder', param, res => {
+					if (res.ret) {
+						this.warn('结案成功')
+						this.changeType(this.type)
+					} else {
+						this.warn(res.msg)
+					}
+				})
+			}
 		},
 		
 		// 换色
