@@ -10,8 +10,22 @@
 			<!-- {{item}} -->
 		</div>
 
-		<div v-if="showBigTemp" :style="styleObj" class="upload-img-outer" @click="hideBig">
+		<!-- <div v-if="showBigTemp" :style="styleObj" class="upload-img-outer" @click="hideBig">
 			<a :href="showBigSrc" target="_blank" class="big-a">新页面打开图片</a>
+		</div> -->
+
+		<div v-if="showBigTemp" class="upload-img-outer">
+			<div class="upload-img-tool">
+				<a :href="showBigSrc" target="_blank" class="big-a">单独打开</a>
+				<span class="big-a" @click="big">放大</span>
+				<span class="big-a" @click="small">缩小</span>
+				<span class="big-a" @click="left">左转</span>
+				<span class="big-a" @click="right">右转</span>
+				<span class="pull-right big-a" style="margin-right: 15px" @click="hideBig"><i class="el-icon-close"></i></span>
+			</div>
+			<div :style="styleObj" class="upload-img-in">
+				
+			</div>
 		</div>
 
 		<div style="clear: both;"></div>
@@ -23,7 +37,9 @@
 </template>
 
 <script>
-
+import $ from 'jquery'
+let LEFT = 90
+let RIGHT = 90
 
 export default {
 	components:{
@@ -92,6 +108,39 @@ export default {
 			this.showBigTemp = false
 		},
 
+		big() {
+			const width = $('.upload-img-outer').width() + 20
+			const height = $('.upload-img-outer').height() + 20
+			const left = $('.upload-img-outer').position().left - 10
+			const top = $('.upload-img-outer').position().top
+			$('.upload-img-outer').css({
+				width: width,
+				height: height,
+				left: left,
+				// top: top,
+			})
+		},
+
+		small() {
+			const width = $('.upload-img-outer').width() - 20
+			const height = $('.upload-img-outer').height() - 20
+			const left = $('.upload-img-outer').position().left + 10
+			const top = $('.upload-img-outer').position().top
+			$('.upload-img-outer').css({
+				width: width,
+				height: height,
+				left: left,
+				// top: top,
+			})
+		},
+
+		left() {
+			
+		},
+		right() {
+			
+		},
+
 	},
 
 
@@ -99,14 +148,6 @@ export default {
 </script>
 
 <style scoped>
-.upload-img-outer {
-    background: rgba(0,0,0,0.7);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-}
+
 
 </style>

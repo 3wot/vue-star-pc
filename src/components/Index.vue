@@ -6,7 +6,7 @@
 				<span>首页</span>
 				<span class="logout pull-right">退出</span>
 			</el-header> -->
-			<Header title="首页"></Header>
+			<Header :refresh="true" title="首页" @refresh="refreshFn"></Header>
 		  	<el-main class="c-main">
 				<el-button-group>
 				  	<el-button type="primary" :plain="type != 0" class="btn-150" @click="changeType(0)">进行中报单</el-button>
@@ -100,6 +100,7 @@
 // import Router from 'vue-router'
 import URLS from '../router/link'
 import Header from './Header'
+const TIME = 60000
 
 export default {
 	components:{
@@ -134,6 +135,7 @@ export default {
 	   //              "Status": "0"
 				// },
 			],
+			refreshTimer: null,
 		}
 	},
 	computed:{
@@ -151,6 +153,11 @@ export default {
 	},
 	methods:{
 
+		// 刷新
+		refreshFn() {
+			this.changeType(this.type)	
+		},
+
 		// 点击进行中或者历史
 		changeType(type) {
 			this.type = type
@@ -165,6 +172,13 @@ export default {
 					this.warn(res.msg)
 				}
 			})
+
+			if (this.refreshTimer) {
+				clearInterval(this.refreshTimer)
+			}
+			this.refreshTimer = setInterval(() => {
+				this.refreshFn()
+			},TIME)
 		},
 		
 		// 新增

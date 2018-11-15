@@ -4,7 +4,9 @@
 	<el-header class="c-header">
 		<span v-if="back" class="header-back" @click="goBack">返回</span>
 		<span>{{title}}</span>
+
 		<span class="logout pull-right" @click="logOut">退出</span>
+		<span v-if="refresh" class="logout pull-right" style="margin-right:15px;" @click="refreshFn">刷新</span>
 	</el-header>
 		
 	
@@ -20,7 +22,7 @@ export default {
 	// Button,Field
 	},
 	name: 'Header',
-	props: ['title','back'],
+	props: ['title','back','refresh'],
 	data () {
 		return {
 			
@@ -46,6 +48,11 @@ export default {
 				this.$router.push({ name : 'opList', params: { id, hid }})
 			}
 			// this.$router.go(-1)	
+		},
+
+		// 刷新
+		refreshFn() {
+			this.$emit('refresh')
 		},
 	
 
