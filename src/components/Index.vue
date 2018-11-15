@@ -37,10 +37,15 @@
 						<el-table-column
 							prop="CreationDateTime"
 							label="创建时间"
+							sortable
 							width="300">
 						</el-table-column>
 						<el-table-column
+							prop="Status"
 							:formatter="formatter"
+							:filters="StatusFilterArr"
+							:filter-multiple="false"
+      						:filter-method="filterTag"
 							label="状态">
 						</el-table-column>
 						<el-table-column
@@ -131,6 +136,16 @@ export default {
 			],
 		}
 	},
+	computed:{
+		StatusFilterArr: function(){
+			const type = this.type
+			if (type == 0) {
+				return []
+			} else if (type==3) {
+				return [{ text: '正常结案', value: 1 }, { text: '中途结案', value: 2 }]
+			}
+		},
+	},
 	mounted () {
 		this.changeType(0)
 	},
@@ -204,7 +219,6 @@ export default {
 			this.finishIndex = idx
 			
 		},
-
 		finish2() {
 			this.finishDialog = false
 			const index = this.finishIndex
@@ -224,6 +238,11 @@ export default {
 			}
 		},
 		
+		// 过滤
+		filterTag(value, row) {
+			return row.Status == value;
+		},
+
 		// 换色
 		RowClass ({row, rowIndex}) {
 			const { Status } = row || {}
