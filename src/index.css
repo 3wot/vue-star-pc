@@ -198,6 +198,7 @@
     border: 1px solid #fff;
     transition:width .2s;
     transition:height .2s;
+
 }
 .upload-img-tool {
 	width: 100%;
@@ -208,4 +209,18 @@
 .upload-img-in {
 	width: 100%;
 	height: calc(100% - 50px);
+	margin: 0 auto;
+	/*transition:transform .2s;*/
+}
+.rotate-90 {
+	transform: rotate(90deg);
+}
+.rotate-180 {
+	transform: rotate(180deg);
+}
+.rotate-270 {
+	transform: rotate(270deg);
+}
+.rotate-360 {
+	transform: rotate(0deg);
 }

@@ -38,8 +38,7 @@
 
 <script>
 import $ from 'jquery'
-let LEFT = 90
-let RIGHT = 90
+let LEFT = 0
 
 export default {
 	components:{
@@ -135,10 +134,40 @@ export default {
 		},
 
 		left() {
-			
+			const left = LEFT - 90 < 0 ? LEFT + 270 : LEFT - 90
+			LEFT = left
+			const className = 'rotate-' + left
+			const width = $('.upload-img-outer').width()
+			const height = $('.upload-img-outer').height()-50
+			$('.upload-img-in').removeClass('rotate-90').removeClass('rotate-180').removeClass('rotate-270').removeClass('rotate-360').addClass(className)
+
+			if (left%180) {
+				$('.upload-img-in').css({
+					width: height,
+				})
+			} else {
+				$('.upload-img-in').css({
+					width: width,
+				})
+			}
 		},
+
 		right() {
-			
+			const left = LEFT + 90 > 360 ? LEFT-270 : LEFT + 90
+			LEFT = left
+			const className = 'rotate-' + left
+			const width = $('.upload-img-outer').width()
+			const height = $('.upload-img-outer').height()-50
+			$('.upload-img-in').removeClass('rotate-90').removeClass('rotate-180').removeClass('rotate-270').removeClass('rotate-360').addClass(className)
+			if (left%180) {
+				$('.upload-img-in').css({
+					width: height,
+				})
+			} else {
+				$('.upload-img-in').css({
+					width: width,
+				})
+			}
 		},
 
 	},
