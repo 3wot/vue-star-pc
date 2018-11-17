@@ -14,7 +14,7 @@
 			<a :href="showBigSrc" target="_blank" class="big-a">新页面打开图片</a>
 		</div> -->
 
-		<div v-if="showBigTemp" class="upload-img-outer">
+		<div v-if="showBigTemp" class="upload-img-outer" @mousedown="down" @mouseup="up" @mousemove="move">
 			<div class="upload-img-tool">
 				<a :href="showBigSrc" target="_blank" class="big-a">单独打开</a>
 				<span class="big-a" @click="big">放大</span>
@@ -39,6 +39,9 @@
 <script>
 import $ from 'jquery'
 let LEFT = 0
+let MOVE_X = 0
+let MOVE_Y = 0
+let MOVE_TEMP = false
 
 export default {
 	components:{
@@ -118,6 +121,9 @@ export default {
 				left: left,
 				// top: top,
 			})
+			$('.upload-img-in').css({
+				width: '100%',
+			})
 		},
 
 		small() {
@@ -130,6 +136,9 @@ export default {
 				height: height,
 				left: left,
 				// top: top,
+			})
+			$('.upload-img-in').css({
+				width: '100%',
 			})
 		},
 
@@ -168,6 +177,45 @@ export default {
 					width: width,
 				})
 			}
+		},
+
+		// 鼠标按下
+		down(e) {
+			MOVE_TEMP = true
+			const left = $('.upload-img-outer').position().left
+			const top = $('.upload-img-outer').position().top
+			MOVE_X = e.pageX - left
+			MOVE_Y = e.pageY - top
+		},
+
+		// 鼠标弹起
+		up() {
+			MOVE_TEMP = false
+		},
+
+		move(e) {
+			if (MOVE_TEMP) {
+				const newX = e.pageX - MOVE_X
+				const newY = e.pageY - MOVE_Y
+				const width = $('.upload-img-outer').width()
+				const height = $('.upload-img-outer').height()
+				const Cwidth = document.body.clientWidth
+				const Cheight = document.body.clientHeight
+				console.log(Cheight)
+				console.log(height)
+				if (newX>0 && newX<(Cwidth-width)) {
+					$('.upload-img-outer').css({
+						left: newX
+					})
+				}
+				if (newY>0 && newY<(Cheight-height)) {
+					$('.upload-img-outer').css({
+						top: newY
+					})
+				}
+
+			}
+			
 		},
 
 	},
