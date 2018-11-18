@@ -139,6 +139,10 @@ export default {
 					return	
 				}
 			}
+			if (UPLOAD_NUM) {
+				this.warn('还有图片正在上传！')
+				return
+			}
 			this.pp('CompleteLoanApproval', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

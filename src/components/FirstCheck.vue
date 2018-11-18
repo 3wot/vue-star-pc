@@ -415,6 +415,10 @@ methods:{
 			this.warn('请上传初审表！')
 			return
 		}
+		if (UPLOAD_NUM) {
+			this.warn('还有图片正在上传！')
+			return
+		}
 
 		const param = {
 			OrderId: id,

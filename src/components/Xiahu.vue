@@ -72,6 +72,10 @@ export default {
 				this.warn("请上传下户照片！")
 				return
 			}
+			if (UPLOAD_NUM) {
+				this.warn('还有图片正在上传！')
+				return
+			}
 			// console.log(param)
 			this.pp('CompleteHouseVisit', param, res => {
 				if (res.ret) {

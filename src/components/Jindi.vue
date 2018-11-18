@@ -70,6 +70,10 @@ export default {
 				this.warn("请上传现场照片！")
 				return
 			}
+			if (UPLOAD_NUM) {
+				this.warn('还有图片正在上传！')
+				return
+			}
 			this.pp('CompletePledge', param, res => {
 				if (res.ret) {
 					// 跳到操作页面

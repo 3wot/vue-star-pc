@@ -19,7 +19,7 @@
 
 							<el-col :span="12">
 								<el-form-item label="房屋建筑面积(㎡)" class="label-danger">
-									<el-input type="number" v-model="form1.Area" placeholder="请输入房屋建筑面积(㎡)"></el-input>
+									<el-input type="number" @change="changeArea" v-model="form1.Area" placeholder="请输入房屋建筑面积(㎡)"></el-input>
 								</el-form-item>
 							</el-col>
 
@@ -293,6 +293,15 @@ export default {
 			}
 		},
 
+		// 修改面积
+		changeArea() {
+			const { Area } = this.form1
+			console.log(Area)
+			if (Area < 0 ) {
+				this.form1.Area = 0
+			}
+		},
+
 		// 首页
 		gotoIndex() {
 			this.$router.push({ name : 'index' })
@@ -407,6 +416,10 @@ export default {
 			if (HouseValuationImageUrl.length && C_HouseValuationImageUrl.length) {
 			} else {
 				this.warn('请上传估值报告！')
+				return
+			}
+			if (UPLOAD_NUM) {
+				this.warn('还有图片正在上传！')
 				return
 			}
 

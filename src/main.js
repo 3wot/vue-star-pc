@@ -18,6 +18,7 @@ window.USER_INFO = {
     OperatorRoleId: '',
     OperatorRoleName: '',
 }
+window.UPLOAD_NUM = 0
 
 Vue.prototype.pp = GETJSON
 Vue.prototype.warn = function(msg) {

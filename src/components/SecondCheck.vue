@@ -344,6 +344,10 @@ export default {
 				this.warn("请输入风控意见")
 				return
 			}
+			if (UPLOAD_NUM) {
+				this.warn('还有图片正在上传！')
+				return
+			}
 
 			// console.log(param)
 			this.pp('CompleteSecondAudition', param, res => {

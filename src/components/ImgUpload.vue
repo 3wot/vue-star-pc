@@ -12,7 +12,7 @@
 
 			</div>
 
-			<div v-if="showBigTemp" :style="styleObj" class="upload-img-outer" @click="hideBig">
+			<div v-if="showBigTemp" :style="styleObj" class="upload-img-out" @click="hideBig">
 				<a :href="showBigSrc" target="_blank" class="big-a">新页面打开图片</a>
 			</div>
 
@@ -43,6 +43,7 @@
 import $ from 'jquery'
 import loadingUrl from '@/assets/loading.gif'
 // import OSS from 'ali-oss'
+let uploadObj = {}
 
 export default {
 	components:{
@@ -71,6 +72,9 @@ export default {
 		} else {
 			this.maxNum = 999
 		}
+
+		UPLOAD_NUM = 0
+		uploadObj = {}
 	},
 	methods:{
 		// 点击上传
@@ -106,6 +110,9 @@ export default {
       		that.arr.push(loadingUrl)
       		that.arrc.push(loadingUrl)
 
+      		UPLOAD_NUM = UPLOAD_NUM + 1
+      		uploadObj[length] = true // 表示当前位置的图片正在上传
+
       		$.ajax({
 		        type: "POST",
 		        // url: 'http://www.windant.com:9005/UpLoadFile.ashx',
@@ -129,8 +136,17 @@ export default {
 							that.arrc.splice(length,1)	
 						}
 		            }
+		            if (uploadObj[length]) { // 如果没有中途放弃
+		            	UPLOAD_NUM = UPLOAD_NUM - 1
+		            	uploadObj[length] = false
+		            }
+		            
 		        },
 		        error: function (err) {
+		        	if (uploadObj[length]) { // 如果没有中途放弃
+		            	UPLOAD_NUM = UPLOAD_NUM - 1
+		            	uploadObj[length] = false
+		            }
 		            that.warn(err)
 		            that.arr.splice(length,1)
 					if (that.arrc) {
@@ -152,21 +168,23 @@ export default {
 		},
 		// 添加
 		add (url,urlc,index) {
-			if (index < this.arr.length) { // 没问题
-				this.arr.splice(index,1,url)
-				if (this.arrc) {
-					this.arrc.splice(index,1,urlc)
-				}	
-			} else { // 出现失败
-				let idxTemp
-				this.arr.map((item,idx) => {
-					if (item == loadingUrl) {
-						idxTemp = idx
+			if (uploadObj[index]) {
+				if (index < this.arr.length) { // 没问题
+					this.arr.splice(index,1,url)
+					if (this.arrc) {
+						this.arrc.splice(index,1,urlc)
+					}	
+				} else { // 出现失败
+					let idxTemp
+					this.arr.map((item,idx) => {
+						if (item == loadingUrl) {
+							idxTemp = idx
+						}
+					})
+					this.arr.splice(idxTemp,1,url)
+					if (this.arrc) {
+						this.arrc.splice(idxTemp,1,urlc)
 					}
-				})
-				this.arr.splice(idxTemp,1,url)
-				if (this.arrc) {
-					this.arrc.splice(idxTemp,1,urlc)
 				}
 			}
 			
@@ -174,6 +192,10 @@ export default {
 		// 删除图片
 		dele(idx) {
 			const OSSFileUrl = this.arr[idx]
+			if (OSSFileUrl == loadingUrl) { // 如果删除的是，正在上传的
+				UPLOAD_NUM = UPLOAD_NUM - 1
+				uploadObj[idx] = false // 放弃上传
+			}
 			this.arr.splice(idx,1)
 			if (this.arrc) {
 				this.arrc.splice(idx,1)	
@@ -224,7 +246,7 @@ export default {
 </script>
 
 <style scoped>
-.upload-img-outer {
+.upload-img-out {
 	background: rgba(0,0,0,0.7);
 	position: fixed;
 	top: 0;
