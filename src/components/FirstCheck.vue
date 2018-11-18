@@ -448,14 +448,32 @@ methods:{
 		if (type == 1) { // 自己
 			const name = this.BorrowerName
 			const id = this.BorrowerIDNO
-			this.$router.push({ 'name' : 'firstDetail', params: { name, id }})
+			// this.$router.push({ 'name' : 'firstDetail', params: { name, id }})
+			let routeData = this.$router.resolve({
+			   	name: "firstDetail",
+			   	// query: params,
+			   	params:{ name, id }
+			});
+			window.open(routeData.href, '_blank')
 		} else if (type == 2) { // 配偶
 			const name = this.BorrowerSpouseName
 			const id = this.BorrowerSpouseIDNO
-			this.$router.push({ name : 'firstDetail', params: { name, id }})
+			// this.$router.push({ name : 'firstDetail', params: { name, id }})
+			let routeData = this.$router.resolve({
+			   	name: "firstDetail",
+			   	// query: params,
+			   	params:{ name, id }
+			});
+			window.open(routeData.href, '_blank')
 		} else if (type == 3) {
 			const name = this.CompanyName
-			this.$router.push({ name : 'firstDetail', params: { name }})
+			// this.$router.push({ name : 'firstDetail', params: { name }})
+			let routeData = this.$router.resolve({
+			   	name: "firstDetail",
+			   	// query: params,
+			   	params:{ name }
+			});
+			window.open(routeData.href, '_blank')
 		}
 
 	},

@@ -22,7 +22,7 @@
 											<th width="100">执行金额</th>
 											<th width="100">日期</th>
 										</thead>
-										<tbody>
+										<tbody v-if="data.length">
 											<tr v-for="(dd,index) in data" :key="index">
 												<td>{{dd.caseCode}}</td>
 												<td>{{dd.caseState}}</td>
@@ -31,6 +31,11 @@
 												<td>{{dd.entityName}}</td>
 												<td>{{dd.execMoney}}</td>
 												<td>{{dd.regDate}}</td>
+											</tr>
+										</tbody>
+										<tbody v-if="!data.length">
+											<tr>
+												<td colspan="7">暂无数据</td>
 											</tr>
 										</tbody>
 									</table>
