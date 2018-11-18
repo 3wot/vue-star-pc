@@ -6,6 +6,7 @@ import Index from '@/components/Index'
 import OpList from '@/components/OpList'
 import Valuation from '@/components/Valuation'
 import FirstCheck from '@/components/FirstCheck'
+import FirstDetail from '@/components/FirstDetail'
 import SecondCheck from '@/components/SecondCheck'
 import Match from '@/components/Match'
 import Contact from '@/components/Contact'
@@ -62,6 +63,12 @@ export default new Router({
 			path: '/firstCheck/:id/:hid/:oprid',
 			name: 'firstCheck',
 			component: FirstCheck
+		},
+		{
+			// 
+			path: '/firstDetail/:name/:id?',
+			name: 'firstDetail',
+			component: FirstDetail
 		},
 		{
 			// 二审

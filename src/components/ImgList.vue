@@ -201,8 +201,6 @@ export default {
 				const height = $('.upload-img-outer').height()
 				const Cwidth = document.body.clientWidth
 				const Cheight = document.body.clientHeight
-				console.log(Cheight)
-				console.log(height)
 				if (newX>0 && newX<(Cwidth-width)) {
 					$('.upload-img-outer').css({
 						left: newX

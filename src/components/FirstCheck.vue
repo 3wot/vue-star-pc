@@ -81,8 +81,8 @@
 							</tr>
 							<tr>
 								<td>法院被执行人</td>
-								<td colspan="3">{{EnforcementInfo.Borrower}}</td>
-								<td colspan="3">{{EnforcementInfo.BorrowerSpouse}}</td>
+								<td colspan="3"><span v-if="BorrowerName && BorrowerIDNO" class="first-detail" @click="gotoDetail(1)">详情</span></td>
+								<td colspan="3"><span v-if="BorrowerSpouseName && BorrowerSpouseIDNO" class="first-detail" @click="gotoDetail(2)">详情</span></td>
 								
 							</tr>
 							<tr>
@@ -179,7 +179,10 @@
 							</tr>
 							<tr>
 								<td>法院被执行人</td>								
-								<td colspan="6">{{CompanyInfo.CourtEnforcementInfo}}详情</td>
+								<td colspan="6">
+									<span v-if="CompanyName" class="first-detail" @click="gotoDetail(3)">详情</span>
+									<span v-if="!CompanyName">-</span>
+								</td>
 							</tr>
 							<tr>
 								<td>严重违法</td>								
@@ -282,6 +285,7 @@ mounted () {
 	this.init()
 },
 methods:{
+
 
 	gotoLook() {
 		// 调到预报单
@@ -420,6 +424,25 @@ methods:{
 		})
 	},
 
+
+	// 去详情页面
+	gotoDetail(type) {
+		console.log(type)
+		if (type == 1) { // 自己
+			const name = this.BorrowerName
+			const id = this.BorrowerIDNO
+			this.$router.push({ 'name' : 'firstDetail', params: { name, id }})
+		} else if (type == 2) { // 配偶
+			const name = this.BorrowerSpouseName
+			const id = this.BorrowerSpouseIDNO
+			this.$router.push({ name : 'firstDetail', params: { name, id }})
+		} else if (type == 3) {
+			const name = this.CompanyName
+			this.$router.push({ name : 'firstDetail', params: { name }})
+		}
+
+	},
+
 },
 
 
@@ -444,5 +467,9 @@ methods:{
 table td {
 	width : 130px;
 	padding: 0px;
+}
+.first-detail {
+	color: #409eff;
+	cursor: pointer;
 }
 </style>

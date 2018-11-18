@@ -62,6 +62,7 @@ const urls = {
 	'SubmitMaterialList': 'SubmitMaterialList',
 	'GetMaterialList': 'GetMaterialList',
 
+	'GetEnforcementInfoDetail': 'GetEnforcementInfoDetail',
 }
 
 // 外部方法
