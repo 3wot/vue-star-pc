@@ -83,15 +83,21 @@
 												<td>抵押状况</td>
 												<td>{{IsPledged?"已抵押":"未抵押"}}</td>
 												<td>抵押机构</td>
-												<td>{{PledgeOrgnization}}</td>
+												<td>{{PledgeOrgnization || '-'}}</td>
 												<td>抵押金额(万)</td>
-												<td>{{PledgePrice}}</td>
+												<td>{{PledgePrice || '-'}}</td>
 											</tr>
 											<tr>
 												<td>是否结清</td>
-												<td colspan="2">{{IsLoanPaidOff?"已结清":"未结清"}}</td>
+												<td colspan="2">
+													<span v-if="IsPledged">{{IsLoanPaidOff?"已结清":"未结清"}}</span>
+													<span v-if="!IsPledged">-</span>
+												</td>
 												<td>是否转单</td>
-												<td colspan="2">{{IsZhuanDan?"是":"否"}}</td>
+												<td colspan="2">
+													<span v-if="IsPledged">{{IsZhuanDan?"是":"否"}}</span>
+													<span v-if="!IsPledged">-</span>
+												</td>
 											</tr>
 
 
@@ -102,7 +108,7 @@
 												<td>企业名称</td>
 												<td colspan="2">{{CompanyName}}</td>
 												<td>统一社会信用代码</td>
-												<td colspan="2">{{CompanySecurityIDNO}}</td>
+												<td colspan="2">{{CompanySecurityIDNO || '-'}}</td>
 											</tr>
 											<tr>
 												<td>法定代表人姓名</td>
@@ -125,6 +131,16 @@
 								</el-form-item>
 							</el-col>
 
+							<el-col :span="24">
+								<el-form-item label="估值报告">
+									<ImgList :arr="HouseValuationImageUrl" :arrc="C_HouseValuationImageUrl"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="一审报告">
+									<ImgList :arr="FirstAuditionImageUrl" :arrc="C_FirstAuditionImageUrl"></ImgList>
+								</el-form-item>
+							</el-col>
 							<el-col :span="24">
 								<el-form-item label="二审报告">
 									<ImgList :arr="SecondAuditionImageUrl" :arrc="C_SecondAuditionImageUrl"></ImgList>
@@ -214,6 +230,10 @@ data () {
 		"SaleOrderValidationComment" : "",
 		"SecondAuditionImageUrl" : "",
 		"C_SecondAuditionImageUrl" : "",
+		HouseValuationImageUrl:'',
+		C_HouseValuationImageUrl: '',
+		FirstAuditionImageUrl: '',
+		C_FirstAuditionImageUrl:'',
 
 		// 产品列表
 		optionList: [],
@@ -270,6 +290,10 @@ methods:{
 					SecondAuditionImageUrl,
 					C_SecondAuditionImageUrl,
 					OrderNo,
+					HouseValuationImageUrl,
+					C_HouseValuationImageUrl,
+					FirstAuditionImageUrl,
+					C_FirstAuditionImageUrl,
 				} = res.data || {}
 					this.BorrowerName = BorrowerName
 					this.BorrowerIDNO = BorrowerIDNO
@@ -302,6 +326,10 @@ methods:{
 					this.SecondAuditionImageUrl = SecondAuditionImageUrl
 					this.C_SecondAuditionImageUrl = C_SecondAuditionImageUrl
 					this.OrderNo = OrderNo
+					this.HouseValuationImageUrl = HouseValuationImageUrl
+					this.C_HouseValuationImageUrl = C_HouseValuationImageUrl
+					this.FirstAuditionImageUrl = FirstAuditionImageUrl
+					this.C_FirstAuditionImageUrl = C_FirstAuditionImageUrl
 			} else {
 				this.warn(res.msg)
 			}
