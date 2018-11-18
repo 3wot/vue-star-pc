@@ -30,7 +30,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="5">编号:系统生成</td>
+								<td colspan="5">编号:{{OrderNo || '-'}}</td>
 							</tr>
 							<tr>
 								<td colspan="7">借款相关主体</td>
@@ -282,7 +282,9 @@ data () {
 			"CriminalInfo" : "", 
 			"RiskInfo" : "", 
 			"BusinessScope" : ""
-		}
+		},
+
+		OrderNo: '', // 编号
 
 	}
 },
@@ -384,6 +386,7 @@ methods:{
 					BorrowerSpouseName,
 					CompanyName,
 					CompanyPhone,
+					OrderNo,
 				} = res.data || {}
 				this.BorrowerIDNO = BorrowerIDNO
 				this.BorrowerMobile = BorrowerMobile
@@ -393,6 +396,7 @@ methods:{
 				this.BorrowerSpouseName = BorrowerSpouseName
 				this.CompanyName = CompanyName
 				this.CompanyPhone = CompanyPhone
+				this.OrderNo = OrderNo
 			} else {
 				this.warn(res.msg)
 			}

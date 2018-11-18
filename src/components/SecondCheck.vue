@@ -54,7 +54,7 @@
 								
 							</tr>
 							<tr>
-								<td colspan="6">编号:系统生成</td>
+								<td colspan="6">编号:{{OrderNo || '-'}}</td>
 								
 							</tr>
 							<tr>
@@ -224,6 +224,8 @@ export default {
             val2: '',
             val3: '',
             val4: '',
+
+            OrderNo: '',
 		}
 	},
 	mounted () {
@@ -278,6 +280,7 @@ export default {
 			            ShareOwnerInfo,
 			            Type,
 			            Usage,
+			            OrderNo,
 					} = res.data || {}
 					this.Area = Area
 					this.BorrowUsage = BorrowUsage
@@ -305,6 +308,7 @@ export default {
 					this.ShareOwnerInfo = ShareOwnerInfo
 					this.Type = Type
 					this.Usage = Usage
+					this.OrderNo = OrderNo
 				} else {
 					this.warn(res.msg)
 				}

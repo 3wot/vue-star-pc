@@ -219,6 +219,8 @@ data () {
 		optionList: [],
 		MatchProductIds: [],
 
+		OrderNo: '',
+
 	}
 },
 mounted () {
@@ -267,6 +269,7 @@ methods:{
 					SaleOrderValidationComment,
 					SecondAuditionImageUrl,
 					C_SecondAuditionImageUrl,
+					OrderNo,
 				} = res.data || {}
 					this.BorrowerName = BorrowerName
 					this.BorrowerIDNO = BorrowerIDNO
@@ -298,6 +301,7 @@ methods:{
 					this.SaleOrderValidationComment = SaleOrderValidationComment
 					this.SecondAuditionImageUrl = SecondAuditionImageUrl
 					this.C_SecondAuditionImageUrl = C_SecondAuditionImageUrl
+					this.OrderNo = OrderNo
 			} else {
 				this.warn(res.msg)
 			}

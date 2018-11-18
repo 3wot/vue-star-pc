@@ -112,7 +112,7 @@
 							</tr>
 							<tr>
 								<td>编号</td>
-								<td colspan="4">系统生成</td>
+								<td colspan="4">{{OrderNo || '-'}}</td>
 							</tr>
 							<tr>
 								<td>房屋坐落</td>
@@ -267,6 +267,7 @@ export default {
             "HouseUnitPrice": "",
 
             temp: false, // 是否估值成功
+            OrderNo: '', // 编号
 		}
 	},
 	mounted () {
@@ -386,9 +387,11 @@ export default {
 					const { 
 						HouseCertificateImageUrls,
 						C_HouseCertificateImageUrls,
+						OrderNo,
 					} = res.data || {}
 					this.HouseCertificateImageUrls = HouseCertificateImageUrls
 					this.C_HouseCertificateImageUrls = C_HouseCertificateImageUrls
+					this.OrderNo = OrderNo
 				} else {
 					this.warn(res.msg)
 				}
