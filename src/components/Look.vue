@@ -241,7 +241,7 @@
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
-								<el-form-item label="还款卡照片：">
+								<el-form-item label="银行卡照片：">
 									<ImgList :arr="BankCardImageUrl" :arrc="C_BankCardImageUrl"></ImgList>
 								</el-form-item>
 							</el-col>

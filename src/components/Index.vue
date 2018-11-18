@@ -64,13 +64,13 @@
 						          	size="small">
 					          		全部资料
 					        	</el-button>
-					        	<el-button
+					        	<!-- <el-button
 					        		v-if="type==0"
 					          		@click.native.prevent="finish1(scope.$index)"
 						          	type="text"
 						          	size="small">
 					          		结案
-					        	</el-button>
+					        	</el-button> -->
 					      	</template>
 						</el-table-column>
 					</el-table>
