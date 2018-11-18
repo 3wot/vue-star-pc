@@ -38,7 +38,7 @@
 
 <script>
 import $ from 'jquery'
-let LEFT = 0
+let LEFT = 0 // 角度
 let MOVE_X = 0
 let MOVE_Y = 0
 let MOVE_TEMP = false
@@ -102,6 +102,7 @@ export default {
 				this.styleObj.backgroundImage = 'url('+src+')'
 				this.showBigSrc = src
 				this.showBigTemp = true
+				LEFT = 0
 			}
 		},
 		
@@ -121,9 +122,16 @@ export default {
 				left: left,
 				// top: top,
 			})
-			$('.upload-img-in').css({
-				width: '100%',
-			})
+			if (LEFT%180) {
+				$('.upload-img-in').css({
+					width: height-50,
+				})
+			} else {
+				$('.upload-img-in').css({
+					width: '100%',
+				})
+			}
+			
 		},
 
 		small() {
@@ -137,9 +145,15 @@ export default {
 				left: left,
 				// top: top,
 			})
-			$('.upload-img-in').css({
-				width: '100%',
-			})
+			if (LEFT%180) {
+				$('.upload-img-in').css({
+					width: height-50,
+				})
+			} else {
+				$('.upload-img-in').css({
+					width: '100%',
+				})
+			}
 		},
 
 		left() {
