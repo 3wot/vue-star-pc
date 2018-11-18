@@ -12,6 +12,7 @@
 						<el-row>
 							<el-col :span="24">
 								<el-button class="pull-left" type="primary" @click="firstCheck">初审</el-button>
+								<span v-if="loading" class="loading"><i class="el-icon-loading"></i></span>
 							</el-col>
 						</el-row>
 					</el-form>
@@ -241,7 +242,7 @@ export default {
 name: 'FirstCheck',
 data () {
 	return {
-
+		loading: false,
 		formSize : 'small',
 		// 截图
 		FirstAuditionImageUrl: [],
@@ -336,7 +337,9 @@ methods:{
 			CompanyName,
 			BorrowerMarriageStatus,
 		}
+		this.loading = true
 		this.pp('AuditBorrowerInfo', param, res => {
+			this.loading = false
 			if (res.ret) {
 				const {
 					SecurityInfo,

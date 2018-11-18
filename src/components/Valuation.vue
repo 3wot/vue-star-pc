@@ -88,7 +88,7 @@
 							<el-col :span="24">
 
 								<el-button class="pull-left" type="primary" @click="valuation">估值</el-button>
-								
+								<span v-if="loading" class="loading"><i class="el-icon-loading"></i></span>
 							</el-col>
 
 						</el-row>
@@ -215,6 +215,7 @@ export default {
 	},
 	data () {
 		return {
+			loading : false,
 			formSize : 'small',
 			form1 : {
 				"OwnerName" : "",
@@ -309,7 +310,6 @@ export default {
 
 		// 估值
 		valuation () {
-			console.log(this.form1)
 			const id = this.$route.params.id
 			const hid = this.$route.params.hid
 			const {
@@ -345,7 +345,9 @@ export default {
 				Floor,
 				BuildingFinishYear,
 			}
+			this.loading = true
 			this.pp('HouseValuation', param, res => {
+				this.loading = false
 				if (res.ret) {
 					const {
 						HouseAveragePrice,

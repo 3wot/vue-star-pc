@@ -230,3 +230,8 @@ html,body {
 .rotate-360 {
 	transform: rotate(0deg);
 }
+.loading {
+    font-size: 32px;
+    float: left;
+    padding: 0 20px;
+}
