@@ -123,7 +123,7 @@
 							</el-col>
 							<el-col :span="24">
 								<el-form-item label="客户电话">
-									<el-input v-model="BorrowerMobile" placeholder="请输入客户电话"></el-input>
+									<el-input type="number" @change="BorrowerMobileChange" v-model="BorrowerMobile" placeholder="请输入客户电话"></el-input>
 								</el-form-item>
 							</el-col>
 						</el-row>
@@ -230,6 +230,13 @@ export default {
 		this.init()
 	},
 	methods:{
+
+		BorrowerMobileChange() {
+			const BorrowerMobile = this.BorrowerMobile + ''
+			if (BorrowerMobile.length>11) {
+				this.BorrowerMobile = BorrowerMobile.substring(0,11)
+			}
+		},
 
 		// 初始化
 		init () {
