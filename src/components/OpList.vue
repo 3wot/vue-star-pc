@@ -211,10 +211,10 @@ export default {
 		handleTapOp(idx) {
 			if (this.opList && idx == this.opList.length-1) {
 				const op = this.opList[idx]
-				const { OperationRoleType, OperationName, OperationRecordId } = op
+				const { OperationRoleType, RouteName, OperationRecordId } = op
 				const OperatorRoleId = window.sessionStorage.getItem('OperatorRoleId')
 				if (OperationRoleType == OperatorRoleId) {
-					this.gotoDetail(OperationName, OperationRecordId)
+					this.gotoDetail(RouteName, OperationRecordId)
 				} else {
 					this.warn('您不能进入此操作')
 				}
