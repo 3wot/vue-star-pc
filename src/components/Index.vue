@@ -76,11 +76,12 @@
 					</el-table>
 					
 					<div class="index-bottom">
-						<span class="index-bottom-page">第 {{PageIndex}} 页</span>
-						<el-button-group size="mini">
+						
+						<!-- <el-button-group size="mini"> -->
 						  	<el-button type="primary" size="mini" icon="el-icon-arrow-left" @click="prevPage">上一页</el-button>
+						  	<span class="index-bottom-page">第 {{PageIndex}} 页</span>
 						  	<el-button type="primary" size="mini" @click="nextPage">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
-						</el-button-group>
+						<!-- </el-button-group> -->
 					</div>
 					
 				</div>
@@ -344,7 +345,7 @@ export default {
 .index-bottom {
 	width: 100%;
 	margin: 10px auto;
-	text-align: right;
+	text-align: cneter;
 }
 .index-bottom-page {
 	padding: 0px 10px;
