@@ -9,11 +9,11 @@
 			<Header :refresh="true" title="首页" @refresh="refreshFn"></Header>
 		  	<el-main class="c-main">
 				<el-button-group>
-				  	<el-button type="primary" :plain="type != 0" class="btn-150" @click="changeType(0)">进行中报单</el-button>
-				  	<el-button type="primary" :plain="type != 3" class="btn-150" @click="changeType(3)">历史报单</el-button>
+				  	<el-button type="primary" :plain="type != 0" class="btn-150" @click="clickType(0)">进行中报单</el-button>
+				  	<el-button type="primary" :plain="type != 3" class="btn-150" @click="clickType(3)">历史报单</el-button>
 				</el-button-group>
 				
-				<!-- <div class="table-outer"> -->
+				<div class="table-outer">
 					<el-table
 						:data="orderList"
 						border
@@ -74,7 +74,16 @@
 					      	</template>
 						</el-table-column>
 					</el-table>
-				<!-- </div> -->
+					
+					<div class="index-bottom">
+						<span class="index-bottom-page">第 {{PageIndex}} 页</span>
+						<el-button-group size="mini">
+						  	<el-button type="primary" size="mini" icon="el-icon-arrow-left" @click="prevPage">上一页</el-button>
+						  	<el-button type="primary" size="mini" @click="nextPage">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+						</el-button-group>
+					</div>
+					
+				</div>
 
 		  	</el-main>
 			<el-dialog
@@ -101,6 +110,7 @@
 import URLS from '../router/link'
 import Header from './Header'
 const TIME = 60000
+const PAGE_ROWS = 50 // 每页50条
 
 export default {
 	components:{
@@ -136,6 +146,7 @@ export default {
 				// },
 			],
 			refreshTimer: null,
+			PageIndex: 1, // 当前页码
 		}
 	},
 	computed:{
@@ -159,10 +170,21 @@ export default {
 		},
 
 		// 点击进行中或者历史
+		clickType(type) {
+			this.type = type
+			this.PageIndex = 1
+			this.changeType(type)
+		},
+
+		// 请求数据
 		changeType(type) {
 			this.type = type
+			const PageIndex = this.PageIndex
+			const PageRows = PAGE_ROWS
 			const param = {
 				order_type: type,
+				PageIndex,
+				PageRows,
 			}
 			this.pp('OrderList', param, res => {
 				// console.log(res)
@@ -269,6 +291,27 @@ export default {
 			return ''
 		},
 
+
+		// 上一页
+		prevPage() {
+			const num = this.PageIndex
+			if (num > 1) {
+				this.PageIndex = num - 1
+			} else {
+				this.PageIndex = 1
+			}
+			const type = this.type
+			this.changeType(type)
+		},
+
+		// 下一页
+		nextPage() {
+			const num = this.PageIndex
+			this.PageIndex = num + 1
+			const type = this.type
+			this.changeType(type)
+		},
+
 	},
 
 
@@ -286,16 +329,25 @@ export default {
 	vertical-align: middle;
 }
 .table-outer {
-	height: calc(100% - 80px);
-	margin-top: 20px;
+	width: 1000px;
+	height: calc(100% - 100px);
+	margin: 20px auto;
 }
 .index-table {
-	height: calc(100% - 80px);
+	height: 100%;
 	width: 100%;
 	max-width: 1000px;
 	margin: 0 auto;
 	margin-top: 20px;
 	text-align: left;
+}
+.index-bottom {
+	width: 100%;
+	margin: 10px auto;
+	text-align: right;
+}
+.index-bottom-page {
+	padding: 0px 10px;
 }
 
 
