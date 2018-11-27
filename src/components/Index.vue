@@ -53,13 +53,13 @@
 							<template slot-scope="scope">
 					        	<el-button
 					        		v-if="type==0"
-					          		@click.native.prevent="handleClick(scope.$index)"
+					          		@click.native.prevent="handleClick(scope.row)"
 						          	type="text"
 						          	size="small">
 					          		详情
 					        	</el-button>
 					        	<el-button
-					          		@click.native.prevent="handleLookClick(scope.$index)"
+					          		@click.native.prevent="handleLookClick(scope.row)"
 						          	type="text"
 						          	size="small">
 					          		全部资料
@@ -212,24 +212,26 @@ export default {
 
 		// 操作列表页面
 		handleClick (idx) {
-			if (this.orderList && idx < this.orderList.length) {
-				const order = this.orderList[idx]
+			// if (this.orderList && idx < this.orderList.length) {
+				// const order = this.orderList[idx]
+				const order = idx
 				const id = order.OrderId
 				const hid = order.HouseId
 
 				this.$router.push({ name : 'opList', params: { id, hid }})
-			}
+			// }
 		},
 
 		// 全部资料页面
 		handleLookClick (idx) {
-			if (this.orderList && idx < this.orderList.length) {
-				const order = this.orderList[idx]
+			// if (this.orderList && idx < this.orderList.length) {
+				// const order = this.orderList[idx]
+				const order = idx
 				const id = order.OrderId
 				const hid = order.HouseId
 				window.sessionStorage.setItem('OrderId',id)
 				this.$router.push({ name : 'look', params: { id, hid }})
-			}
+			// }
 		},
 
 		// 格式化函数
