@@ -78,9 +78,9 @@
 					<div class="index-bottom">
 						
 						<!-- <el-button-group size="mini"> -->
-						  	<el-button type="primary" size="mini" icon="el-icon-arrow-left" @click="prevPage">上一页</el-button>
+						  	<el-button type="primary" :disabled="PageIndex == 1" size="mini" icon="el-icon-arrow-left" @click="prevPage">上一页</el-button>
 						  	<span class="index-bottom-page">第 {{PageIndex}} 页</span>
-						  	<el-button type="primary" size="mini" @click="nextPage">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+						  	<el-button type="primary" size="mini" :disabled="nextBtnDisable" @click="nextPage">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
 						<!-- </el-button-group> -->
 					</div>
 					
@@ -157,6 +157,14 @@ export default {
 				return []
 			} else if (type==3) {
 				return [{ text: '正常结案', value: 1 }, { text: '中途结案', value: 2 }]
+			}
+		},
+		nextBtnDisable: function(){
+			const len = this.orderList.length
+			if (len < PAGE_ROWS) {
+				return true
+			} else {
+				return false
 			}
 		},
 	},
