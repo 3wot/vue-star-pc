@@ -84,11 +84,11 @@
 								<td>法院被执行人</td>
 								<td colspan="3">
 									{{EnforcementInfo.Borrower}}
-									<span v-if="BorrowerName && BorrowerIDNO && EnforcementInfo.Borrower && EnforcementInfo.Borrower!='-'" class="first-detail" @click="gotoDetail(1)">详情</span>
+									<!-- <span v-if="BorrowerName && BorrowerIDNO && EnforcementInfo.Borrower && EnforcementInfo.Borrower!='-'" class="first-detail" @click="gotoDetail(1)">详情</span> -->
 								</td>
 								<td colspan="3">
 									{{EnforcementInfo.BorrowerSpouse}}
-									<span v-if="BorrowerSpouseName && BorrowerSpouseIDNO && EnforcementInfo.BorrowerSpouse && EnforcementInfo.BorrowerSpouse!='-'" class="first-detail" @click="gotoDetail(2)">详情</span>
+									<!-- <span v-if="BorrowerSpouseName && BorrowerSpouseIDNO && EnforcementInfo.BorrowerSpouse && EnforcementInfo.BorrowerSpouse!='-'" class="first-detail" @click="gotoDetail(2)">详情</span> -->
 								</td>
 								
 							</tr>
@@ -188,7 +188,7 @@
 								<td>法院被执行人</td>								
 								<td colspan="6">
 									{{CompanyInfo.CourtEnforcementInfo}}
-									<span v-if="CompanyName" class="first-detail" @click="gotoDetail(3)">详情</span>
+									<!-- <span v-if="CompanyName" class="first-detail" @click="gotoDetail(3)">详情</span> -->
 								</td>
 							</tr>
 							<tr>
