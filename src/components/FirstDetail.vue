@@ -84,13 +84,26 @@ export default {
 			}
 			this.pp('GetEnforcementInfoDetail2', param, res => {
 				if (res.ret) {
-					this.data = res.data
+					this.data = this.format(res.data)
 				} else {
 					this.warn(res.msg)
 				}
 			})
 
 		},
+
+		format(arr) {
+			if (arr && arr.length) {
+				const rData = []
+				arr.map(item => {
+					const a = JSON.parse(item.detailContent)
+					rData.push(a.data)
+				})
+				return rData
+			} else {
+				return []
+			}
+		}
 
 	},
 
