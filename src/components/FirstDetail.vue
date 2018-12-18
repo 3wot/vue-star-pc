@@ -76,8 +76,10 @@ export default {
 		// 初始化
 		init() {
 			const { oid, name } = this.$route.params
-			const id = this.$route.params.id || ''
+			const id = this.$route.params.id || null
+			const historyId = null
 			const param = {
+				historyId,
 				orderId: oid,
 				name,
 				idNo: id,
