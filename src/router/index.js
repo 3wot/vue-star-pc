@@ -66,7 +66,7 @@ export default new Router({
 		},
 		{
 			// 
-			path: '/firstDetail/:name/:id?',
+			path: '/firstDetail/:oid/:name/:id?',
 			name: 'firstDetail',
 			component: FirstDetail
 		},

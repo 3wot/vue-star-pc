@@ -444,7 +444,7 @@ methods:{
 
 	// 去详情页面
 	gotoDetail(type) {
-		console.log(type)
+		const oid = this.$route.params.id
 		if (type == 1) { // 自己
 			const name = this.BorrowerName
 			const id = this.BorrowerIDNO
@@ -452,7 +452,7 @@ methods:{
 			let routeData = this.$router.resolve({
 			   	name: "firstDetail",
 			   	// query: params,
-			   	params:{ name, id }
+			   	params:{ oid, name, id }
 			});
 			window.open(routeData.href, '_blank')
 		} else if (type == 2) { // 配偶
@@ -462,7 +462,7 @@ methods:{
 			let routeData = this.$router.resolve({
 			   	name: "firstDetail",
 			   	// query: params,
-			   	params:{ name, id }
+			   	params:{ oid, name, id }
 			});
 			window.open(routeData.href, '_blank')
 		} else if (type == 3) {
@@ -471,7 +471,7 @@ methods:{
 			let routeData = this.$router.resolve({
 			   	name: "firstDetail",
 			   	// query: params,
-			   	params:{ name }
+			   	params:{ oid, name }
 			});
 			window.open(routeData.href, '_blank')
 		}
