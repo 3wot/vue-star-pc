@@ -430,7 +430,6 @@ methods:{
 			FirstAuditionImageUrl:FirstAuditionImageUrl.join(),
 			C_FirstAuditionImageUrl:C_FirstAuditionImageUrl.join(),
 		}
-		console.log(param)
 		this.pp('CompleteAuditBorrowerInfo', param, res => {
 			if (res.ret) {
 				// 跳到操作页面

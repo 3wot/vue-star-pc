@@ -1,6 +1,6 @@
 
 // 域名
-// const HOST = 'http://www.windant.com:9005/Service1.svc/'
+// const HOST = 'http://39.106.17.212:9005/Service1.svc/'
 const HOST = '/Service1.svc/'
 
 // 相对地址
