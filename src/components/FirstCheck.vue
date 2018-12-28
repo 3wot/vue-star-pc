@@ -10,6 +10,11 @@
 					
 					<el-form :size="formSize" label-width="120px" label-position="left">
 						<el-row>
+							<el-col :span="15">
+								<el-form-item label="初审意见">
+									<el-input v-model="FirstAuditionComment" placeholder="请输入初审意见"></el-input>
+								</el-form-item>
+							</el-col>
 							<el-col :span="24">
 								<el-button class="pull-left" type="primary" @click="firstCheck">初审</el-button>
 								<span v-if="loading" class="loading"><i class="el-icon-loading"></i></span>
@@ -203,6 +208,10 @@
 								<td>经营范围</td>								
 								<td colspan="6">{{CompanyInfo.BusinessScope}}</td>
 							</tr>
+							<tr>
+								<td>初审意见</td>								
+								<td colspan="6">{{FirstAuditionComment}}</td>
+							</tr>
 
 						</tbody>
 					</table>
@@ -286,6 +295,7 @@ data () {
 		},
 
 		OrderNo: '', // 编号
+		FirstAuditionComment: '',
 
 	}
 },
@@ -411,7 +421,7 @@ methods:{
 		const { id, hid, oprid } = this.$route.params
 		const FirstAuditionImageUrl = this.FirstAuditionImageUrl
 		const C_FirstAuditionImageUrl = this.C_FirstAuditionImageUrl
-
+		const FirstAuditionComment = this.FirstAuditionComment
 		if (FirstAuditionImageUrl.length && C_FirstAuditionImageUrl.length) {
 
 		} else {
@@ -429,6 +439,7 @@ methods:{
 			OperationRecordId: oprid,
 			FirstAuditionImageUrl:FirstAuditionImageUrl.join(),
 			C_FirstAuditionImageUrl:C_FirstAuditionImageUrl.join(),
+			FirstAuditionComment,
 		}
 		this.pp('CompleteAuditBorrowerInfo', param, res => {
 			if (res.ret) {
