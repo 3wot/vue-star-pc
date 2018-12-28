@@ -17,13 +17,18 @@
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
-								<el-form-item label="客户电话：">
-									<div>{{BorrowerMobile}}</div>
+								<el-form-item label="报单状态：">
+									<div>{{Status == 0 ? '进行中' : (Status == 1 ? '正常结案' : '中途结案')}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
-								<el-form-item label="报单状态：">
-									<div>{{Status == 0 ? '进行中' : (Status == 1 ? '正常结案' : '中途结案')}}</div>
+								<el-form-item label="最后操作人：">
+									<div>{{LastOperatorName}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="最后操作时间：">
+									<div>{{LastOperationDateTime}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
@@ -31,11 +36,82 @@
 									<div>{{LastOperationName}}</div>
 								</el-form-item>
 							</el-col>
+							<el-col :span="24" v-if="CancelOrderComment">
+								<el-form-item label="结案理由：">
+									<div>{{CancelOrderComment}}</div>
+								</el-form-item>
+							</el-col>
+							
+							<el-col :span="24">
+								<el-form-item label="房产证照片：">
+									<ImgList :arr="HouseCertificateImageUrls" :arrc="C_HouseCertificateImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+
+
+
+
+							<el-col :span="24">
+								<el-form-item label="房屋建筑面积(㎡)：">
+									<div>{{HouseArea}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="房屋坐落：">
+									<div>{{HouseLocation1}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="房屋性质：">
+									<div>{{HouseType}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="用途：">
+									<div>{{HouseUsage}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="抵押成数：">
+									<div>{{HousePledgePercentage}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="房屋朝向：">
+									<div>{{HouseOrientation}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="总楼层数：">
+									<div>{{HouseTotalFloor}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="所在楼层：">
+									<div>{{HouseFloor}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="建成年代：">
+									<div>{{HouseBuildingFinishYear}}</div>
+								</el-form-item>
+							</el-col>
+
 							<el-col :span="24">
 								<el-form-item label="房屋估值报告：">
 									<ImgList :arr="HouseValuationImageUrl" :arrc="C_HouseValuationImageUrl"></ImgList>
 								</el-form-item>
 							</el-col>
+
+
+							<el-col :span="24">
+								<el-form-item label="客户电话：">
+									<div>{{BorrowerMobile}}</div>
+								</el-form-item>
+							</el-col>
+							
+							
+							
 							<el-col :span="24">
 								<el-form-item label="一审报告：">
 									<ImgList :arr="FirstAuditionImageUrl" :arrc="C_FirstAuditionImageUrl"></ImgList>
@@ -170,11 +246,7 @@
 									<ImgList :arr="SpouseMarriageCertificateImageUrls" :arrc="C_SpouseMarriageCertificateImageUrls"></ImgList>
 								</el-form-item>
 							</el-col>
-							<el-col :span="24">
-								<el-form-item label="房产证照片：">
-									<ImgList :arr="HouseCertificateImageUrls" :arrc="C_HouseCertificateImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
+							
 							<el-col :span="24">
 								<el-form-item label="房屋租赁合同照片：">
 									<ImgList :arr="RentalContractImageUrls" :arrc="C_RentalContractImageUrls"></ImgList>
@@ -287,6 +359,20 @@ export default {
 	name: 'Look',
 	data () {
 		return {
+			LastOperatorName: '',
+			LastOperationDateTime: '',
+			CancelOrderComment: '',
+			HouseArea: '',
+			HouseLocation1: '',
+			HouseType: '',
+			HouseUsage: '',
+			HousePledgePercentage: '',
+			HouseOrientation: '',
+			HouseTotalFloor: '',
+			HouseFloor: '',
+			HouseBuildingFinishYear: '',
+
+
 			LastOperationName: '',
 			CurrentOperationName: '', // 当前操作名称,
 			Status: '', // 报单状态: [], 0，正在进行中，1，正常结案，2，中途结案
@@ -431,6 +517,19 @@ export default {
 				if (res.ret) {
 					const formatData = this.format(res.data)
 					const {
+						LastOperatorName,
+						LastOperationDateTime,
+						CancelOrderComment,
+						HouseArea,
+						HouseLocation1,
+						HouseType,
+						HouseUsage,
+						HousePledgePercentage,
+						HouseOrientation,
+						HouseTotalFloor,
+						HouseFloor,
+						HouseBuildingFinishYear,
+
 						LastOperationName,
 						CurrentOperationName, // 当前操作名称,
 						Status, // 报单状态, 0，正在进行中，1，正常结案，2，中途结案
@@ -543,6 +642,19 @@ export default {
 						ConfirmMatchProductComment,
 						LoanRejectionComment,
 					} = formatData || {}
+					this.LastOperatorName = LastOperatorName
+					this.LastOperationDateTime = LastOperationDateTime
+					this.CancelOrderComment = CancelOrderComment
+					this.HouseArea = HouseArea
+					this.HouseLocation1 = HouseLocation1
+					this.HouseType = HouseType
+					this.HouseUsage = HouseUsage
+					this.HousePledgePercentage = HousePledgePercentage
+					this.HouseOrientation = HouseOrientation
+					this.HouseTotalFloor = HouseTotalFloor
+					this.HouseFloor = HouseFloor
+					this.HouseBuildingFinishYear = HouseBuildingFinishYear
+
 					this.LastOperationName = LastOperationName
 					this.CurrentOperationName = CurrentOperationName // 当前操作名称,
 					this.Status = Status // 报单状态, 0，正在进行中，1，正常结案，2，中途结案
