@@ -96,30 +96,229 @@
 									<div>{{HouseBuildingFinishYear}}</div>
 								</el-form-item>
 							</el-col>
-
 							<el-col :span="24">
 								<el-form-item label="房屋估值报告：">
 									<ImgList :arr="HouseValuationImageUrl" :arrc="C_HouseValuationImageUrl"></ImgList>
 								</el-form-item>
 							</el-col>
-
-
+							<el-col :span="24">
+								<el-form-item label="估值确认意见：">
+									<div>{{HouseValuationConfirmComment}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="客户姓名：">
+									<div>{{BorrowerName}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="客户身份证号：">
+									<div>{{BorrowerIDNO}}</div>
+								</el-form-item>
+							</el-col>
 							<el-col :span="24">
 								<el-form-item label="客户电话：">
 									<div>{{BorrowerMobile}}</div>
 								</el-form-item>
 							</el-col>
-							
-							
-							
+							<el-col :span="24">
+								<el-form-item label="客户身份证照片：">
+									<ImgList :arr="BorrowerIDNOImageUrls" :arrc="C_BorrowerIDNOImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="客户户口本照片：">
+									<ImgList :arr="PermanentResidenceBookImageUrls" :arrc="C_PermanentResidenceBookImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+
+							<el-col :span="24">
+								<el-form-item label="客户婚姻证明材料照片：">
+									<ImgList :arr="MarriageCertificateImageUrls" :arrc="C_MarriageCertificateImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="客户征信报告照片：">
+									<ImgList :arr="PersonalCreditReportImageUrls" :arrc="C_PersonalCreditReportImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="银行流水照片：">
+									<ImgList :arr="BankAccountStatementImageUrls" :arrc="C_BankAccountStatementImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="婚姻状况：">
+									<div>{{BorrowerMarriageStatus}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="配偶姓名：">
+									<div>{{BorrowerSpouseName}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="配偶身份证号：">
+									<div>{{BorrowerSpouseIDNO}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="配偶电话：">
+									<div>{{BorrowerSpouseMobile}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="配偶身份证照片：">
+									<ImgList :arr="BorrowerSpouseIDNOImageUrls" :arrc="C_BorrowerSpouseIDNOImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="配偶户口本照片：">
+									<ImgList :arr="SpousePermanentResidenceBookImageUrls" :arrc="C_SpousePermanentResidenceBookImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="配偶婚姻证明材料照片：">
+									<ImgList :arr="SpouseMarriageCertificateImageUrls" :arrc="C_SpouseMarriageCertificateImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+
+							<el-col :span="24">
+								<el-form-item label="配偶征信报告照片：">
+									<ImgList :arr="SpousePersonalCreditReportImageUrls" :arrc="C_SpousePersonalCreditReportImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="是否有公司：">
+									<div>{{HasCompany}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业名称：">
+									<div>{{CompanyName}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业统一社会信用代码：">
+									<div>{{CompanySecurityIDNO}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业电话：">
+									<div>{{CompanyPhone}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业法定代表人姓名：">
+									<div>{{CompanyLegalPersonName}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业法人身份证号：">
+									<div>{{CompanyLegalPersonIDNO}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="公司营业执照副本照片：">
+									<ImgList :arr="CompanyLicenseImageUrl" :arrc="C_CompanyLicenseImageUrl"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业征信照片：">
+									<ImgList :arr="CompanyCreditReportImageUrls" :arrc="C_CompanyCreditReportImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="对公流水照片：">
+									<ImgList :arr="CompanyBankAccountStatementImageUrls" :arrc="C_CompanyBankAccountStatementImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业财务报表照片：">
+									<ImgList :arr="CompanyFinancialStatementImageUrls" :arrc="C_CompanyFinancialStatementImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
 							<el-col :span="24">
 								<el-form-item label="一审报告：">
 									<ImgList :arr="FirstAuditionImageUrl" :arrc="C_FirstAuditionImageUrl"></ImgList>
 								</el-form-item>
 							</el-col>
+
+							<el-col :span="24">
+								<el-form-item label="初审意见（待确定）：">
+									<div>{{FirstAuditionComment}}</div>
+								</el-form-item>
+							</el-col>
+
 							<el-col :span="24">
 								<el-form-item label="一审确认意见：">
 									<div>{{FirstAuditionConfirmComment}}</div>
+								</el-form-item>
+							</el-col>
+
+							<el-col :span="24">
+								<el-form-item label="申请贷款金额（万元）：">
+									<div>{{ExpectedBorrowAmount}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="申请贷款期限（月）：">
+									<div>{{ExpectedBorrowPeriodInMonth}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="借款用途：">
+									<div>{{BorrowUsage}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="利息还款来源：">
+									<div>{{InterestReturnSource}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="本金还款来源：">
+									<div>{{PrincipalReturnSource}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="共有情况：">
+									<div>{{ShareOwnerInfo}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="抵押物现状：">
+									<div>{{PledgeInfo}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="抵押状况：">
+									<div>{{IsPledged}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="抵押机构：">
+									<div>{{PledgeOrgnization}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="抵押金额（万元）:">
+									<div>{{PledgePrice}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="是否结清：">
+									<div>{{IsLoanPaidOff}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="是否转单：">
+									<div>{{IsZhuanDan}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="客户需求侧重：">
+									<div>{{LoanPriority}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
@@ -127,6 +326,28 @@
 									<div>{{SaleOrderValidationComment}}</div>
 								</el-form-item>
 							</el-col>
+							<el-col :span="24">
+								<el-form-item label="借款主体风险分析：">
+									<div>{{SecondAuditionBorrowerSecurityAnalysis}}</div>
+								</el-form-item>
+							</el-col>
+
+							<el-col :span="24">
+								<el-form-item label="还款来源分析：">
+									<div>{{SecondAuditionBorrowerIncomeAnalysis}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="偿债能力分析：">
+									<div>{{SecondAuditionBorrowerPayOffAbilityAnalysis}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="风控建议：">
+									<div>{{SecondAuditionComment}}</div>
+								</el-form-item>
+							</el-col>
+
 
 							
 							<el-col :span="24">
@@ -135,20 +356,11 @@
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
-								<el-form-item label="二审意见：">
-									<div>{{SecondAuditionComment}}</div>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
 								<el-form-item label="二审确认意见：">
 									<div>{{SecondAuditionConfirmComment}}</div>
 								</el-form-item>
 							</el-col>
-							<el-col :span="24">
-								<el-form-item label="联系产品供应方意见：">
-									<div>{{ContactProductProviderComment}}</div>
-								</el-form-item>
-							</el-col>
+							
 							<el-col :span="24">
 								<el-form-item label="匹配产品：">
 									<el-tag class="look-tag" v-for="(item,index) in MatchProducts" :key="index">{{item}}</el-tag>
@@ -157,6 +369,11 @@
 							<el-col :span="24">
 								<el-form-item label="匹配产品确认意见：">
 									<div>{{ConfirmMatchProductComment}}</div>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="联系产品供应方意见：">
+									<div>{{ContactProductProviderComment}}</div>
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
@@ -212,40 +429,12 @@
 								</el-form-item>
 							</el-col>
 							<el-col :span="24">
-								<el-form-item label="放款现场照片：">
+								<el-form-item label="收放款凭证照片：">
 									<ImgList :arr="LoanReceivedImageUrls" :arrc="C_LoanReceivedImageUrls"></ImgList>
 								</el-form-item>
 							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户身份证照片：">
-									<ImgList :arr="BorrowerIDNOImageUrls" :arrc="C_BorrowerIDNOImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户配偶身份证照片：">
-									<ImgList :arr="BorrowerSpouseIDNOImageUrls" :arrc="C_BorrowerSpouseIDNOImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户户口本照片：">
-									<ImgList :arr="PermanentResidenceBookImageUrls" :arrc="C_PermanentResidenceBookImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户配偶户口本照片：">
-									<ImgList :arr="SpousePermanentResidenceBookImageUrls" :arrc="C_SpousePermanentResidenceBookImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户婚姻证明材料照片：">
-									<ImgList :arr="MarriageCertificateImageUrls" :arrc="C_MarriageCertificateImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户配偶婚姻证明材料照片：">
-									<ImgList :arr="SpouseMarriageCertificateImageUrls" :arrc="C_SpouseMarriageCertificateImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
+							
+							
 							
 							<el-col :span="24">
 								<el-form-item label="房屋租赁合同照片：">
@@ -272,41 +461,7 @@
 									<ImgList :arr="LoanPaidOffCertificateImageUrls" :arrc="C_LoanPaidOffCertificateImageUrls"></ImgList>
 								</el-form-item>
 							</el-col>
-							<el-col :span="24">
-								<el-form-item label="银行流水照片：">
-									<ImgList :arr="BankAccountStatementImageUrls" :arrc="C_BankAccountStatementImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户征信报告照片：">
-									<ImgList :arr="PersonalCreditReportImageUrls" :arrc="C_PersonalCreditReportImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="客户配偶征信报告照片：">
-									<ImgList :arr="SpousePersonalCreditReportImageUrls" :arrc="C_SpousePersonalCreditReportImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="公司营业执照副本照片：">
-									<ImgList :arr="CompanyLicenseImageUrl" :arrc="C_CompanyLicenseImageUrl"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="企业征信照片：">
-									<ImgList :arr="CompanyCreditReportImageUrls" :arrc="C_CompanyCreditReportImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="对公流水照片：">
-									<ImgList :arr="CompanyBankAccountStatementImageUrls" :arrc="C_CompanyBankAccountStatementImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
-							<el-col :span="24">
-								<el-form-item label="购销合同照片：">
-									<ImgList :arr="BuySellContractImageUrls" :arrc="C_BuySellContractImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
+							
 							<el-col :span="24">
 								<el-form-item label="担保人财产共有人同意提供担保的书面文件：">
 									<ImgList :arr="GuarantorProofDocumentImageUrls" :arrc="C_GuarantorProofDocumentImageUrls"></ImgList>
@@ -322,16 +477,23 @@
 									<ImgList :arr="CompanyHoldingCertificateImageUrls" :arrc="C_CompanyHoldingCertificateImageUrls"></ImgList>
 								</el-form-item>
 							</el-col>
-							<el-col :span="24">
-								<el-form-item label="企业财务报表照片：">
-									<ImgList :arr="CompanyFinancialStatementImageUrls" :arrc="C_CompanyFinancialStatementImageUrls"></ImgList>
-								</el-form-item>
-							</el-col>
+							
 							<el-col :span="24">
 								<el-form-item label="诉讼结案证明照片：">
 									<ImgList :arr="LawsuitFinishCertificateImageUrls" :arrc="C_LawsuitFinishCertificateImageUrls"></ImgList>
 								</el-form-item>
 							</el-col>
+							<el-col :span="24">
+								<el-form-item label="购销合同照片：">
+									<ImgList :arr="BuySellContractImageUrls" :arrc="C_BuySellContractImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+							<el-col :span="24">
+								<el-form-item label="企业章程：">
+									<ImgList :arr="CompanyArticlesImageUrls" :arrc="CompanyArticlesImageUrls"></ImgList>
+								</el-form-item>
+							</el-col>
+
 							<el-col :span="24">
 								<el-form-item label="其它照片：">
 									<ImgList :arr="OtherCertificateImageUrls" :arrc="C_OtherCertificateImageUrls"></ImgList>
@@ -371,7 +533,40 @@ export default {
 			HouseTotalFloor: '',
 			HouseFloor: '',
 			HouseBuildingFinishYear: '',
+			HouseValuationConfirmComment: '',
+			BorrowerName: '',
+			BorrowerIDNO: '',
 
+			BorrowerMarriageStatus: '',
+			BorrowerSpouseName: '',
+			BorrowerSpouseIDNO: '',
+			BorrowerSpouseMobile: '',
+			HasCompany: '',
+			CompanyName: '',
+			CompanySecurityIDNO: '',
+			CompanyPhone: '',
+			CompanyLegalPersonName: '',
+			CompanyLegalPersonIDNO: '',
+			ExpectedBorrowAmount: '',
+			ExpectedBorrowPeriodInMonth: '',
+			BorrowUsage: '',
+			InterestReturnSource: '',
+			PrincipalReturnSource: '',
+			ShareOwnerInfo: '',
+			PledgeInfo: '',
+			IsPledged : '',
+			PledgeOrgnization: '',
+			PledgePrice: '',
+			IsLoanPaidOff: '',
+			IsZhuanDan: '',
+			LoanPriority: '',
+			SecondAuditionBorrowerSecurityAnalysis: '',
+			SecondAuditionBorrowerIncomeAnalysis: '',
+			SecondAuditionBorrowerPayOffAbilityAnalysis: '',
+			LoanReceivedDateTime: '',
+			CompanyArticlesImageUrls: '',
+
+			FirstAuditionComment: '',
 
 			LastOperationName: '',
 			CurrentOperationName: '', // 当前操作名称,
@@ -422,7 +617,6 @@ export default {
 			LoanReceivedImageUrls: [], // 放款现场照片url
 			C_LoanReceivedImageUrls: [], // 放款现场照片缩略图url
 			// LoanReceivedOperatorName: [], // 放款操作人
-			// LoanReceivedDateTime: [], // 放款操作时间
 			
 			BorrowerIDNOImageUrls: [], // 客户身份证照片url
 			BorrowerSpouseIDNOImageUrls: [], // 客户配偶身份证照片url
@@ -529,6 +723,41 @@ export default {
 						HouseTotalFloor,
 						HouseFloor,
 						HouseBuildingFinishYear,
+						HouseValuationConfirmComment,
+						BorrowerName,
+						BorrowerIDNO,
+
+						BorrowerMarriageStatus,
+						BorrowerSpouseName,
+						BorrowerSpouseIDNO,
+						BorrowerSpouseMobile,
+						HasCompany,
+						CompanyName,
+						CompanySecurityIDNO,
+						CompanyPhone,
+						CompanyLegalPersonName,
+						CompanyLegalPersonIDNO,
+						ExpectedBorrowAmount,
+						ExpectedBorrowPeriodInMonth,
+						BorrowUsage,
+						InterestReturnSource,
+						PrincipalReturnSource,
+						ShareOwnerInfo,
+						PledgeInfo,
+						IsPledged ,
+						PledgeOrgnization,
+						PledgePrice,
+						IsLoanPaidOff,
+						IsZhuanDan,
+						LoanPriority,
+						SecondAuditionBorrowerSecurityAnalysis,
+						SecondAuditionBorrowerIncomeAnalysis,
+						SecondAuditionBorrowerPayOffAbilityAnalysis,
+						LoanReceivedDateTime,
+						CompanyArticlesImageUrls,
+
+						FirstAuditionComment,
+
 
 						LastOperationName,
 						CurrentOperationName, // 当前操作名称,
@@ -579,7 +808,6 @@ export default {
 						LoanReceivedImageUrls, // 放款现场照片url
 						C_LoanReceivedImageUrls, // 放款现场照片缩略图url
 						// LoanReceivedOperatorName, // 放款操作人
-						// LoanReceivedDateTime, // 放款操作时间
 						
 						BorrowerIDNOImageUrls, // 客户身份证照片url
 						BorrowerSpouseIDNOImageUrls, // 客户配偶身份证照片url
@@ -654,6 +882,41 @@ export default {
 					this.HouseTotalFloor = HouseTotalFloor
 					this.HouseFloor = HouseFloor
 					this.HouseBuildingFinishYear = HouseBuildingFinishYear
+					this.HouseValuationConfirmComment = HouseValuationConfirmComment
+					this.BorrowerName = BorrowerName
+					this.BorrowerIDNO = BorrowerIDNO
+
+					this.BorrowerMarriageStatus = BorrowerMarriageStatus
+					this.BorrowerSpouseName = BorrowerSpouseName
+					this.BorrowerSpouseIDNO = BorrowerSpouseIDNO
+					this.BorrowerSpouseMobile = BorrowerSpouseMobile
+					this.HasCompany = HasCompany
+					this.CompanyName = CompanyName
+					this.CompanySecurityIDNO = CompanySecurityIDNO
+					this.CompanyPhone = CompanyPhone
+					this.CompanyLegalPersonName = CompanyLegalPersonName
+					this.CompanyLegalPersonIDNO = CompanyLegalPersonIDNO
+					this.ExpectedBorrowAmount = parseFloat(ExpectedBorrowAmount/10000)
+					this.ExpectedBorrowPeriodInMonth = ExpectedBorrowPeriodInMonth
+					this.BorrowUsage = BorrowUsage
+					this.InterestReturnSource = InterestReturnSource
+					this.PrincipalReturnSource = PrincipalReturnSource
+					this.ShareOwnerInfo = ShareOwnerInfo
+					this.PledgeInfo = PledgeInfo
+					this.IsPledged  = IsPledged 
+					this.PledgeOrgnization = PledgeOrgnization
+					this.PledgePrice = parseFloat(PledgePrice/10000)
+					this.IsLoanPaidOff = IsLoanPaidOff
+					this.IsZhuanDan = IsZhuanDan
+					this.LoanPriority = LoanPriority
+					this.SecondAuditionBorrowerSecurityAnalysis = SecondAuditionBorrowerSecurityAnalysis
+					this.SecondAuditionBorrowerIncomeAnalysis = SecondAuditionBorrowerIncomeAnalysis
+					this.SecondAuditionBorrowerPayOffAbilityAnalysis = SecondAuditionBorrowerPayOffAbilityAnalysis
+					this.LoanReceivedDateTime = LoanReceivedDateTime
+					this.CompanyArticlesImageUrls = CompanyArticlesImageUrls
+
+					this.FirstAuditionComment = FirstAuditionComment
+
 
 					this.LastOperationName = LastOperationName
 					this.CurrentOperationName = CurrentOperationName // 当前操作名称,
@@ -678,7 +941,7 @@ export default {
 					this.IsLoanApproved = IsLoanApproved // 是否批贷通过
 					this.LoanApprovalImageUrls = LoanApprovalImageUrls // 批贷函照片url
 					this.C_LoanApprovalImageUrls = C_LoanApprovalImageUrls // 批贷函照片缩略图url
-					this.LoanAmount = parseInt(LoanAmount) || '-'// 批贷金额
+					this.LoanAmount = parseFloat(LoanAmount/10000) || '-'// 批贷金额
 					this.LoanPeriodInMonth = LoanPeriodInMonth // 批贷期限
 					this.LoanInterest = LoanInterest // 批贷利率
 										
