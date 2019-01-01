@@ -245,7 +245,7 @@
 							</el-col>
 
 							<el-col :span="24">
-								<el-form-item label="初审意见（待确定）：">
+								<el-form-item label="初审意见：">
 									<div>{{FirstAuditionComment}}</div>
 								</el-form-item>
 							</el-col>
