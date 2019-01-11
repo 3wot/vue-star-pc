@@ -297,6 +297,10 @@ data () {
 		OrderNo: '', // 编号
 		FirstAuditionComment: '',
 
+		BorrowerAuditHistoryId: '',
+		BorrowerSpouseAuditHistoryId: '',
+		CompanyAuditHistoryId: '',
+
 	}
 },
 mounted () {
@@ -362,7 +366,13 @@ methods:{
 					LoanExpirationInfo,
 					MultipointLendingInfo,
 					CompanyInfo,
+					BorrowerAuditHistoryId,
+					BorrowerSpouseAuditHistoryId,
+					CompanyAuditHistoryId,
 				} = res.data || {}
+				this.BorrowerAuditHistoryId = BorrowerAuditHistoryId
+				this.BorrowerSpouseAuditHistoryId = BorrowerSpouseAuditHistoryId
+				this.CompanyAuditHistoryId = CompanyAuditHistoryId
 				this.SecurityInfo = SecurityInfo
 				this.LawsuitInfo = LawsuitInfo
 				this.EnforcementInfo = EnforcementInfo
@@ -454,34 +464,37 @@ methods:{
 
 	// 去详情页面
 	gotoDetail(type) {
-		const oid = this.$route.params.id
+		// const oid = this.$route.params.id
 		if (type == 1) { // 自己
 			const name = this.BorrowerName
 			const id = this.BorrowerIDNO
+			const hid = this.BorrowerAuditHistoryId
 			// this.$router.push({ 'name' : 'firstDetail', params: { name, id }})
 			let routeData = this.$router.resolve({
 			   	name: "firstDetail",
 			   	// query: params,
-			   	params:{ oid, name, id }
+			   	params:{ hid, name, id }
 			});
 			window.open(routeData.href, '_blank')
 		} else if (type == 2) { // 配偶
 			const name = this.BorrowerSpouseName
 			const id = this.BorrowerSpouseIDNO
+			const hid = this.BorrowerSpouseAuditHistoryId
 			// this.$router.push({ name : 'firstDetail', params: { name, id }})
 			let routeData = this.$router.resolve({
 			   	name: "firstDetail",
 			   	// query: params,
-			   	params:{ oid, name, id }
+			   	params:{ hid, name, id }
 			});
 			window.open(routeData.href, '_blank')
 		} else if (type == 3) {
 			const name = this.CompanyName
+			const hid = this.CompanyAuditHistoryId
 			// this.$router.push({ name : 'firstDetail', params: { name }})
 			let routeData = this.$router.resolve({
 			   	name: "firstDetail",
 			   	// query: params,
-			   	params:{ oid, name }
+			   	params:{ hid, name }
 			});
 			window.open(routeData.href, '_blank')
 		}

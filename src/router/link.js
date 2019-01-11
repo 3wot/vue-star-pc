@@ -64,6 +64,7 @@ const urls = {
 
 	'GetEnforcementInfoDetail': 'GetEnforcementInfoDetail',
 	'GetEnforcementInfoDetail2': 'GetEnforcementInfoDetail2',
+	'GetEnforcementInfoDetail3': 'GetEnforcementInfoDetail3',
 	
 }
 

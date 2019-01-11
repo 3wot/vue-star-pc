@@ -75,16 +75,16 @@ export default {
 
 		// 初始化
 		init() {
-			const { oid, name } = this.$route.params
+			const { hid, name } = this.$route.params
 			const id = this.$route.params.id || null
-			const historyId = null
+			const historyId = hid
 			const param = {
 				historyId,
-				orderId: oid,
+				// orderId: oid,
 				name,
 				idNo: id,
 			}
-			this.pp('GetEnforcementInfoDetail2', param, res => {
+			this.pp('GetEnforcementInfoDetail3', param, res => {
 				if (res.ret) {
 					this.data = this.format(res.data)
 				} else {
